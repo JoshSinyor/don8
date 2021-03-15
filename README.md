@@ -76,29 +76,41 @@ Actions are *italic*. Nouns are **bold**. Attributes of nouns are **_bold italic
 
 ##### User Story 01
 
-&nbsp;&nbsp;&nbsp;As a user,<br>
-&nbsp;&nbsp;&nbsp;So that I can ,<br>
-&nbsp;&nbsp;&nbsp;I’d like to be able to .
+&nbsp;&nbsp;&nbsp;As a charity,<br>
+&nbsp;&nbsp;&nbsp;So that I can advertise for donations of time or goods,<br>
+&nbsp;&nbsp;&nbsp;I’d like to be able to post adverts.
 
 ##### User Story 02
 
-&nbsp;&nbsp;&nbsp;As a user,<br>
-&nbsp;&nbsp;&nbsp;So that I can ,<br>
-&nbsp;&nbsp;&nbsp;I’d like to be able to .
+&nbsp;&nbsp;&nbsp;As a donor,<br>
+&nbsp;&nbsp;&nbsp;So that I can donate,<br>
+&nbsp;&nbsp;&nbsp;I’d like to be able to see charities adverts.
 
 ##### User Story 03
 
-&nbsp;&nbsp;&nbsp;As a user,<br>
-&nbsp;&nbsp;&nbsp;So that I can ,<br>
-&nbsp;&nbsp;&nbsp;I’d like to be able to .
+&nbsp;&nbsp;&nbsp;As a charity,<br>
+&nbsp;&nbsp;&nbsp;So that I can manage my adverts,<br>
+&nbsp;&nbsp;&nbsp;I’d like to be able to sign up as a charity.
 
 ##### User Story 04
 
-&nbsp;&nbsp;&nbsp;As a user,<br>
-&nbsp;&nbsp;&nbsp;So that I can ,<br>
-&nbsp;&nbsp;&nbsp;I’d like to be able to .
+&nbsp;&nbsp;&nbsp;As a charity,<br>
+&nbsp;&nbsp;&nbsp;So that I can manage my adverts,<br>
+&nbsp;&nbsp;&nbsp;I’d like to be able to log in and out.
 
 ##### User Story 05
+
+&nbsp;&nbsp;&nbsp;As a charity,<br>
+&nbsp;&nbsp;&nbsp;So that I can manage my adverts,<br>
+&nbsp;&nbsp;&nbsp;I’d like to be able to edit adverts.
+
+##### User Story 06
+
+&nbsp;&nbsp;&nbsp;As a charity,<br>
+&nbsp;&nbsp;&nbsp;So that I can manage my adverts,<br>
+&nbsp;&nbsp;&nbsp;I’d like to be able to delete adverts.
+
+##### User Story 07
 
 &nbsp;&nbsp;&nbsp;As a user,<br>
 &nbsp;&nbsp;&nbsp;So that I can ,<br>
@@ -137,6 +149,8 @@ Refactoring was performed after the completion of any individual unit, and perio
 ---
 
 ## Minimum Viable Product
+* Charity can post what they need - either time or objects
+* Volunteers can see what charities need
 
 ---
 
