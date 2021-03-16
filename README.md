@@ -164,6 +164,10 @@ The appearance of an MVP version of our program was projected to look something 
 
 ![wireframe_new_request_page](/docs/wireframe_new_request_page.svg)
 
+The most basic model of this is described as follows:
+
+![request_return_diagram](/docs/request_return_diagram.svg)
+
 ---
 
 ## Additional Features
