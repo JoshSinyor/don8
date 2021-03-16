@@ -200,9 +200,17 @@ With more time, we would have liked to add some additional features:
 
 ## Built With
 
-This program's dependencies are .
+This program's dependencies are:
 
-- [Utility](https://www.google.co.uk/)
+- [Expo](https://docs.expo.io/)
+- [React Native](https://reactnative.dev/)
+- [MongoBD](https://www.mongodb.com/)
+
+This program's development and test frameworks depend upon:
+
+- [ESLint](https://eslint.org/)
+- [Jest](https://jestjs.io/)
+- [Cypress](https://www.cypress.io/)
 
 ---
 
