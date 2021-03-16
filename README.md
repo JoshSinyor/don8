@@ -53,13 +53,13 @@ This project requires _software_. If you do not have _software_, install it usin
 
 ### Installation
 
-1.
+1. Run command `npm install`
 
 ---
 
 ## Running the Program
 
-1.
+1. Run command `npm start` to start the server.
 
 ---
 
