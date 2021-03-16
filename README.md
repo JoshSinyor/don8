@@ -231,3 +231,4 @@ This project is licensed under the [MIT License](LICENSE).
 - Table of contents generated with [markdown-toc](http://ecotrust-canada.github.io/markdown-toc/).
 - Wireframes generated with [Figma](https://www.figma.com/).
 - Diagrams generated with [Diagram.codes](https://www.diagram.codes/).
+- API testing conducted with [Postman](https://www.postman.com/).
