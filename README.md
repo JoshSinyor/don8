@@ -26,6 +26,7 @@ This repository reflects Makers Academy Final Project **don8**. The general over
   * [Continuous Development](#continuous-development)
   * [Refactoring](#refactoring)
 - [Minimum Viable Product](#minimum-viable-product)
+  * [Wireframes](#wireframes)
 - [Project Conclusions](#project-conclusions)
   * [Final Appearance](#final-appearance)
   * [Specific Characteristics of Note](#specific-characteristics-of-note)
@@ -151,6 +152,12 @@ Refactoring was performed after the completion of any individual unit, and perio
 ## Minimum Viable Product
 * Charity can post what they need - either time or objects
 * Volunteers can see what charities need
+
+### Wireframes
+
+![wireframe_homepage](/docs/wireframe_homepage.svg)
+
+![wireframe_new_request_page](/docs/wireframe_new_request_page.svg)
 
 ---
 
