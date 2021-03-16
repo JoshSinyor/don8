@@ -27,6 +27,9 @@ This repository reflects Makers Academy Final Project **don8**. The general over
   * [Refactoring](#refactoring)
 - [Minimum Viable Product](#minimum-viable-product)
   * [Wireframes](#wireframes)
+- [Additional Features](#additional-features)
+  * [Feature 01](#feature-01)
+  * [Wireframes](#wireframes-1)
 - [Project Conclusions](#project-conclusions)
   * [Final Appearance](#final-appearance)
   * [Specific Characteristics of Note](#specific-characteristics-of-note)
@@ -155,9 +158,21 @@ Refactoring was performed after the completion of any individual unit, and perio
 
 ### Wireframes
 
+The appearance of an MVP version of our program was projected to look something like as follows:
+
 ![wireframe_homepage](/docs/wireframe_homepage.svg)
 
 ![wireframe_new_request_page](/docs/wireframe_new_request_page.svg)
+
+---
+
+## Additional Features
+
+### Feature 01
+
+The appearance of an expanded version of our program was projected to look something like as follows:
+
+### Wireframes
 
 ---
 
@@ -189,7 +204,7 @@ This program's dependencies are .
 
 ## Author(s)
 
-Proudly authored by [Oscar Bertrand](https://github.com/OscarB89), [Hugh Cavanagh](https://github.com/hacaravan), [Sean Edwards](https://github.com/bear99a9), [Joshua Sinyor](https://gist.github.com/JoshSinyor) and [Louis Wicks](https://github.com/louiswicks).
+Proudly authored by [Oscar Bertrand](https://github.com/OscarB89), [Hugh Cavanagh](https://github.com/hacaravan), [Sean Edwards](https://github.com/bear99a9), [Joshua Sinyor](https://gist.github.com/JoshSinyor) and [Louis Wickremeratne](https://github.com/louiswicks).
 
 ---
 
