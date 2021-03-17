@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 
-const Ad = () => {
+const Home = () => {
 
     const [title, setTitle] = useState('Don8')
     return(
@@ -13,4 +13,4 @@ const Ad = () => {
     )
 }
 
-export default Ad;
+export default Home;
