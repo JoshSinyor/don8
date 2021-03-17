@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
+import Ad from './Ad'
 
 const Home = () => {
 
@@ -8,6 +9,8 @@ const Home = () => {
     return(
         <View>
             <Text> {title} </Text>
+            <Ad name={'First Ad'}/>
+            <Ad name={'Second Ad'}/>
             <Button title='Make a new request' onPress={() => setTitle('Don8!')}/>
         </View>
     )
