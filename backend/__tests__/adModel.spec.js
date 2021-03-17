@@ -34,6 +34,19 @@ describe("Ad",() => {
         expect(savedAdWithInvalidField._id).toBeDefined();
         expect(savedAdWithInvalidField.email).toBeUndefined();
     });
+
+    it('An ad created without required field should failed', async () => {
+      const adWithoutRequiredField = new Ad({ title: 'Oxfam' });
+      let err;
+      try {
+          const savedAdWithoutRequiredField = await adWithoutRequiredField.save();
+          error = savedAdWithoutRequiredField;
+      } catch (error) {
+          err = error
+      }
+      expect(err).toBeInstanceOf(mongoose.Error.ValidationError)
+      expect(err.errors.location).toBeDefined();
+  });
 });
 
 
