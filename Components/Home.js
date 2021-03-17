@@ -1,17 +1,37 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
 
 import Ad from './Ad'
 
 const Home = () => {
 
     const [title, setTitle] = useState('Don8')
+    const [text, setText] = useState()
+    const [list, setList] = useState(['Hello World'])
+
+    const addItem = () => {
+      const updatedList = list;
+      updatedList.push(text);
+      setList(updatedList);
+      setText('')
+    }
+
     return(
         <View style={{ width: '80%', marginBottom: 60 }}>
-            <Text style={[styles.align, styles.font]}> {title} </Text>
-            <Button title='Make a new request' onPress={() => setTitle('Don8!')}/>
-            <Ad name={'First Ad'}/>
-            <Ad name={'Second Ad'}/>
+          <Text style={[styles.align, styles.font]}> {title} </Text>
+          <View>
+            <TextInput
+              style={[styles.input]}
+              value={text}
+              onChangeText={(text) => setText(text)}
+            />
+            <Button title='Make a new request' onPress={addItem}/>
+          </View>
+          <ScrollView>
+            {list.map((x, index) =>
+              <Ad key={index} item={x} index={index}/>
+            )}
+          </ScrollView>
         </View>
     )
 }
@@ -23,6 +43,12 @@ const styles = StyleSheet.create({
     font: {
       fontSize: 20,
       fontWeight: 'bold'
+    },
+    input: {
+      borderRadius: 5,
+      borderWidth: 1,
+      marginBottom: 8,
+      padding: 8
     }
 })
 

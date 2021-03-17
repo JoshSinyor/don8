@@ -4,7 +4,7 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 const Ad = (props) => {
   return(
     <View style={[styles.item, { margin: 8, padding: 8}]}>
-      <Text> {props.name} </Text>
+      <Text> {props.item} </Text>
     </View>
   )
 }
