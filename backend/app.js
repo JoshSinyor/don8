@@ -23,8 +23,12 @@ require("dotenv/config");
 
 const api = process.env.API_URL;
 
-app.get(`${api}/ads`, (req, res) => {
-  const adList = Ad.find();
+app.get(`${api}/ads`, async (req, res) => {
+  const adList = await Ad.find();
+
+  if(!adList) {
+    res.status(500).json({success: false})
+  }
   res.send(adList);
 });
 
