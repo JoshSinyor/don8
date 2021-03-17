@@ -2,8 +2,7 @@ const express = require('express');
 const { Ad } = require('../models/ad');
 const dbHandler = require('../db-handler');
 require("dotenv").config();
-
-// const request = require('supertest');
+// const request = require('supertest'); ? might need this later
 const mongoose = require("mongoose");
 const charityAd = { title: 'Oxfam', location: 'London', description: 'We need help', contact: 'test@test.com' };
 const invalidField = { title: 'Oxfam', location: 'London', description: 'We need help', contact: 'test@test.com', email: 'wrong' };
