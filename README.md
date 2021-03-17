@@ -160,9 +160,7 @@ Refactoring was performed after the completion of any individual unit, and perio
 
 The appearance of an MVP version of our program was projected to look something like as follows:
 
-![wireframe_homepage](/docs/wireframe_homepage.svg)
-
-![wireframe_new_request_page](/docs/wireframe_new_request_page.svg)
+![wireframe_homepage](/docs/wireframe_homepage.svg) ![wireframe_new_request_page](/docs/wireframe_new_request_page.svg)
 
 The most basic model of this is described as follows:
 
