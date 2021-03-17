@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const adSchema = mongoose.Schema({
-  title: String,
-  location: String,
-  description: String,
-  contact: String,
+  title: { type: String, required: true},
+  location: { type: String, required: true},
+  description: { type: String, required: true},
+  contact: { type: String, required: true}
 })
 
 exports.Ad = mongoose.model('Ad', adSchema);
