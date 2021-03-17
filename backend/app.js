@@ -3,53 +3,21 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const Ad = require('./models/ad')
+require("dotenv/config");
 
 // middleware
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
-
-// model
-const adSchema = mongoose.Schema({
-  title: String,
-  location: String,
-  description: String,
-  contact: String,
-})
-
-const Ad = mongoose.model('Ad', adSchema);
-
-require("dotenv/config");
+// routes
+const adsRouter = require('./routes/ads')
 
 const api = process.env.API_URL;
 
-app.get(`${api}/ads`, async (req, res) => {
-  const adList = await Ad.find();
+app.use(`${api}/ads`, adsRouter)
 
-  if(!adList) {
-    res.status(500).json({success: false})
-  }
-  res.send(adList);
-});
-
-app.post(`${api}/ads`, (req, res) => {
-  const ad = new Ad({
-    title: req.body.title,
-    location: req.body.location,
-    description: req.body.description,
-    contact: req.body.contact,
-  })
-
-  ad.save().then((createdAd => {
-    res.status(201).json(createdAd)
-  })).catch((err => {
-    res.status(500).json({
-      error: err,
-      success: false
-    })
-  }))
-});
-
+// database connection
 mongoose
   .connect(process.env.DATABASE_CONNECTION, {
     useUnifiedTopology: true,
@@ -62,6 +30,7 @@ mongoose
     console.log(err);
   });
 
+// server connection check
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
