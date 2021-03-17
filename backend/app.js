@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-const Ad = require('./models/ad')
+//const Ad = require('./models/ad') ? if we need this
 require("dotenv/config");
 
 // middleware
