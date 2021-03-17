@@ -1,13 +1,49 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
+
+// middleware
+app.use(bodyParser.json());
+app.use(morgan('tiny'));
+
+
+// model
+const adSchema = mongoose.Schema({
+  title: String,
+  location: String,
+  description: String,
+  contact: String,
+})
+
+const Ad = mongoose.model('Ad', adSchema);
 
 require("dotenv/config");
 
 const api = process.env.API_URL;
 
 app.get(`${api}/ads`, (req, res) => {
-  res.send("Hello API");
+  const adList = Ad.find();
+  res.send(adList);
+});
+
+app.post(`${api}/ads`, (req, res) => {
+  const ad = new Ad({
+    title: req.body.title,
+    location: req.body.location,
+    description: req.body.description,
+    contact: req.body.contact,
+  })
+
+  ad.save().then((createdAd => {
+    res.status(201).json(createdAd)
+  })).catch((err => {
+    res.status(500).json({
+      error: err,
+      success: false
+    })
+  }))
 });
 
 mongoose
@@ -23,6 +59,5 @@ mongoose
   });
 
 app.listen(3000, () => {
-  console.log(api);
   console.log("Server is running on http://localhost:3000");
 });
