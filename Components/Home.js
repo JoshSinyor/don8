@@ -1,5 +1,5 @@
-import React, { useState, useCallBack } from 'react'
-import { useFocusEffect } from "@react-navigation/native";
+import React, { useState, useCallBack, useEffect } from 'react'
+// import { useEffect } from "@react-navigation/native";
 import { Button, StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
 import Form from './Form';
 import axios from 'axios'
@@ -29,15 +29,22 @@ const Home = () => {
     // useCallback(() => {
 
     // We need something to stop this happening constantly
-      axios
-        .get('http://localhost:3000/api/v1/ads')
-        .then((res) => {
-          setList(res.data)
-          console.log(res.data);
-        })
-        .catch((error) => {
-          console.log(`Error message: ${error}`);
-        })
+    useEffect(() => {
+      async function updateList() {
+        axios
+          .get('http://localhost:3000/api/v1/ads')
+          .then((res) => {
+            setList(res.data)
+            console.log(res.data);
+          })
+          .catch((error) => {
+            console.log(`Error message: ${error}`);
+          })
+        }
+
+        updateList()
+    }, []);
+
 
     //     return() => { console.log("Hello")}
     //   }, [])
