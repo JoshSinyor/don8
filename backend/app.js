@@ -24,6 +24,7 @@ mongoose
   .connect(process.env.DATABASE_CONNECTION, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
+    useCreateIndex: true
   })
   .then(() => {
     console.log("Database connection is ready");

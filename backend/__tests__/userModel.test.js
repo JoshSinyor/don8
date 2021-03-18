@@ -4,7 +4,7 @@ const dbHandler = require('../db-handler');
 require("dotenv").config();
 // const request = require('supertest'); ? might need this later
 const mongoose = require("mongoose");
-const newCharity = { charityName: 'Oxfam', email: 'oxfam@oxfam.com', passwordHash: 'Password', phone: '07485672917', charityIdNumber: 1, address: 'Bristol', isCharity: true };
+const newCharity = { username: 'oxfam_bath', charityName: 'Oxfam', email: 'oxfam@oxfam.com', passwordHash: 'Password', phone: '07485672917', charityIdNumber: '1', address: 'Bristol', isCharity: true };
 const newVolunteer = { firstName: 'John', lastName: 'Smith',  username: "Smithy", email: "smith@smith.com", passwordHash: 'password', phone: '07485672918', isVolunteer: true };
 
 describe("Charity User", () => {
