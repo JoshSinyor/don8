@@ -4,17 +4,21 @@ const dbHandler = require('../db-handler');
 require("dotenv").config();
 // const request = require('supertest'); ? might need this later
 const mongoose = require("mongoose");
-const newUser = { charityName: 'Oxfam', email: 'oxfam@oxfam.com', passwordHash: 'Password', };
+const newCharity = { charityName: 'Oxfam', email: 'oxfam@oxfam.com', passwordHash: 'Password', phone: '07485672917', charityIdNumber: 1, address: 'Bristol'};
+const newVolunteer = { firstName: 'John', lastName: 'Smith',  username: "Smithy", email: "smith@smith.com", passwordHash: 'password', phone: '07485672918' }
 
-describe("User", () => {
+describe("Charity User", () => {
     describe("Signup", () => {
-        it("A user is created and saved successfully", async () => {
-            let validUser = new User(newUser);
+        it("A charity user is created and saved successfully", async () => {
+            let validUser = new User(newCharity);
             let savedUser = await validUser.save();
             expect(savedUser._id).toBeDefined();
-            expect(savedUser.name).toBe(newUser.name);
-            expect(savedUser.email).toBe(newUser.email);
-            expect(savedUser.passwordHash).toBe(newUser.passwordHash);
+            expect(savedUser.charityName).toBe(newCharity.charityName);
+            expect(savedUser.email).toBe(newCharity.email);
+            expect(savedUser.passwordHash).toBe(newCharity.passwordHash);
+            expect(savedUser.phone).toBe(newCharity.phone);
+            expect(savedUser.charityIdNumber).toBe(newCharity.charityIdNumber);
+            expect(savedUser.address).toBe(newCharity.address);
         });
     });
 });
