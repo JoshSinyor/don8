@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const {User} = require('../models/user');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
+require("dotenv/config");
 
 router.get('/', async (req, res) => {
     const userList = await User.find().select('-password');
@@ -22,10 +24,9 @@ router.get('/', async (req, res) => {
     res.send(user);
   });
 
-
 router.post('/', async (req, res) => {
   let user = new User({
-    charityName: req.body.chairtyName,
+    charityName: req.body.charityName,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
     phone: req.body.phone,
@@ -40,10 +41,33 @@ router.post('/', async (req, res) => {
   })
   user = await user.save();
 
-  if(!user)
+  if(!user) {
   return res.status(400).send('the user cannot be created!')
-
+  }
   res.send(user);
+});
+
+router.post('/login', async (req, res) => { 
+    const user = await User.findOne({email: req.body.email})
+    const secret = process.env.secret;
+    if(!user) {
+      return res.status(400).send('User not found')
+    }
+
+    if(user && bcrypt.compareSync(req.body.password, user.password)) {
+      const token = jwt.sign (
+        {
+        userId: user.id
+        },
+        secret
+      )
+
+      res.status(200).send({user: user.email, token: token})
+    } else {
+      res.status(400).send('Password is wrong!')
+    }
+
+    return res.status(200).send(user);
 });
 
 module.exports = router;

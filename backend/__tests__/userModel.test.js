@@ -1,8 +1,8 @@
-const app = require("../server");
-const supertest = require("supertest");
-const request = supertest(app);
-const createUser = require("../test-helpers/signupHelper").createUser;
-const authTests = require("../test-helpers/authHelpers");
+// const app = require("../server");
+// const supertest = require("supertest");
+// const request = supertest(app);
+// const createUser = require("../test-helpers/signupHelper").createUser;
+// const authTests = require("../test-helpers/authHelpers");
 
 const express = require('express');
 const { User } = require('../models/user');
