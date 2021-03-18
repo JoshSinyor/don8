@@ -9,10 +9,10 @@ const Form = () => {
   return (
     <View style={{ width: '80%', marginBottom:60 }}>
       <Text style={[styles.align, styles.font]}>Form</Text>
-      <TextInput style={[styles.input]} value={text} placeholder='title'/>
-      <TextInput style={[styles.input]} value={text} placeholder='location'/>
-      <TextInput style={[styles.input]} value={text} placeholder='description of request'/>
-      <TextInput style={[styles.input]} value={text} placeholder='email or telephone number'/>
+      <TextInput style={[styles.input]} value={text} placeholder='Title'/>
+      <TextInput style={[styles.input]} value={text} placeholder='Location'/>
+      <TextInput style={[styles.input]} value={text} placeholder='Description of request'/>
+      <TextInput style={[styles.input]} value={text} placeholder='Email or telephone number'/>
     </View>
   )
 }

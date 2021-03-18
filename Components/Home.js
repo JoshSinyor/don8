@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
+import Form from './Form';
 
 import Ad from './Ad'
 
@@ -13,23 +14,21 @@ const Home = () => {
     const [text, setText] = useState()
     const [list, setList] = useState(samples)
 
-    const addItem = () => {
-      const updatedList = list;
-      updatedList.push(text);
-      setList(updatedList);
-      setText('')
+    const [showAds, setShowAds] = useState(true)
+    const [showForm, setShowForm] = useState(false)
+
+
+    const toggleForm = () => {
+      setShowAds(false)
+      setShowForm(true)
     }
 
     return(
+       (showAds &&
         <View style={{ width: '80%', marginBottom: 60 }}>
           <Text style={[styles.align, styles.font]}> {title} </Text>
           <View>
-            {/* <TextInput
-              style={[styles.input]}
-              value={text}
-              onChangeText={(text) => setText(text)}
-            /> */}
-            <Button title='Make a new request' onPress={addItem}/>
+            <Button title='Make a new request' onPress={toggleForm}/>
           </View>
           <ScrollView>
             {list.map((x, index) =>
@@ -37,6 +36,12 @@ const Home = () => {
             )}
           </ScrollView>
         </View>
+      ) || (showForm && < Form />)
+      //   ,
+      //
+      //
+      //
+
     )
 }
 
