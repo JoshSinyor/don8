@@ -1,3 +1,9 @@
+const app = require("../server");
+const supertest = require("supertest");
+const request = supertest(app);
+const createUser = require("../test-helpers/signupHelper").createUser;
+const authTests = require("../test-helpers/authHelpers");
+
 const express = require('express');
 const { User } = require('../models/user');
 const dbHandler = require('../db-handler');
@@ -42,5 +48,17 @@ describe("Volunteer User", () => {
             expect(savedUser.phone).toBe(newVolunteer.phone);
             expect(savedUser.isVolunteer).toBe(newVolunteer.isVolunteer);
         });
+    });
+});
+
+describe("Login", () => {
+    xit("A user can log in with the correct password", async () => {
+        let user = await createUser();
+        let userLoggedIn = await logInUser();
+        let parsedUser = JSON.parse(user.text);
+        let parsedUserLoggedIn = JSON.parse(userLoggedIn.text);
+        expect(userLoggedIn.status).toEqual(200);
+        expect(parsedUser.name).toBe(wesleyData.name);
+        expect(parsedUserLoggedIn.user).toEqual("wesley@example.com");
     });
 });

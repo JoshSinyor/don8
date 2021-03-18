@@ -1,23 +1,12 @@
-const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-//const Ad = require('./models/ad') ? if we need this
 require("dotenv/config");
+const app = require("./server");
 
-// middleware
-app.use(bodyParser.json());
-app.use(morgan('tiny'));
+// server connection check
+app.listen(3000, () => {
+  console.log("Server is running on http://localhost:3000");
+});
 
-// routes
-const adsRouter = require('./routes/ads')
-const usersRouter = require('./routes/users')
-
-const api = process.env.API_URL;
-
-app.use(`${api}/ads`, adsRouter)
-app.use(`${api}/users`, usersRouter)
 
 // database connection
 mongoose
@@ -33,7 +22,4 @@ mongoose
     console.log(err);
   });
 
-// server connection check
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
-});
+module.exports = app;
