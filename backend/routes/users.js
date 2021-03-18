@@ -96,4 +96,58 @@ router.post('/login', async (req, res) => {
     return res.status(200).send(user);
 });
 
+router.get('/get/count', async (req, res) => {
+  const userCount = await User.countDocuments((count) => count)
+
+  if(!userCount) {
+    res.status(500).json({success: false})
+  }
+  res.send({
+    userCount: userCount
+  });
+});
+
+router.put('/:id', async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    res,status(400).send('Invalid User Id')
+  }
+  
+  let user = await User.findById(req.body.id);
+  if(!user) return res.status(400).send('Invalid user')
+
+  user = await User.findByIdAndUpdate(
+    req.params.id, {
+        charityName: req.body.charityName,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, 10),
+        phone: req.body.phone,
+        charityIdNumber: req.body.charityIdNumber,
+        address: req.body.address,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.username,
+        isCharity: req.body.isCharity,
+        isVolunteer: req.body.isVolunteer,
+        isAdmin: req.body.isAdmin
+      }, 
+    {new: true});
+
+  if(!user) {
+    res.status(500).json({message: 'The user cannot be updated.'})
+  }
+  res.send(user);
+});
+
+router.delete('/:id', async (req, res) => { 
+    User.findByIdAndRemove(req.params.id).then(user => {
+        if(user) {
+          return res.status(200).json({success: true, message: 'The user is deleted!'})
+        } else {
+          res.status(404).json({success: false, message: 'User not found'})
+        }
+    }).catch(err => {
+        return res.status(400).json({success: false, error: err})
+    })
+})
+
 module.exports = router;

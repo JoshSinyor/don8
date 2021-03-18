@@ -10,10 +10,13 @@ function authJwt() {
     }).unless({
         path: [
             // excluded paths ands HTML methods
-            {url: /\api\/v1\/ads(.*)/, methods: ['GET', 'OPTIONS'] },
+            {
+                url: /\api\/v1\/ads(.*)/, methods: ['GET', 'OPTIONS'],
+                url: /\api\/v1\/users(.*)/, methods: ['GET', 'OPTIONS']
+            },
 
-            `${api}/v1/users/login`,
-            `${api}/v1/users/register`,
+            `${api}/users/login`,
+            `${api}/users/register`,
         ]
     })
 }

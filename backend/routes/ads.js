@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {Ad} = require('../models/ad');
+
+
 router.get('/', async (req, res) => {
     const adList = await Ad.find();
   
@@ -36,5 +38,17 @@ router.post('/', (req, res) => {
       })
     }))
   });
+
+  router.get('/get/count', async (req, res) => {
+    const adCount = await Ad.countDocuments((count) => count)
+  
+    if(!adCount) {
+      res.status(500).json({success: false})
+    }
+    res.send({
+      adCount: adCount
+    });
+  });
+  
   
 module.exports = router;
