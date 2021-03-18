@@ -12,10 +12,12 @@ app.use(morgan('tiny'));
 
 // routes
 const adsRouter = require('./routes/ads')
+const usersRouter = require('./routes/users')
 
 const api = process.env.API_URL;
 
 app.use(`${api}/ads`, adsRouter)
+app.use(`${api}/users`, usersRouter)
 
 // database connection
 mongoose
