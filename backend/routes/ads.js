@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   
     if(!adList) {
       res.status(500).json({success: false})
-    }
+    } 
     res.send(adList);
   });
 

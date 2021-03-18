@@ -4,13 +4,24 @@ const {User} = require('../models/user');
 const bcrypt = require('bcryptjs');
 
 router.get('/', async (req, res) => {
-    const userList = await User.find();
+    const userList = await User.find().select('-password');
 
-    if(!adList) {
+    if(!userList) {
       res.status(500).json({success: false})
     }
-    res.send(adList);
+    res.send(userList);
   });
+
+
+  router.get('/:id', async (req, res) => {
+    const user = await (await User.findById(req.params.id).select('-password'));
+  
+    if(!user) {
+      res.status(500).json({success: false})
+    }
+    res.send(user);
+  });
+
 
 router.post('/', async (req, res) => {
   let user = new User({
