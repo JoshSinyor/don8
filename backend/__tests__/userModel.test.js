@@ -4,8 +4,12 @@ const dbHandler = require('../db-handler');
 require("dotenv").config();
 // const request = require('supertest'); ? might need this later
 const mongoose = require("mongoose");
-const newCharity = { username: 'oxfam_bath', charityName: 'Oxfam', email: 'oxfam@oxfam.com', passwordHash: 'Password', phone: '07485672917', charityIdNumber: '1', address: 'Bristol', isCharity: true };
+const newCharity = { username: 'oxfam_bath', charityName: 'Oxfam', email: 'oxfam@oxfam.com', password: 'Password', phone: '07485672917', charityIdNumber: '1', address: 'Bristol', isCharity: true };
 const newVolunteer = { firstName: 'John', lastName: 'Smith',  username: "Smithy", email: "smith@smith.com", passwordHash: 'password', phone: '07485672918', isVolunteer: true };
+
+beforeAll(async () => await dbConnect());
+afterEach(async () => await dbClear());
+afterAll(async () => await dbClose());
 
 describe("Charity User", () => {
     describe("Signup", () => {
@@ -15,7 +19,7 @@ describe("Charity User", () => {
             expect(savedUser._id).toBeDefined();
             expect(savedUser.charityName).toBe(newCharity.charityName);
             expect(savedUser.email).toBe(newCharity.email);
-            expect(savedUser.passwordHash).toBe(newCharity.passwordHash);
+            expect(savedUser.password).toBe(newCharity.password);
             expect(savedUser.phone).toBe(newCharity.phone);
             expect(savedUser.charityIdNumber).toBe(newCharity.charityIdNumber);
             expect(savedUser.address).toBe(newCharity.address);
@@ -34,7 +38,7 @@ describe("Volunteer User", () => {
             expect(savedUser.lastName).toBe(newVolunteer.lastName);
             expect(savedUser.username).toBe(newVolunteer.username);
             expect(savedUser.email).toBe(newVolunteer.email);
-            expect(savedUser.passwordHash).toBe(newVolunteer.passwordHash);
+            expect(savedUser.password).toBe(newVolunteer.password);
             expect(savedUser.phone).toBe(newVolunteer.phone);
             expect(savedUser.isVolunteer).toBe(newVolunteer.isVolunteer);
         });
