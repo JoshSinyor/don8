@@ -33,10 +33,10 @@ const Form = () => {
   return (
     <View style={{ width: '80%', marginBottom:60 }}>
       <Text style={[styles.align, styles.font]}>Form</Text>
-      <TextInput style={[styles.input]} value={title} placeholder='Title'/>
-      <TextInput style={[styles.input]} value={location} placeholder='Location'/>
-      <TextInput style={[styles.input]} value={description} placeholder='Description of request'/>
-      <TextInput style={[styles.input]} value={contact} placeholder='Email or telephone number'/>
+      <TextInput style={[styles.input]} value={title} placeholder='Title' onChangeText={(title) => setTitle(title)}/>
+      <TextInput style={[styles.input]} value={location} placeholder='Location' onChangeText={(location) => setLocation(location)}/>
+      <TextInput style={[styles.input]} value={description} placeholder='Description of request' onChangeText={(description) => setDescription(description)}/>
+      <TextInput style={[styles.input]} value={contact} placeholder='Email or telephone number' onChangeText={(contact) => setContact(contact)}/>
       <Button title="Submit" onPress={() => handleSubmit()}/>
     </View>
   )

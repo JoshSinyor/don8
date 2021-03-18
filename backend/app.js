@@ -3,12 +3,15 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const cors = require('cors')
 //const Ad = require('./models/ad') ? if we need this
 require("dotenv/config");
 
 // middleware
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
+app.use(cors());
+app.options('*', cors());
 
 // routes
 const adsRouter = require('./routes/ads')
