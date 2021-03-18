@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useCallBack } from 'react'
+import { useFocusEffect } from "@react-navigation/native";
 import { Button, StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
 import Form from './Form';
+import axios from 'axios'
 
 import Ad from './Ad'
 
@@ -21,7 +23,25 @@ const Home = () => {
     const toggleForm = () => {
       setShowAds(false)
       setShowForm(true)
-    }
+    };
+
+    // useFocusEffect(
+    // useCallback(() => {
+
+    // We need something to stop this happening constantly
+      axios
+        .get('http://localhost:3000/api/v1/ads')
+        .then((res) => {
+          setList(res.data)
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(`Error message: ${error}`);
+        })
+
+    //     return() => { console.log("Hello")}
+    //   }, [])
+    // )
 
     return(
        (showAds &&
@@ -64,3 +84,23 @@ const styles = StyleSheet.create({
 })
 
 export default Home;
+
+// useFocusEffect(
+//     useCallback(() => {
+//       AsyncStorage.getItem("jwt").then((res) => {
+//         axios
+//           .get(`${baseURL}plants/${user}`, {
+//             headers: { Authorization: `Bearer ${res}` },
+//           })
+//           .then((res) => {
+//             setPlants(res.data);
+//           })
+//           .catch((error) => {
+//             console.log(`Error message: ${error}`);
+//           });
+//       });
+//
+//       return () => {
+//         setPlants([]);
+//       };
+//     }, [])
