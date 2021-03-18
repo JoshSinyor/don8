@@ -7,6 +7,7 @@ const Styles = styled.div`
   .navbar {
     background-color: #fff;
     border-bottom: black solid 1px;
+    justify-content: flex-start;
   }
   a, .navbar-nav, .navbar-light .nav-link {
     color: #000;
@@ -14,7 +15,6 @@ const Styles = styled.div`
   }
   .navbar-brand {
     font-size: 1.4em;
-    background-color: pink;
     color: #000;
     &:hover { color: grey; }
   }
@@ -31,6 +31,8 @@ const NavigationBar = () => (
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
+          <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
           <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>
