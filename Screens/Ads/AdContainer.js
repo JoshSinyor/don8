@@ -1,3 +1,5 @@
+// Useless file for now - not used
+
 import React, { useState } from 'react'
 import { View, StyleSheet, ActivityIndicator, Text } from 'react-native'
 

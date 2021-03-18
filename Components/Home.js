@@ -12,7 +12,6 @@ const Home = () => {
     const [title, setTitle] = useState('Don8')
     const [text, setText] = useState()
     const [list, setList] = useState(samples)
-    console.log([list, setList])
 
     const addItem = () => {
       const updatedList = list;
@@ -25,11 +24,11 @@ const Home = () => {
         <View style={{ width: '80%', marginBottom: 60 }}>
           <Text style={[styles.align, styles.font]}> {title} </Text>
           <View>
-            <TextInput
+            {/* <TextInput
               style={[styles.input]}
               value={text}
               onChangeText={(text) => setText(text)}
-            />
+            /> */}
             <Button title='Make a new request' onPress={addItem}/>
           </View>
           <ScrollView>
