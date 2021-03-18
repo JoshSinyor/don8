@@ -22,3 +22,19 @@ describe("Charity User", () => {
         });
     });
 });
+
+describe("Volunteer User", () => {
+    describe("Signup", () => {
+        it("A volunteer user is created and saved successfully", async () => {
+            let validUser = new User(newVolunteer);
+            let savedUser = await validUser.save();
+            expect(savedUser._id).toBeDefined();
+            expect(savedUser.firstName).toBe(newVolunteer.firstName);
+            expect(savedUser.lastName).toBe(newVolunteer.lastName);
+            expect(savedUser.username).toBe(newVolunteer.username);
+            expect(savedUser.email).toBe(newVolunteer.email);
+            expect(savedUser.passwordHash).toBe(newVolunteer.passwordHash);
+            expect(savedUser.phone).toBe(newVolunteer.phone);
+        });
+    });
+});
