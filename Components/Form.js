@@ -1,18 +1,43 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios'
 import { Button, StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
 
 const Form = () => {
 
-  const [text, setText] = useState()
+  const [title, setTitle] = useState("")
+  const [location, setLocation] = useState("")
+  const [description, setDescription] = useState("")
+  const [contact, setContact] = useState("")
+
+  const handleSubmit = () => {
+    console.log("Submitting")
+    const ad = {
+      title,
+      location,
+      description,
+      contact
+    }
+    axios
+      .post('http://localhost:3000/api/v1/ads', ad)
+      .then((response) => {
+        if (response.status === 201) {
+          console.log(response.data)
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
   return (
     <View style={{ width: '80%', marginBottom:60 }}>
       <Text style={[styles.align, styles.font]}>Form</Text>
-      <TextInput style={[styles.input]} value={text} placeholder='Title'/>
-      <TextInput style={[styles.input]} value={text} placeholder='Location'/>
-      <TextInput style={[styles.input]} value={text} placeholder='Description of request'/>
-      <TextInput style={[styles.input]} value={text} placeholder='Email or telephone number'/>
+      <TextInput style={[styles.input]} value={title} placeholder='Title'/>
+      <TextInput style={[styles.input]} value={location} placeholder='Location'/>
+      <TextInput style={[styles.input]} value={description} placeholder='Description of request'/>
+      <TextInput style={[styles.input]} value={contact} placeholder='Email or telephone number'/>
+      <Button title="Submit" onPress={() => handleSubmit()}/>
     </View>
   )
 }
