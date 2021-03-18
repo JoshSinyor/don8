@@ -5,7 +5,7 @@ const AdContainer = () => {
 
   return (
     <View>
-      <Text>Hell yeah baby</Text>
+      <Text>This is AdContainer.js.</Text>
     </View>
   )
 }

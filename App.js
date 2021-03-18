@@ -9,7 +9,7 @@ import AdContainer from './Screens/Ads/AdContainer'
 export default function App() {
   return (
     <View style={styles.container}>
-      < AdContainer />
+      < Home />
     </View>
   );
 }

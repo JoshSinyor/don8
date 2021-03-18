@@ -3,11 +3,16 @@ import { Button, StyleSheet, Text, View, ScrollView, TextInput } from 'react-nat
 
 import Ad from './Ad'
 
+// Import sampleAds
+let samples = require('../assets/sampleAds.json');
+// End import
+
 const Home = () => {
 
     const [title, setTitle] = useState('Don8')
     const [text, setText] = useState()
-    const [list, setList] = useState(['Hello World'])
+    const [list, setList] = useState(samples)
+    console.log([list, setList])
 
     const addItem = () => {
       const updatedList = list;
@@ -35,6 +40,8 @@ const Home = () => {
         </View>
     )
 }
+
+// Stylesheet for title and input box
 
 const styles = StyleSheet.create({
     align: {
