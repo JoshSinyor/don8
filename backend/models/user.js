@@ -11,7 +11,8 @@ const userSchema = mongoose.Schema({
   lastName: { type: String },
   username: { type: String, unique: true, required: true },
   isCharity: { type: Boolean },
-  isVolunteer: { type: Boolean }
+  isVolunteer: { type: Boolean },
+  isAdmin: { type: Boolean, default: false }
 })
 
 exports.User = mongoose.model('User', userSchema);
