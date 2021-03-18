@@ -32,8 +32,6 @@ const NavigationBar = () => (
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>
       <Navbar.Brand href="/">don8</Navbar.Brand>
