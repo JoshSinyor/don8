@@ -2,7 +2,7 @@ const app = require("../server");
 const supertest = require("supertest");
 const request = supertest(app);
 const createUser = require("../test-helpers/signupHelper").createUser;
-const authTests = require("../test-helpers/authHelpers");
+const logInUser = require("../test-helpers/authHelpers").logInUser;
 
 const express = require('express');
 const { User } = require('../models/user');
@@ -62,17 +62,13 @@ describe("Signup API", () => {
 
 
 describe("Login", () => {
-    xit("A user can log in with the correct password", async () => {
+    it("A user can log in with the correct password", async () => {
         let user = await createUser();
-        // console.log("User", user.charityName)
         let userLoggedIn = await logInUser();
-        // console.log("UserLoggedIn", userLoggedIn)
         let parsedUser = JSON.parse(user.text);
-        console.log("Parsed User", parsedUser)
         let parsedUserLoggedIn = JSON.parse(userLoggedIn.text);
-        // console.log("parsedUserLoggedIn", parsedUserLoggedIn)
         expect(userLoggedIn.status).toEqual(200);
-        expect(parsedUser.name).toBe(wesleyData.name);
-        expect(parsedUserLoggedIn.user).toEqual("wesley@example.com");
+        expect(parsedUser.charityName).toBe("Oxfam");
+        expect(parsedUserLoggedIn.user).toEqual("oxfam@oxfam.com");
     });
 });
