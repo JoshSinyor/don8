@@ -3,20 +3,14 @@ const supertest = require("supertest");
 const request = supertest(app);
 const createUser = require("./signupHelper").createUser;
 
-module.exports = wesleyData = {
-  name: "Wesley",
-  email: "wesley@example.com",
-  passwordHash: "wesley",
-};
-
-module.exports = wesleyLogin = {
-  email: "wesley@example.com",
-  password: "wesley",
+module.exports = charityLogin = {
+  email: "oxfam@oxfam.com",
+  password: "Password",
 };
 
 module.exports = logInUser = async () => {
   return await request
     .post("/users/login")
-    .send(wesleyLogin)
+    .send(charityLogin)
     .set("Accept", "application/json");
 };
