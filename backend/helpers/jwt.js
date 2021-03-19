@@ -11,9 +11,10 @@ function authJwt() {
         path: [
             // excluded paths ands HTML methods
             {
-                url: /\api\/v1\/ads(.*)/, methods: ['GET', 'PUT', 'OPTIONS'],
+                url: `/api/v1/ads`, methods: ['GET', 'PUT', 'OPTIONS'],
                 url: /\api\/v1\/users(.*)/, methods: ['GET', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
             },
+            `${api}/users`,
             `${api}/ads`,
             `${api}/users/login`,
             `${api}/users/register`,
