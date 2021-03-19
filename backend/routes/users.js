@@ -65,7 +65,8 @@ router.post('/login', async (req, res) => {
         isVolunteer: user.isVolunteer,
         isCharity: user.isCharity
         },
-        secret
+        secret,
+        {expiresIn: '4w'}
       )
 
       res.status(200).send({user: user.email, token: token})
