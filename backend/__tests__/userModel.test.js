@@ -1,15 +1,9 @@
-const app = require("../server");
-const supertest = require("supertest");
-const request = supertest(app);
 const createUser = require("../test-helpers/signupHelper").createUser;
 const logInUser = require("../test-helpers/authHelpers").logInUser;
 
-const express = require('express');
 const { User } = require('../models/user');
 const dbHandler = require('../db-handler');
 require("dotenv").config();
-// const request = require('supertest'); ? might need this later
-const mongoose = require("mongoose");
 const newCharity = { username: 'oxfam_bath', charityName: 'Oxfam', email: 'oxfam@oxfam.com', password: 'Password', phone: '07485672917', charityIdNumber: '1', address: 'Bristol', isCharity: true };
 const newVolunteer = { firstName: 'John', lastName: 'Smith',  username: "Smithy", email: "smith@smith.com", passwordHash: 'password', phone: '07485672918', isVolunteer: true };
 
