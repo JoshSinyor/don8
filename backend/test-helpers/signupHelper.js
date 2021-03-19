@@ -5,7 +5,7 @@ const request = supertest(app);
 async function createUser() {
 
     return await request
-      .post("/users")
+      .post("/api/v1/users/register")
       .send({
         username: 'oxfam_bath',
         charityName: 'Oxfam',

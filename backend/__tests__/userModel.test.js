@@ -52,15 +52,11 @@ describe("Volunteer User", () => {
 });
 
 describe("Signup API", () => {
-  it("saves a user to the database", async done => {
-    const res = await request
-                        .post('/api/v1/users/register')
-                        .send({ username: 'oxfam_bath', charityName: 'Oxfam', email: 'oxfam@oxfam.com', password: 'Password', phone: '07485672917', charityIdNumber: '1', address: 'Bristol', isCharity: true })
-                        .set("Accept", "application/json");
+  it("saves a user to the database", async () => {
+    const res = await createUser();
     const createdUser = await User.findOne({email:  'oxfam@oxfam.com'})
     expect(res.status).toBe(200)
     expect(createdUser._id).toBeDefined()
-    done()
   })
 })
 
