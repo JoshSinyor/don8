@@ -1,13 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Home from './Components/Home';
+import NavigationBar from './Components/Navbar';
+// import AdContainer from './Screens/Ads/AdContainer'
+import Form from './Components/Form';
+import './node_modules/bootstrap/dist/css/bootstrap.min.css';
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+     <View style={styles.navbar}>
+        <NavigationBar />
+      </View>
+      <View style={styles.container}>
+        <Home />
+      </View>
+    </>
   );
 }
 

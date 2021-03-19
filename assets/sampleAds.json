@@ -1,0 +1,26 @@
+[
+    {
+        "_id": "6051e1e2a9318b982b5a3427",
+        "title": "oxfam",
+        "location": "London",
+        "description": "Come help",
+        "contact": "email@t.c",
+        "__v": 0
+    },
+    {
+        "_id": "6051e232a9318b982b5a3428",
+        "title": "Help the children",
+        "location": "Bath",
+        "description": "Come help us",
+        "contact": "email@t.children",
+        "__v": 0
+    },
+    {
+        "_id": "6051ec107fcbc39eef482f76",
+        "title": "Red Cross",
+        "location": "Bristol",
+        "description": "Come help us now",
+        "contact": "email@t.red",
+        "__v": 0
+    }
+]
