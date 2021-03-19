@@ -57,7 +57,6 @@ describe("Signup API", () => {
     })
 })
 
-
 describe("Login", () => {
     it("A user can log in with the correct password", async () => {
         let user = await createUser();
