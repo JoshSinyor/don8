@@ -3,6 +3,7 @@ const router = express.Router();
 const {User} = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose')
 require("dotenv/config");
 
 router.get('/', async (req, res) => {
@@ -24,28 +25,28 @@ router.get('/', async (req, res) => {
     res.send(user);
   });
 
-router.post('/', async (req, res) => {
-  let user = new User({
-    charityName: req.body.charityName,
-    email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 10),
-    phone: req.body.phone,
-    charityIdNumber: req.body.charityIdNumber,
-    address: req.body.address,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    username: req.body.username,
-    isCharity: req.body.isCharity,
-    isVolunteer: req.body.isVolunteer,
-    isAdmin: req.body.isAdmin
-  })
-  user = await user.save();
+// router.post('/', async (req, res) => {
+//   let user = new User({
+//     charityName: req.body.charityName,
+//     email: req.body.email,
+//     password: bcrypt.hashSync(req.body.password, 10),
+//     phone: req.body.phone,
+//     charityIdNumber: req.body.charityIdNumber,
+//     address: req.body.address,
+//     firstName: req.body.firstName,
+//     lastName: req.body.lastName,
+//     username: req.body.username,
+//     isCharity: req.body.isCharity,
+//     isVolunteer: req.body.isVolunteer,
+//     isAdmin: req.body.isAdmin
+//   })
+//   user = await user.save();
 
-  if(!user) {
-  return res.status(400).send('the user cannot be created!')
-  }
-  res.send(user);
-});
+//   if(!user) {
+//   return res.status(400).send('the user cannot be created!')
+//   }
+//   res.send(user);
+// });
 
 router.post('/register', async (req, res) => {
   let user = new User({
@@ -108,27 +109,24 @@ router.get('/get/count', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-  if (!mongoose.isValidObjectId(req.params.id)) {
-    res,status(400).send('Invalid User Id')
-  }
+  // if (!mongoose.isValidObjectId(req.params.id)) {
+  //   res,status(400).send('Invalid User Id')
+  // }
   
-  let user = await User.findById(req.body.id);
+  let user = await User.findById(req.params.id);
   if(!user) return res.status(400).send('Invalid user')
 
   user = await User.findByIdAndUpdate(
     req.params.id, {
-        charityName: req.body.charityName,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
         phone: req.body.phone,
-        charityIdNumber: req.body.charityIdNumber,
         address: req.body.address,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         username: req.body.username,
         isCharity: req.body.isCharity,
         isVolunteer: req.body.isVolunteer,
-        isAdmin: req.body.isAdmin
       }, 
     {new: true});
 

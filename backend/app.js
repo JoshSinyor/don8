@@ -19,7 +19,6 @@ app.use(errorHandler);
 // routes
 const adsRouter = require('./routes/ads')
 const usersRouter = require('./routes/users');
-const { response } = require("express");
 
 const api = process.env.API_URL;
 
@@ -31,7 +30,8 @@ mongoose
   .connect(process.env.DATABASE_CONNECTION, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
   })
   .then(() => {
     console.log("Database connection is ready");
