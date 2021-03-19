@@ -49,12 +49,12 @@ describe("Volunteer User", () => {
 });
 
 describe("Signup API", () => {
-  it("saves a user to the database", async () => {
-    const res = await createUser();
-    const createdUser = await User.findOne({email:  'oxfam@oxfam.com'})
-    expect(res.status).toBe(200)
-    expect(createdUser._id).toBeDefined()
-  })
+    it("saves a user to the database", async () => {
+        const res = await createUser();
+        const createdUser = await User.findOne({email:  'oxfam@oxfam.com'})
+        expect(res.status).toBe(200)
+        expect(createdUser._id).toBeDefined()
+    })
 })
 
 
@@ -91,4 +91,31 @@ describe("Login", () => {
         .set("Accept", "application/json")
         .expect(400);
     });
+});
+
+describe("GET /", () => {
+    it("A user's information is accessed", async () => {
+        let user = await createUser();
+        let parsedUser = JSON.parse(user.text);
+        let userLoggedIn = await logInUser();
+        let parsedUserLoggedIn = JSON.parse(userLoggedIn.text);
+        let oxfamToken = parsedUserLoggedIn.token;
+
+        await request
+            .get(`/api/v1/users/${parsedUser._id}`)
+            .set("Authorization", `Bearer ${oxfamToken}`)
+            .then((response) => {
+            expect(response.statusCode).toBe(200);
+            expect(response.type).toBe("application/json");
+            });
+    });
+
+    it("A user's information is not accessed without authorisation", async () => {
+        let validUser = new User(newCharity);
+        let savedUser = await validUser.save();
+
+        await request.get(`/users/${savedUser.id}`).then((response) => {
+            expect(response.statusCode).toBe(401);
+        });
+        });
 });
