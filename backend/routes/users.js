@@ -25,28 +25,6 @@ router.get('/', async (req, res) => {
     res.send(user);
   });
 
-// router.post('/', async (req, res) => {
-//   let user = new User({
-//     charityName: req.body.charityName,
-//     email: req.body.email,
-//     password: bcrypt.hashSync(req.body.password, 10),
-//     phone: req.body.phone,
-//     charityIdNumber: req.body.charityIdNumber,
-//     address: req.body.address,
-//     firstName: req.body.firstName,
-//     lastName: req.body.lastName,
-//     username: req.body.username,
-//     isCharity: req.body.isCharity,
-//     isVolunteer: req.body.isVolunteer,
-//     isAdmin: req.body.isAdmin
-//   })
-//   user = await user.save();
-
-//   if(!user) {
-//   return res.status(400).send('the user cannot be created!')
-//   }
-//   res.send(user);
-// });
 
 router.post('/register', async (req, res) => {
   let user = new User({
@@ -83,7 +61,9 @@ router.post('/login', async (req, res) => {
       const token = jwt.sign (
         {
         userId: user.id, 
-        isAdmin: user.isAdmin
+        isAdmin: user.isAdmin,
+        isVolunteer: user.isVolunteer,
+        isCharity: user.isCharity
         },
         secret
       )
