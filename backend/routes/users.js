@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
   router.get('/:id', async (req, res) => {
     const user = await (await User.findById(req.params.id).select('-password'));
-  
+
     if(!user) {
       res.status(500).json({success: false})
     }
@@ -50,7 +50,7 @@ router.post('/register', async (req, res) => {
 });
 
 
-router.post('/login', async (req, res) => { 
+router.post('/login', async (req, res) => {
     const user = await User.findOne({email: req.body.email})
     const secret = process.env.secret;
     if(!user) {
@@ -60,12 +60,13 @@ router.post('/login', async (req, res) => {
     if(user && bcrypt.compareSync(req.body.password, user.password)) {
       const token = jwt.sign (
         {
-        userId: user.id, 
+        userId: user.id,
         isAdmin: user.isAdmin,
         isVolunteer: user.isVolunteer,
         isCharity: user.isCharity
         },
-        secret
+        secret,
+        {expiresIn: '4w'}
       )
 
       res.status(200).send({user: user.email, token: token})
@@ -92,7 +93,7 @@ router.put('/:id', async (req, res) => {
   // if (!mongoose.isValidObjectId(req.params.id)) {
   //   res,status(400).send('Invalid User Id')
   // }
-  
+
   let user = await User.findById(req.params.id);
   if(!user) return res.status(400).send('Invalid user')
 
@@ -107,7 +108,7 @@ router.put('/:id', async (req, res) => {
         username: req.body.username,
         isCharity: req.body.isCharity,
         isVolunteer: req.body.isVolunteer,
-      }, 
+      },
     {new: true});
 
   if(!user) {
@@ -116,7 +117,7 @@ router.put('/:id', async (req, res) => {
   res.send(user);
 });
 
-router.delete('/:id', async (req, res) => { 
+router.delete('/:id', async (req, res) => {
     User.findByIdAndRemove(req.params.id).then(user => {
         if(user) {
           return res.status(200).json({success: true, message: 'The user is deleted!'})

@@ -13,7 +13,7 @@ function authJwt() {
             {
                 url: `${api}/ads`, methods: ['GET', 'OPTIONS'],
             },
-            // `${api}/users`, // to remove on deployment 
+            `${api}/users`, // to remove on deployment 
             // `${api}/ads`,
             `${api}/users/login`,
             `${api}/users/register`,
@@ -30,6 +30,6 @@ async function isRevoked(req, payload, done) {
     }
     if(payload.isCharity){
         done();
-    }  
+    }
 }
 module.exports = authJwt;

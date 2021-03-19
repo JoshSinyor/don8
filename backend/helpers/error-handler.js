@@ -7,7 +7,7 @@ function errorHandler(err, req, res, next) {
     if (err.name === 'ValidationError') {
         return res.status(401).json({message: err})
     }
-    
+
     // default to 500 server code
     return res.status(500).json(err)
 };
