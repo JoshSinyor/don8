@@ -1,3 +1,6 @@
+const app = require("../server");
+const supertest = require("supertest");
+const request = supertest(app);
 const createUser = require("../test-helpers/signupHelper").createUser;
 const logInUser = require("../test-helpers/authHelpers").logInUser;
 
@@ -64,5 +67,28 @@ describe("Login", () => {
         expect(userLoggedIn.status).toEqual(200);
         expect(parsedUser.charityName).toBe("Oxfam");
         expect(parsedUserLoggedIn.user).toEqual("oxfam@oxfam.com");
+    });
+
+
+    it("A user cannot log in with an incorrect password", async () => {
+        await request
+        .post("/api/v1/users/login")
+        .send({
+            email: "oxfam@oxfam.com",
+            password: "oxfam",
+        })
+        .set("Accept", "application/json")
+        .expect(400);
+    });
+
+    it("A user cannot log in with an incorrect email", async () => {
+        await request
+        .post("/api/v1/users/login")
+        .send({
+            email: "oxfam@example.com",
+            password: "Password",
+        })
+        .set("Accept", "application/json")
+        .expect(400);
     });
 });
