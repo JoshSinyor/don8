@@ -11,11 +11,10 @@ function authJwt() {
         path: [
             // excluded paths ands HTML methods
             {
-                url: `/api/v1/ads`, methods: ['GET', 'PUT', 'OPTIONS'],
-                url: /\api\/v1\/users(.*)/, methods: ['GET', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
+                url: `${api}/ads`, methods: ['GET', 'OPTIONS'],
             },
-            `${api}/users`,
-            `${api}/ads`,
+            // `${api}/users`, // to remove on deployment 
+            // `${api}/ads`,
             `${api}/users/login`,
             `${api}/users/register`,
         ]
@@ -26,7 +25,7 @@ async function isRevoked(req, payload, done) {
     if(payload.isAdmin){
         done();
     }
-    if(payload.isVolenteer){
+    if(payload.isVolunteer){
         done(null, true);
     }
     if(payload.isCharity){

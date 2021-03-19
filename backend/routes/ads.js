@@ -27,6 +27,8 @@ router.post('/', (req, res) => {
       location: req.body.location,
       description: req.body.description,
       contact: req.body.contact,
+      charity: req.body.charity,
+
     })
   
     ad.save().then((createdAd => {

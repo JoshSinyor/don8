@@ -10,8 +10,8 @@ const userSchema = mongoose.Schema({
   firstName: { type: String },
   lastName: { type: String },
   username: { type: String, unique: true, required: true },
-  isCharity: { type: Boolean },
-  isVolunteer: { type: Boolean },
+  isCharity: { type: Boolean, default: true },
+  isVolunteer: { type: Boolean, default: false },
   isAdmin: { type: Boolean, default: false }
 })
 
