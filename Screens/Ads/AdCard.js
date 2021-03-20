@@ -20,7 +20,8 @@ const AdCard = (props) => {
             <Image 
             style={styles.image} 
             resizeMode="contain"
-            source={{uri: image ? image : 'https://images.unsplash.com/photo-1514030849962-49ac486d3d20?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1450&q=80 '}}
+            source={{uri: image ? 
+                image : 'https://images.unsplash.com/photo-1514030849962-49ac486d3d20?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1450&q=80 '}}
             />
             <View style={styles.card}/>
             <View>

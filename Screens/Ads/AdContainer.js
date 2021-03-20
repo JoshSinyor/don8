@@ -7,11 +7,12 @@ const data = require('../../assets/sampleAds.json');
 
 const AdContainer = () => {
   const [ads, setAds ] = useState([]);
-  const [productFiltered, setProductsFiltered] = useState([])
-  
+  const [adFiltered, setAdsFiltered] = useState([])
+
   useEffect(() => {
     setAds(data);
-
+    setAdsFiltered(data);
+    
     return () => {
       setAds([]);
     }
