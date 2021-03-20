@@ -13,12 +13,16 @@ const data = require('../../assets/sampleAds.json');
 var { width } = Dimensions.get("window");
 
 const AdCard = (props) => {
-    const { charityName, title, location, description, contact } = props;
+    const { charityName, image, title, location, description, contact } = props;
     console.log("Adcard", props)
     
     return (
         <View style={styles.container}>
-            <Image style={styles.image} />
+            <Image 
+            style={styles.image} 
+            resizeMode="contain"
+            source={{uri: image ? image : 'https://images.unsplash.com/photo-1514030849962-49ac486d3d20?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1450&q=80 '}}
+            />
             <View style={styles.card}/>
             <View>
                 <Button title={`${charityName}`}style={styles.charityName}/>
@@ -45,11 +49,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     image: {
-        width: width / 2 - 20 - 10,
-        height: width / 2 - 20 - 30,
+        width: width / 2 - 50 - 10,
+        height: width - 50 - 30,
         backgroundColor: 'transparent',
         position: 'absolute',
-        top: -45
+        top: -45,
+        opacity: 0.3
     },
     card: {
         marginBottom: 10,

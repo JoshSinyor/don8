@@ -6,34 +6,41 @@
         "location": "London",
         "description": "Come help",
         "contact": "email@t.c",
-        "__v": 0
+        "__v": 0,
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Oxfam_logo_vertical.svg/1280px-Oxfam_logo_vertical.svg.png"
     },
     {
         "_id": "6051e232a9318b982b5a3428",
         "charityName": "Help the children",
-        "title": "help",
+        "title": "help please",
         "location": "Bath",
         "description": "Come help us",
         "contact": "email@t.children",
-        "__v": 0
+        "__v": 0,
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Oxfam_logo_vertical.svg/1280px-Oxfam_logo_vertical.svg.png"
+
     },
     {
         "_id": "6051ec107fcbc39eef482f76",
         "charityName": "Red Cross",
-        "title": "help",
+        "title": "help if you can",
         "location": "Bristol",
         "description": "Come help us now",
         "contact": "email@t.red",
-        "__v": 0
+        "__v": 0,
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Oxfam_logo_vertical.svg/1280px-Oxfam_logo_vertical.svg.png"
+
     },
 
     {
         "_id": "6051e1e2a9318b982b5a5627",
         "charityName": "Base",
-        "title": "help",
+        "title": "help?",
         "location": "Bristol",
         "description": "Come help pretty please",
         "contact": "email@t.com",
-        "__v": 0
+        "__v": 0,
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Oxfam_logo_vertical.svg/1280px-Oxfam_logo_vertical.svg.png"
+
     }
 ]
