@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         height: width / 1.7,
         padding: 10,
         borderRadius: 10,
-        marginTop: 10,
+        marginTop: 55,
         marginBottom: 5,
         marginLeft: 10,
         alignItems: 'center',
@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     image: {
-        width: width / 2 - 50 - 10,
-        height: width - 50 - 30,
+        width: width / 2 - 20 - 10,
+        height: width /2  - 20 - 30,
         backgroundColor: 'transparent',
         position: 'absolute',
         top: -45,
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
     card: {
         marginBottom: 10,
-        height: width / 2 - 90 - 90,
+        height: width / 2 - 20 - 90,
         width: width / 2 - 20 - 10,
         backgroundColor: 'transparent'
     },

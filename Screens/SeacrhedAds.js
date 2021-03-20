@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Dimensions } from 'react-native'
 import { Content, Left, Body, ListItem, Thumbnail, Text } from 'native-base';
+
+let { width } = Dimensions.get("screen")
 
 const SearchedAd = (props) => {
     const { adsFiltered } = props;
     return (
-        <Content>
+        <Content style={{ width: width}}>
             {adsFiltered.length > 0 ? (
                 adsFiltered.map((ad) => (
                     <ListItem
                     // onPress={navigation}
-                    key={ad.id.$oid}
+                    key={ad.id}
                     avatar
                     >
                         <Left>
@@ -22,7 +24,7 @@ const SearchedAd = (props) => {
                         </Left>
                         <Body>
                             <Text>{ad.charityName}</Text>
-                            <Text>note={ad.description}</Text>
+                            <Text>{ad.description}</Text>
                         </Body>
                     </ListItem>  
                 ))
