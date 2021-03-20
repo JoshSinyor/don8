@@ -11,16 +11,15 @@ const AdContainer = () => {
     setAds(data);
 
     return () => {
-      setAds([])
+      setAds([]);
     }
   }, [])
 
   return (
-    <View>
-      <Text>This is AdContainer.js.</Text>
       <View style={{ marginTop: 300}}>
-        <FlatList
-          horizontal
+        <FlatList 
+          key={2}
+          numColumns={2}
           data={ads}
           renderItem={({item}) => <AdList 
           key={item.id}
@@ -29,7 +28,6 @@ const AdContainer = () => {
           keyExtractor={item => item.title}
           />
       </View>
-    </View>
   )
 }
 
