@@ -1,7 +1,8 @@
 [
     {
         "_id": "6051e1e2a9318b982b5a3427",
-        "title": "oxfam",
+        "title": "help",
+        "charityName": "oxfam",
         "location": "London",
         "description": "Come help",
         "contact": "email@t.c",
@@ -9,7 +10,8 @@
     },
     {
         "_id": "6051e232a9318b982b5a3428",
-        "title": "Help the children",
+        "charityName": "Help the children",
+        "title": "help",
         "location": "Bath",
         "description": "Come help us",
         "contact": "email@t.children",
@@ -17,7 +19,8 @@
     },
     {
         "_id": "6051ec107fcbc39eef482f76",
-        "title": "Red Cross",
+        "charityName": "Red Cross",
+        "title": "help",
         "location": "Bristol",
         "description": "Come help us now",
         "contact": "email@t.red",
@@ -26,7 +29,8 @@
 
     {
         "_id": "6051e1e2a9318b982b5a5627",
-        "title": "Base",
+        "charityName": "Base",
+        "title": "help",
         "location": "Bristol",
         "description": "Come help pretty please",
         "contact": "email@t.com",

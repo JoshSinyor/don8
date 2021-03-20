@@ -13,13 +13,16 @@ const data = require('../../assets/sampleAds.json');
 var { width } = Dimensions.get("window");
 
 const AdCard = (props) => {
-    const { title, location, description, contact } = props;
+    const { charityName, title, location, description, contact } = props;
     console.log("Adcard", props)
     
     return (
         <View style={styles.container}>
             <Image style={styles.image} />
             <View style={styles.card}/>
+            <View>
+                <Button title={`${charityName}`}style={styles.charityName}/>
+            </View>
             <Text style={styles.title}> {title} </Text>
             <Text styles={styles.location}> {location} </Text>
             <Text styles={styles.description}> {description} </Text>
@@ -57,6 +60,11 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: 'bold',
         fontSize: 14,
+        textAlign: 'center'
+    },
+    charityName: {
+        fontWeight: 'bold',
+        fontSize: 20,
         textAlign: 'center'
     },
     location: {
