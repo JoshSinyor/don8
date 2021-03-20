@@ -5,13 +5,14 @@ import AdCard from './AdCard'
 let { width } = Dimensions.get("window");
 
 const  AdList = (props) => {
-    const { ad } = props;
+    const { item } = props;
+
     return(
         <TouchableOpacity style={{ width: '50%' }}>
             <View style={{ width: width / 2, 
             backgroundColor: 'gainsboro'}}
             >
-            <AdCard {...ad} />   
+            <AdCard {...item} />   
             </View>
         </TouchableOpacity>
     )

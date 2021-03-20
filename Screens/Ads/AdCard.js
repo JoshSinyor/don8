@@ -7,19 +7,22 @@ import { StyleSheet,
     Image
 } from 'react-native';
 
-let { width } = Dimensions.get("window");
+const data = require('../../assets/sampleAds.json');
+
+
+var { width } = Dimensions.get("window");
 
 const AdCard = (props) => {
-    const { image, title, location, description, contact } = props;
-
+    const { title, location, description, contact } = props;
+    console.log("Adcard", props)
+    
     return (
         <View style={styles.container}>
-            <Image style={styles.image}/>
             <View style={styles.card}/>
-            <Text style={styles.title}> title </Text>
-            <Text styles={styles.location}> location </Text>
-            <Text styles={styles.description}> description </Text>
-            <Text styles={styles.contact}> contact </Text>
+            <Text style={styles.title}> {title} </Text>
+            <Text styles={styles.location}> {location} </Text>
+            <Text styles={styles.description}> {description} </Text>
+            <Text styles={styles.contact}> {contact} </Text>
         </View>
     )
 }

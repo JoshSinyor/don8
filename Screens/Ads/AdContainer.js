@@ -8,6 +8,7 @@ const AdContainer = () => {
   const [ads, setAds ] = useState([]);
 
   useEffect(() => {
+    console.log(data)
     setAds(data);
 
     return () => {
