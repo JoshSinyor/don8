@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, ActivityIndicator, Text, FlatList } from 'react-native'
+import { View, StyleSheet, ActivityIndicator, FlatList } from 'react-native'
+import { Container, Header, Icon, Item, Input, Text} from 'native-base';
 
 import AdList from './AdList';
 const data = require('../../assets/sampleAds.json');
 
 const AdContainer = () => {
   const [ads, setAds ] = useState([]);
-
+  const [productFiltered, setProductsFiltered] = useState([])
+  
   useEffect(() => {
-    console.log(data)
     setAds(data);
 
     return () => {
@@ -17,18 +18,29 @@ const AdContainer = () => {
   }, [])
 
   return (
-      <View style={{ marginTop: 100, backgroundColor: 'gainsboro'}}>
-        <FlatList 
-          key={2}
-          numColumns={2}
-          data={ads}
-          renderItem={({item}) => <AdList 
-          key={item.id}
-          item={item}
-            />}
-          keyExtractor={item => item.title}
+    <Container>
+      <Header searchBar rounded>
+        <Item>
+          <Icon name="ios-search"/>
+          <Input placeholder="Search"
+            //onFocus={}
+            // onChangeText={(text) => }
           />
-      </View>
+        </Item>
+      </Header>
+        <View style={{ marginTop: 100, backgroundColor: 'gainsboro'}}>
+          <FlatList 
+            key={2}
+            numColumns={2}
+            data={ads}
+            renderItem={({item}) => <AdList 
+            key={item.id}
+            item={item}
+              />}
+            keyExtractor={item => item.title}
+            />
+        </View>
+      </Container>
   )
 }
 

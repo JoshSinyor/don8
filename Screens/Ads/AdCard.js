@@ -14,7 +14,6 @@ var { width } = Dimensions.get("window");
 
 const AdCard = (props) => {
     const { charityName, image, title, location, description, contact } = props;
-    console.log("Adcard", props)
     
     return (
         <View style={styles.container}>
