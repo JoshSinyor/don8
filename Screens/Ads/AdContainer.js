@@ -17,7 +17,7 @@ const AdContainer = () => {
   }, [])
 
   return (
-      <View style={{ marginTop: 300}}>
+      <View style={{ marginTop: 100, backgroundColor: 'gainsboro'}}>
         <FlatList 
           key={2}
           numColumns={2}

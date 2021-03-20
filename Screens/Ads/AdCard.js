@@ -18,6 +18,7 @@ const AdCard = (props) => {
     
     return (
         <View style={styles.container}>
+            <Image style={styles.image} />
             <View style={styles.card}/>
             <Text style={styles.title}> {title} </Text>
             <Text styles={styles.location}> {location} </Text>
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
         height: width / 1.7,
         padding: 10,
         borderRadius: 10,
-        marginTop: 55,
+        marginTop: 10,
         marginBottom: 5,
         marginLeft: 10,
         alignItems: 'center',
