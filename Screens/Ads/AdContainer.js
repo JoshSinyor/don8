@@ -64,7 +64,7 @@ const AdContainer = (props) => {
         </Item>
       </Header>
       {focus === true ? (
-        <SearchedAd adsFiltered={adsFiltered} />
+        <SearchedAd navigation={props.navigation} adsFiltered={adsFiltered} />
       ) : (
         <ScrollView>
           <View>
