@@ -11,13 +11,13 @@
     },
     {
         "_id": "6051e232a9318b982b5a3428",
-        "charityName": "Help the children",
+        "charityName": "Save the children",
         "title": "help please",
         "location": "Bath",
         "description": "Come help us",
         "contact": "email@t.children",
         "__v": 0,
-        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Oxfam_logo_vertical.svg/1280px-Oxfam_logo_vertical.svg.png"
+        "image": "https://i2.wp.com/bathhalf.co.uk/wp-content/uploads/2019/10/Save-the-Children-logo-e1597850754346.png?resize=290%2C290&ssl=1"
 
     },
     {
@@ -28,7 +28,7 @@
         "description": "Come help us now",
         "contact": "email@t.red",
         "__v": 0,
-        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Oxfam_logo_vertical.svg/1280px-Oxfam_logo_vertical.svg.png"
+        "image": "https://www.cheshirefire.gov.uk/Assets/1/2-132d7c2dx1298x828.jpg?t=559"
 
     },
 
@@ -40,7 +40,7 @@
         "description": "Come help pretty please",
         "contact": "email@t.com",
         "__v": 0,
-        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Oxfam_logo_vertical.svg/1280px-Oxfam_logo_vertical.svg.png"
+        "image": "https://s3-eu-west-1.amazonaws.com/nusdigital/image/images/80903/original/Copy_of_RAG_logo.png"
 
     }
 ]

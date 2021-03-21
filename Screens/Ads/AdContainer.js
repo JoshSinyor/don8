@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, ActivityIndicator, FlatList } from 'react-native'
+import { View, StyleSheet, ActivityIndicator, FlatList, Dimensions } from 'react-native'
 import { Container, Header, Icon, Item, Input, Text} from 'native-base';
 
 import AdList from './AdList';
 import SearchedAd from '../SeacrhedAds';
+import Banner from "../../Shared/Banner";
+
+var { height } = Dimensions.get('window')
 
 const data = require('../../assets/sampleAds.json');
 
@@ -57,22 +60,47 @@ const onBlur = () => {
           adsFiltered={adsFiltered}
         />
       ) : (
-        <View style={{ backgroundColor: 'gainsboro'}}>
-        <FlatList 
-          key={2}
-          numColumns={2}
-          data={ads}
-          renderItem={({item}) => <AdList 
-          key={item.id}
-          item={item}
-            />}
-          keyExtractor={item => item.title}
-          />
+        <View >
+          <Banner />
+        <View styles={styles.container}>
+              
+          <View styles={styles.ListContainer}>
+            <FlatList 
+              key={2}
+              numColumns={2}
+              data={ads}
+              renderItem={({item}) => <AdList 
+              key={item.id}
+              item={item}
+                />}
+              keyExtractor={item => item.title}
+              />
+        </View>
+      </View>
       </View>
 
       )}
       </Container>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexWrap: "wrap",
+    backgroundColor: "gainsboro",
+  },
+  listContainer: {
+    height: height,
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "flex-start",
+    flexWrap: "wrap",
+    backgroundColor: "gainsboro",
+  },
+  center: {
+      justifyContent: 'center',
+      alignItems: 'center'
+  }
+});
 
 export default AdContainer
