@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
+  Linking,
   Image,
   View,
   StyleSheet,
@@ -26,6 +27,21 @@ const SingleAd = (props) => {
             style={styles.image}
           />
         </View>
+        <View style={styles.contentContainer}>
+          <H1 style={styles.contentHeader}> {capitalize(item.charityName)} </H1>
+          <Text>How can you help:</Text>
+          <Text style={styles.contentDescription}>{item.description}</Text>
+          <Text>Find us</Text>
+          <Text style={styles.contentLocation}>{item.location}</Text>
+          <Text>Contact us</Text>
+          <Text style={styles.contentContact}>{item.contact}</Text>
+          <Text
+            style={styles.contentContact}
+            onPress={() => Linking.openURL(`${item.website}`)}
+          >
+            {item.website}
+          </Text>
+        </View>
       </ScrollView>
     </Container>
   );
@@ -43,7 +59,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 250,
+    height: 200,
   },
   contentContainer: {
     marginTop: 20,
@@ -53,24 +69,29 @@ const styles = StyleSheet.create({
   contentHeader: {
     fontWeight: "bold",
     marginBottom: 20,
+    fontSize: 32,
   },
-  contentText: {
-    fontSize: 18,
+  contentDescription: {
+    fontSize: 22,
     fontWeight: "bold",
     marginBottom: 20,
   },
-  bottomContainer: {
-    flexDirection: "row",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    backgroundColor: "white",
+  contentLocation: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+    color: "blue",
   },
-  location: {
-    fontSize: 24,
-    margin: 20,
-    color: "red",
+  contentContact: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+    color: "blue",
   },
 });
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 export default SingleAd;

@@ -1,46 +1,47 @@
 [
-    {
-        "_id": "6051e1e2a9318b982b5a3427",
-        "title": "help",
-        "charityName": "oxfam",
-        "location": "London",
-        "description": "Come help",
-        "contact": "email@t.c",
-        "__v": 0,
-        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Oxfam_logo_vertical.svg/1280px-Oxfam_logo_vertical.svg.png"
-    },
-    {
-        "_id": "6051e232a9318b982b5a3428",
-        "charityName": "Save the children",
-        "title": "help please",
-        "location": "Bath",
-        "description": "Come help us",
-        "contact": "email@t.children",
-        "__v": 0,
-        "image": "https://i2.wp.com/bathhalf.co.uk/wp-content/uploads/2019/10/Save-the-Children-logo-e1597850754346.png?resize=290%2C290&ssl=1"
+  {
+    "_id": "6051e1e2a9318b982b5a3427",
+    "title": "help",
+    "charityName": "oxfam",
+    "location": "London",
+    "description": "Come help",
+    "contact": "email@t.c",
+    "website": "https://www.oxfam.org.uk/",
+    "__v": 0,
+    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Oxfam_logo_vertical.svg/1280px-Oxfam_logo_vertical.svg.png"
+  },
+  {
+    "_id": "6051e232a9318b982b5a3428",
+    "charityName": "Save the children",
+    "title": "help please",
+    "location": "Bath",
+    "description": "Come help us",
+    "contact": "email@t.children",
+    "website": "https://www.oxfam.org.uk/",
+    "__v": 0,
+    "image": "https://i2.wp.com/bathhalf.co.uk/wp-content/uploads/2019/10/Save-the-Children-logo-e1597850754346.png?resize=290%2C290&ssl=1"
+  },
+  {
+    "_id": "6051ec107fcbc39eef482f76",
+    "charityName": "Red Cross",
+    "title": "help if you can",
+    "location": "Bristol",
+    "description": "Come help us now",
+    "contact": "email@t.red",
+    "website": "https://www.oxfam.org.uk/",
+    "__v": 0,
+    "image": "https://www.cheshirefire.gov.uk/Assets/1/2-132d7c2dx1298x828.jpg?t=559"
+  },
 
-    },
-    {
-        "_id": "6051ec107fcbc39eef482f76",
-        "charityName": "Red Cross",
-        "title": "help if you can",
-        "location": "Bristol",
-        "description": "Come help us now",
-        "contact": "email@t.red",
-        "__v": 0,
-        "image": "https://www.cheshirefire.gov.uk/Assets/1/2-132d7c2dx1298x828.jpg?t=559"
-
-    },
-
-    {
-        "_id": "6051e1e2a9318b982b5a5627",
-        "charityName": "Base",
-        "title": "help?",
-        "location": "Bristol",
-        "description": "Come help pretty please",
-        "contact": "email@t.com",
-        "__v": 0,
-        "image": "https://s3-eu-west-1.amazonaws.com/nusdigital/image/images/80903/original/Copy_of_RAG_logo.png"
-
-    }
+  {
+    "_id": "6051e1e2a9318b982b5a5627",
+    "charityName": "Base",
+    "title": "help?",
+    "location": "Bristol",
+    "description": "Come help pretty please",
+    "contact": "email@t.com",
+    "website": "https://www.oxfam.org.uk/",
+    "__v": 0,
+    "image": "https://s3-eu-west-1.amazonaws.com/nusdigital/image/images/80903/original/Copy_of_RAG_logo.png"
+  }
 ]
