@@ -17,7 +17,7 @@ var { height } = Dimensions.get("window");
 
 const data = require("../../assets/sampleAds.json");
 
-const AdContainer = () => {
+const AdContainer = (props) => {
   const [ads, setAds] = useState([]);
   const [adsFiltered, setAdsFiltered] = useState([]);
   const [focus, setFocus] = useState();
@@ -76,7 +76,11 @@ const AdContainer = () => {
                   numColumns={2}
                   data={ads}
                   renderItem={({ item }) => (
-                    <AdList key={item.id} item={item} />
+                    <AdList
+                      navigation={props.navigation}
+                      key={item.id}
+                      item={item}
+                    />
                   )}
                   keyExtractor={(item) => item.title}
                 />

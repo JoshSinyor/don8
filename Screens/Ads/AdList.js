@@ -1,21 +1,22 @@
-import React from 'react';
-import { TouchableOpacity, View, Dimensions } from 'react-native'
+import React from "react";
+import { TouchableOpacity, View, Dimensions } from "react-native";
 
-import AdCard from './AdCard'
+import AdCard from "./AdCard";
 let { width } = Dimensions.get("window");
 
-const  AdList = (props) => {
-    const { item } = props;
+const AdList = (props) => {
+  const { item } = props;
 
-    return(
-        <TouchableOpacity style={{ width: '50%' }}>
-            <View style={{ width: width / 2, 
-            backgroundColor: 'gainsboro'}}
-            >
-            <AdCard {...item} />   
-            </View>
-        </TouchableOpacity>
-    )
-}
+  return (
+    <TouchableOpacity
+      style={{ width: "50%" }}
+      onPress={() => props.navigation.navigate("Ad Detail", { item: item })}
+    >
+      <View style={{ width: width / 2, backgroundColor: "gainsboro" }}>
+        <AdCard {...item} />
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 export default AdList;
