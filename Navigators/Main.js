@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-//Stacks
+// Stacks
 import HomeNavigator from "./HomeNavigator";
 
 const Tab = createBottomTabNavigator();
@@ -20,21 +20,16 @@ const Main = () => {
     >
       <Tab.Screen
         name="Home"
-        component={}
+        component={HomeNavigator}
         options={{
-          tabBatIcon: ({ color }) => (
-            <Icon
-              name="home"
-              style={{ position: "relative" }}
-              color={color}
-              size={30}
-            />
+          tabBarIcon: ({ color }) => (
+            <Icon name="home" color={color} size={30} />
           ),
         }}
       />
       <Tab.Screen
         name="User"
-        component={}
+        component={HomeNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Icon name="user" color={color} size={30} />
@@ -43,7 +38,7 @@ const Main = () => {
       />
       <Tab.Screen
         name="Admin"
-        component={}
+        component={HomeNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Icon name="cog" color={color} size={30} />

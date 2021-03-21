@@ -10,7 +10,7 @@ function MyStack() {
     <Stack.Navigator>
       <Stack.Screen
         name="Home"
-        componenet={AdContainer}
+        component={AdContainer}
         options={{
           headerShown: false,
         }}

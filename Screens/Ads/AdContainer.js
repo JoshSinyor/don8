@@ -66,20 +66,24 @@ const AdContainer = () => {
       {focus === true ? (
         <SearchedAd adsFiltered={adsFiltered} />
       ) : (
-        <View>
-          <Banner />
-          <View styles={styles.container}>
-            <View styles={styles.ListContainer}>
-              <FlatList
-                key={2}
-                numColumns={2}
-                data={ads}
-                renderItem={({ item }) => <AdList key={item.id} item={item} />}
-                keyExtractor={(item) => item.title}
-              />
+        <ScrollView>
+          <View>
+            <Banner />
+            <View styles={styles.container}>
+              <View styles={styles.ListContainer}>
+                <FlatList
+                  key={2}
+                  numColumns={2}
+                  data={ads}
+                  renderItem={({ item }) => (
+                    <AdList key={item.id} item={item} />
+                  )}
+                  keyExtractor={(item) => item.title}
+                />
+              </View>
             </View>
           </View>
-        </View>
+        </ScrollView>
       )}
     </Container>
   );

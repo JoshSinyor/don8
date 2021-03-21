@@ -10,6 +10,7 @@ import {
 import Swiper from "react-native-swiper/src";
 
 let { width } = Dimensions.get("window");
+let { height } = Dimensions.get("window");
 
 const Banner = () => {
   const [bannerData, setBannerData] = useState([]);
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: "gainsboro",
   },
   swiper: {
+    height: height / 4,
     width: width,
     alignItems: "center",
     marginTop: 10,
