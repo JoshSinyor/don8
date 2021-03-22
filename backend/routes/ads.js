@@ -9,6 +9,7 @@ const FILE_TYPE_MAP = {
   "image/jpg": "jpg",
 };
 
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const isValid = FILE_TYPE_MAP[file.mimetype];
@@ -16,6 +17,23 @@ const storage = multer.diskStorage({
 
     if (isValid) {
       uploadError = null;
+
+router.get('/', async (req, res) => {
+    const adList = await Ad.find().
+                   populate('charity');
+
+    if(!adList) {
+      res.status(500).json({success: false})
+    }
+    res.send(adList);
+  });
+
+  router.get('/:id', async (req, res) => {
+    const ad = await Ad.findById(req.params.id);
+
+    if(!ad) {
+      res.status(500).json({success: false})
+
     }
     cb(uploadError, "public/uploads");
   },
@@ -62,15 +80,24 @@ router.post("/", uploadOptions.single("image"), (req, res) => {
     website: req.body.website,
   });
 
-  ad.save()
-    .then((createdAd) => {
-      res.status(201).json(createdAd);
-    })
-    .catch((err) => {
+    ad.save().then((createdAd => {
+      res.status(201).json(createdAd)
+    })).catch((err => {
       res.status(500).json({
         error: err,
-        success: false,
-      });
+        success: false
+      })
+    }))
+  });
+
+  router.get('/get/count', async (req, res) => {
+    const adCount = await Ad.countDocuments((count) => count)
+
+    if(!adCount) {
+      res.status(500).json({success: false})
+    }
+    res.send({
+      adCount: adCount
     });
 });
 
@@ -84,5 +111,6 @@ router.get("/get/count", async (req, res) => {
     adCount: adCount,
   });
 });
+
 
 module.exports = router;
