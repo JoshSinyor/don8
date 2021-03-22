@@ -11,7 +11,7 @@ import axios from 'axios'
 import { Container, Header, Icon, Item, Input, Text } from "native-base";
 
 import AdList from "./AdList";
-import SearchedAd from "./SeacrhedAds";
+import SearchedAd from "./SearchedAds";
 import Banner from "../../Shared/Banner";
 
 var { height } = Dimensions.get("window");
