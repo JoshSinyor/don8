@@ -49,8 +49,8 @@ router.get('/', async (req, res) => {
     res.send(ad);
   });
 
-router.post("/", uploadOptions.single("image"), (req, res) => {
-  // const file = req.file; if we want all posts to have images
+router.post("/", uploadOptions.single("image"), async (req, res) => {
+  const file = req.file;
   // if (!file) return res.status(400).send("No image in the request");
 
   const fileName = file.filename;
@@ -70,7 +70,7 @@ router.post("/", uploadOptions.single("image"), (req, res) => {
     }).catch((err) => {
       res.status(500).json({
         error: err,
-        success: false
+        success: false,
       });
     });
   });
