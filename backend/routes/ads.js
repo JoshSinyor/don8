@@ -4,23 +4,24 @@ const {Ad} = require('../models/ad');
 
 
 router.get('/', async (req, res) => {
-    const adList = await Ad.find();
-  
+    const adList = await Ad.find().
+                   populate('charity');
+
     if(!adList) {
       res.status(500).json({success: false})
-    } 
+    }
     res.send(adList);
   });
 
   router.get('/:id', async (req, res) => {
     const ad = await Ad.findById(req.params.id);
-  
+
     if(!ad) {
       res.status(500).json({success: false})
     }
     res.send(ad);
   });
-  
+
 router.post('/', (req, res) => {
     const ad = new Ad({
       title: req.body.title,
@@ -30,7 +31,7 @@ router.post('/', (req, res) => {
       charity: req.body.charity,
 
     })
-  
+
     ad.save().then((createdAd => {
       res.status(201).json(createdAd)
     })).catch((err => {
@@ -43,7 +44,7 @@ router.post('/', (req, res) => {
 
   router.get('/get/count', async (req, res) => {
     const adCount = await Ad.countDocuments((count) => count)
-  
+
     if(!adCount) {
       res.status(500).json({success: false})
     }
@@ -51,6 +52,5 @@ router.post('/', (req, res) => {
       adCount: adCount
     });
   });
-  
-  
+
 module.exports = router;
