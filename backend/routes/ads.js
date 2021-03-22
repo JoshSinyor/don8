@@ -17,6 +17,18 @@ const storage = multer.diskStorage({
 
     if (isValid) {
       uploadError = null;
+    }
+    cb(uploadError, "public/uploads");
+  },
+  filename: function (req, file, cb) {
+    const fileName = file.originalname.split(" ").join("-");
+    const extension = FILE_TYPE_MAP[file.mimetype];
+    cb(null, `${fileName}-${Date.now()}.${extension}`);
+  },
+});
+
+const uploadOptions = multer({ storage: storage });
+
 
 router.get('/', async (req, res) => {
     const adList = await Ad.find().
@@ -33,36 +45,9 @@ router.get('/', async (req, res) => {
 
     if(!ad) {
       res.status(500).json({success: false})
-
     }
-    cb(uploadError, "public/uploads");
-  },
-  filename: function (req, file, cb) {
-    const fileName = file.originalname.split(" ").join("-");
-    const extension = FILE_TYPE_MAP[file.mimetype];
-    cb(null, `${fileName}-${Date.now()}.${extension}`);
-  },
-});
-
-const uploadOptions = multer({ storage: storage });
-
-router.get("/", async (req, res) => {
-  const adList = await Ad.find();
-
-  if (!adList) {
-    res.status(500).json({ success: false });
-  }
-  res.send(adList);
-});
-
-router.get("/:id", async (req, res) => {
-  const ad = await Ad.findById(req.params.id);
-
-  if (!ad) {
-    res.status(500).json({ success: false });
-  }
-  res.send(ad);
-});
+    res.send(ad);
+  });
 
 router.post("/", uploadOptions.single("image"), (req, res) => {
   // const file = req.file; if we want all posts to have images
@@ -80,26 +65,15 @@ router.post("/", uploadOptions.single("image"), (req, res) => {
     website: req.body.website,
   });
 
-    ad.save().then((createdAd => {
-      res.status(201).json(createdAd)
-    })).catch((err => {
+    ad.save().then((createdAd) => {
+      res.status(201).json(createdAd);
+    }).catch((err) => {
       res.status(500).json({
         error: err,
         success: false
-      })
-    }))
-  });
-
-  router.get('/get/count', async (req, res) => {
-    const adCount = await Ad.countDocuments((count) => count)
-
-    if(!adCount) {
-      res.status(500).json({success: false})
-    }
-    res.send({
-      adCount: adCount
+      });
     });
-});
+  });
 
 router.get("/get/count", async (req, res) => {
   const adCount = await Ad.countDocuments((count) => count);
