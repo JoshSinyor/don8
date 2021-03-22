@@ -6,10 +6,7 @@ const adSchema = Schema({
   location: { type: String, required: true},
   description: { type: String, required: true},
   contact: { type: String, required: true},
-  charity: { type: Schema.Types.ObjectId, 
-    ref: 'User'}
-
+  charity: { type: Schema.Types.ObjectId, ref: 'User'}
 })
 
 exports.Ad = mongoose.model('Ad', adSchema);
-

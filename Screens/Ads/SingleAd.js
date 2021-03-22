@@ -28,7 +28,7 @@ const SingleAd = (props) => {
           />
         </View>
         <View style={styles.contentContainer}>
-          <H1 style={styles.contentHeader}> {capitalize(item.charityName)} </H1>
+          <H1 style={styles.contentHeader}> {capitalize(item.charity.charityName)} </H1>
           <Text>How can you help:</Text>
           <Text style={styles.contentDescription}>{item.description}</Text>
           <Text>Find us</Text>
