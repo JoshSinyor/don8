@@ -1,33 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Home from './Components/Home';
-import NavigationBar from './Components/Navbar';
-// import AdContainer from './Screens/Ads/AdContainer'
-import Form from './Components/Form';
-import './node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { LogBox } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 
+// Navigators
+import Main from "./Navigators/Main";
 
+// screens
+import Header from "./Shared/Header";
+import AdContainer from "./Screens/Ads/AdContainer";
+
+LogBox.ignoreAllLogs(true);
 
 export default function App() {
   return (
-    <>
-     <View style={styles.navbar}>
-        <NavigationBar />
-      </View>
-      <View style={styles.container}>
-        <Home />
-      </View>
-    </>
+    <NavigationContainer>
+      <Header />
+      <Main />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
