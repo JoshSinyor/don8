@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import axios from 'axios'
 import { Container, Header, Icon, Item, Input, Text } from "native-base";
+import baseURL from '../../assets/common/baseUrl'
 
 import AdList from "./AdList";
 import SearchedAd from "./SearchedAds";
@@ -24,7 +25,7 @@ const AdContainer = (props) => {
   useEffect(() => {
     async function updateList() {
       axios
-        .get('http://localhost:3000/api/v1/ads')
+        .get(`${baseURL}ads`)
         .then((res) => {
           setAds(res.data);
           setAdsFiltered(res.data)
