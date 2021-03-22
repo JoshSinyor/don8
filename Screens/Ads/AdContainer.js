@@ -7,6 +7,7 @@ import {
   Dimensions,
   ScrollView,
 } from "react-native";
+import axios from 'axios'
 import { Container, Header, Icon, Item, Input, Text } from "native-base";
 
 import AdList from "./AdList";
@@ -15,17 +16,29 @@ import Banner from "../../Shared/Banner";
 
 var { height } = Dimensions.get("window");
 
-const data = require("../../assets/sampleAds.json");
-
 const AdContainer = (props) => {
   const [ads, setAds] = useState([]);
   const [adsFiltered, setAdsFiltered] = useState([]);
   const [focus, setFocus] = useState();
 
   useEffect(() => {
-    setAds(data);
-    setAdsFiltered(data);
-    setFocus(false);
+    async function updateList() {
+      axios
+        .get('http://localhost:3000/api/v1/ads')
+        .then((res) => {
+          setAds(res.data);
+          setAdsFiltered(res.data)
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(`Error message: ${error}`);
+        })
+      }
+
+    updateList()
+    // setAds(data);
+    // setAdsFiltered(data);
+    // setFocus(false);
 
     return () => {
       setAds([]);
