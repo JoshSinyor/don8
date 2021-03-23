@@ -25,8 +25,7 @@ const NewAd = (props) => {
       website
     };
 
-    if (![title, location, description, contact, charity, website].every(field => field.trim() !== "")) {
-      console.log("ERROROROROORORR - form incomplete")
+    if (![title, location, description, contact, charity, website].every((field) => {return field !== ""})) {
       setError("Please fill in all details");
     } else {
       console.log("success");
