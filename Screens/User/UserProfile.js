@@ -14,8 +14,9 @@ const UserProfile = (props) => {
   const context = useContext(AuthGlobal);
   const [userProfile, setUserProfile] = useState();
 
-  useEffect(
-    useCallback(() => {
+  useEffect(() => {
+    // useCallback(() => {
+    async function updateUser() {
       if (
         context.stateUser.isAuthenticated === false ||
         context.stateUser.isAuthenticated === null
@@ -25,19 +26,22 @@ const UserProfile = (props) => {
 
       AsyncStorage.getItem("jwt")
         .then((res) => {
+          console.log(context.stateUser);
           axios
-            .get(`${baseURL}users/${context.stateUser.user.sub}`, {
+            .get(`${baseURL}users/${context.stateUser.user.userId}`, {
               headers: { Authorization: `Bearer ${res}` },
             })
             .then((user) => setUserProfile(user.data));
         })
         .catch((error) => console.log(error));
+    }
 
-      return () => {
-        setUserProfile();
-      };
-    }, [context.stateUser.isAuthenticated])
-  );
+    updateUser();
+    return () => {
+      setUserProfile();
+    };
+  }, [context.stateUser.isAuthenticated]);
+
   return (
     <Container style={styles.container}>
       <ScrollView contentContainerStyle={styles.subContainer}>
