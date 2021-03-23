@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, Button } from "react-native";
 import Error from "../../Shared/Error";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import axios from "axios";
+import baseURL from "../../assets/common/baseUrl";
 
 const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -12,9 +14,6 @@ const Register = (props) => {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
-
-  import axios from "axios";
-  import baseURL from "../..assets/common/baseUrl";
 
   const register = () => {
     if (
@@ -40,6 +39,17 @@ const Register = (props) => {
       isAdmin: false,
       isCharity: true,
     };
+
+    axios
+      .post(`${baseURL}users/register`, user)
+      .then((res) => {
+        if (res.status == 200) {
+          setTimeout(() => {
+            props.navigation.navigate("Login");
+          }, 500);
+        }
+      })
+      .catch((error) => {});
   };
   return (
     <KeyboardAwareScrollView
