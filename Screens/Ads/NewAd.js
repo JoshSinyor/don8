@@ -31,12 +31,12 @@ const NewAd = (props) => {
     if (![title, location, description, contact, charity, website].every((field) => {return field !== ""})) {
       setError("Please fill in all details");
     } else {
-      console.log("success");
       axios
         .post(`${baseURL}ads`, ad)
         .then((response) => {
           if (response.status === 201) {
             props.navigation.navigate("Home")
+            console.log("success");
           }
         })
         .catch(error => {
@@ -57,7 +57,7 @@ const NewAd = (props) => {
           style={styles.inputText}
           placeholder="Title..."
           placeholderTextColor="white"
-          onChangeText={(text) => setTitle({ text })}
+          onChangeText={(text) => setTitle(text)}
         />
       </View>
       <View style={styles.inputView}>
@@ -65,7 +65,7 @@ const NewAd = (props) => {
           style={styles.inputText}
           placeholder="Location..."
           placeholderTextColor="white"
-          onChangeText={(text) => setLocation({ text })}
+          onChangeText={(text) => setLocation(text)}
         />
       </View>
       <View style={styles.inputView}>
@@ -73,7 +73,7 @@ const NewAd = (props) => {
           style={styles.inputText}
           placeholder="Description..."
           placeholderTextColor="white"
-          onChangeText={(text) => setDescription({ text })}
+          onChangeText={(text) => setDescription( text)}
         />
       </View>
       <View style={styles.inputView}>
@@ -81,7 +81,7 @@ const NewAd = (props) => {
           style={styles.inputText}
           placeholder="Contact..."
           placeholderTextColor="white"
-          onChangeText={(text) => setContact({ text })}
+          onChangeText={(text) => setContact(text)}
         />
       </View>
       <View style={styles.inputView}>
@@ -89,7 +89,7 @@ const NewAd = (props) => {
           style={styles.inputText}
           placeholder="Charity..."
           placeholderTextColor="white"
-          onChangeText={(text) => setCharity({ text })}
+          onChangeText={(text) => setCharity(text)}
         />
       </View>
       <View style={styles.inputView}>
@@ -97,7 +97,7 @@ const NewAd = (props) => {
           style={styles.inputText}
           placeholder="Website..."
           placeholderTextColor="white"
-          onChangeText={(text) => setWebsite({ text })}
+          onChangeText={(text) => setWebsite(text)}
         />
       </View>
       <View style={styles.buttonGroup}>

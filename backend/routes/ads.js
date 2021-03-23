@@ -51,8 +51,9 @@ router.get('/', async (req, res) => {
 router.post("/", uploadOptions.single("image"), async (req, res) => {
   const file = req.file;
   // if (!file) return res.status(400).send("No image in the request");
-
-  const fileName = file.filename;
+  console.log("File:", file)
+  const fileName = file ? file.filename : "no-image-icon-23494.png";
+  console.log("File name:", fileName)
   const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
   const ad = new Ad({
     title: req.body.title,
@@ -67,6 +68,7 @@ router.post("/", uploadOptions.single("image"), async (req, res) => {
     ad.save().then((createdAd) => {
       res.status(201).json(createdAd);
     }).catch((err) => {
+      console.log(err)
       res.status(500).json({
         error: err,
         success: false,
