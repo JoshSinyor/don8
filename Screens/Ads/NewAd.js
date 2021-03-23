@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { View, TextInput, Text, StyleSheet, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import axios from 'axios'
+
 import Error from "../../Shared/Error";
+import baseURL from '../../assets/common/baseUrl'
 
 const NewAd = (props) => {
 
@@ -29,7 +32,18 @@ const NewAd = (props) => {
       setError("Please fill in all details");
     } else {
       console.log("success");
-      props.navigation.navigate("Home")
+      axios
+        .post(`${baseURL}ads`, ad)
+        .then((response) => {
+          if (response.status === 201) {
+            props.navigation.navigate("Home")
+          }
+        })
+        .catch(error => {
+          if (error.response.status === 401) {
+            setError("You aren't authorized to make this advert")
+          } else { setError("Unknown error") }
+        })
     }
   };
 
