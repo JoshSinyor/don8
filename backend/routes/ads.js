@@ -9,7 +9,6 @@ const FILE_TYPE_MAP = {
   "image/jpg": "jpg",
 };
 
-
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const isValid = FILE_TYPE_MAP[file.mimetype];
