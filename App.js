@@ -72,10 +72,11 @@ export default class App extends React.Component {
   // }
 
   async getDirections(startLoc, destinationLoc) {
+    // console.log(startLoc, destinationLoc);
     try {
-         const resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=AIzaSyBCO5_tSm-nS1221XjNP9tHVHc6HDDE4mw`);
+         const resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`);
          const respJson = await resp.json();
-         console.log(respJson);
+        //  console.log(respJson);
          if (respJson.routes.length > 0) {
              const points = Polyline.decode(respJson.routes[0].overview_polyline.points);
              const coords = points.map((point, index) => {
@@ -85,6 +86,7 @@ export default class App extends React.Component {
                  };
              });
              this.setState({ coords });
+            console.log(coords);
          }
          return;
      } catch (error) {
@@ -94,6 +96,7 @@ export default class App extends React.Component {
 
   render(){
     const { latitude, longitude, coords } = this.state
+    console.log(latitude, longitude, coords && coords.length);
     if (latitude) {
       return (
     <MapView
@@ -107,11 +110,10 @@ export default class App extends React.Component {
       }}
       >
       <MapView.Polyline 
-        strokeWidth={2}
-        strokeColor="red"
-        coordinates={coords}
+        strokeWidth={6}
+        strokeColor="#ff0000"
+        coordinates={coords || [] }
       />
-      
     </MapView>
       )
     }
