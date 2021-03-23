@@ -5,15 +5,27 @@ import { ScrollView } from "react-native-gesture-handler";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState();
+  const handleSubmit = () => {
+    const user = {
+      email,
+      password,
+    };
 
+    if (email === "" || password === "") {
+      setError("Please fill in your log in details");
+    } else {
+      console.log("success");
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
           placeholder="Email..."
-          placeholderTextColor="#003f5c"
-          onChangeText={(text) => this.setState({ email: text })}
+          placeholderTextColor="white"
+          onChangeText={(text) => setEmail({ text })}
         />
       </View>
       <View style={styles.inputView}>
@@ -21,7 +33,8 @@ const Login = (props) => {
           secureTextEntry
           style={styles.inputText}
           placeholder="Password..."
-          onChangeText={(text) => this.setState({ password: text })}
+          placeholderTextColor="white"
+          onChangeText={(text) => setPassword({ text })}
         />
       </View>
       <View style={styles.buttonGroup}>
@@ -55,7 +68,8 @@ const styles = StyleSheet.create({
   },
   inputView: {
     width: "80%",
-    backgroundColor: "white",
+    backgroundColor: "#003f5c",
+    color: "black",
     borderRadius: 25,
     height: 50,
     marginBottom: 20,

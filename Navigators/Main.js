@@ -1,6 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View } from "react-native";
+import { shouldUseActivityState } from "react-native-screens";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 // Stacks
