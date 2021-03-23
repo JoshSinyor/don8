@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, TextInput, Text, StyleSheet, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import axios from 'axios'
+import Toast from "react-native-toast-message"
 
 import Error from "../../Shared/Error";
 import baseURL from '../../assets/common/baseUrl'
@@ -36,6 +37,12 @@ const NewAd = (props) => {
         .then((response) => {
           if (response.status === 201) {
             props.navigation.navigate("Home")
+            Toast.show({
+              topOffset: 60,
+              type: "success",
+              text1: "Advert created!",
+              text2: "",
+            });
             console.log("success");
           }
         })
