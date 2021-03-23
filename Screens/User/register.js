@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet, Button } from "react-native";
 import Error from "../../Shared/Error";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import axios from "axios";
+import Toast from "react-native-toast-message";
 import baseURL from "../../assets/common/baseUrl";
 
 const Register = (props) => {
@@ -44,12 +45,25 @@ const Register = (props) => {
       .post(`${baseURL}users/register`, user)
       .then((res) => {
         if (res.status == 200) {
+          Toast.show({
+            topOffset: 60,
+            type: "success",
+            text1: "Registration Successful",
+            text2: "Please login to your account",
+          });
           setTimeout(() => {
             props.navigation.navigate("Login");
           }, 500);
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        Toast.show({
+          topOffset: 60,
+          type: "error",
+          text1: "Registration Unsuccessful",
+          text2: "Please try again",
+        });
+      });
   };
   return (
     <KeyboardAwareScrollView
@@ -96,6 +110,7 @@ const Register = (props) => {
           <TextInput
             style={styles.inputText}
             placeholder="Charity Number..."
+            keyboardType={"numeric"}
             placeholderTextColor="white"
             onChangeText={(text) => setcharityIdNumber(text)}
           />
