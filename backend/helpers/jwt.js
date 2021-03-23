@@ -11,7 +11,7 @@ function authJwt() {
     path: [
       // excluded paths ands HTML methods
 
-      { url: /\/api\/v1\/ads(.*)/, methods: ["GET", "OPTIONS"] },
+      { url: /\/api\/v1\/ads(.*)/, methods: ["GET", "POST", "OPTIONS"] }, // Remove "POST" method on deployment
       { url: /\/public\/uploads(.*)/, methods: ["GET", "OPTIONS"] },
       `${api}/users`,
       `${api}/ads`,

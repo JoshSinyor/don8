@@ -6,6 +6,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 // Stacks
 import HomeNavigator from "./HomeNavigator";
+import NewAdNavigator from "./NewAdNavigator";
 import UserNavigator from "./UserNavigator";
 
 const Tab = createBottomTabNavigator();
@@ -26,6 +27,15 @@ const Main = () => {
         options={{
           tabBarIcon: ({ color }) => (
             <Icon name="home" color={color} size={30} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="NewAd"
+        component={NewAdNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Icon name="plus" color={color} size={30} />
           ),
         }}
       />
