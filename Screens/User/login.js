@@ -1,12 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { View, TextInput, Text, StyleSheet, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Error from "../../Shared/Error";
+import Toast from "react-native-toast-message";
+
+// Context
+import AuthGlobal from "../../Context/store/AuthGlobal";
+import { loginUser } from "../../Context/actions/Auth.actions";
 
 const Login = (props) => {
+  const context = useContext(AuthGlobal);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState();
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (context.stateUser.isAuthenticated === true) {
+      Toast.show({
+        topOffset: 60,
+        type: "success",
+        text1: "Login Successful",
+        text2: "Welcome back!",
+      });
+      props.navigation.navigate("Home");
+    }
+  }, [context.stateUser.isAuthenticated]);
+
   const handleSubmit = () => {
     const user = {
       email,
@@ -14,11 +33,12 @@ const Login = (props) => {
     };
 
     if (email === "" || password === "") {
-      setError("Please fill in your log in details");
+      setError("Please fill in your credentials");
     } else {
-      console.log("success");
+      loginUser(user, context.dispatch);
     }
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
@@ -26,7 +46,7 @@ const Login = (props) => {
           style={styles.inputText}
           placeholder="Email..."
           placeholderTextColor="white"
-          onChangeText={(text) => setEmail({ text })}
+          onChangeText={(text) => setEmail(text.toLowerCase())}
         />
       </View>
       <View style={styles.inputView}>
@@ -35,7 +55,7 @@ const Login = (props) => {
           style={styles.inputText}
           placeholder="Password..."
           placeholderTextColor="white"
-          onChangeText={(text) => setPassword({ text })}
+          onChangeText={(text) => setPassword(text)}
         />
       </View>
       <View style={styles.buttonGroup}>

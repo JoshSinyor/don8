@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import Toast from "react-native-toast-message";
 
 // context API
-import Auth from "./Context/Auth";
+import Auth from "./Context/store/Auth";
 
 // Navigators
 import Main from "./Navigators/Main";
