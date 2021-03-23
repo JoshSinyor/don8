@@ -39,6 +39,7 @@ const Register = (props) => {
       address: address,
       isAdmin: false,
       isCharity: true,
+      isVolunteer: false,
     };
 
     axios
