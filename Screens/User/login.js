@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, TextInput, Text, StyleSheet, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import Error from "../../Shared/Error";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -38,7 +39,8 @@ const Login = (props) => {
         />
       </View>
       <View style={styles.buttonGroup}>
-        <Button title="Login" />
+        {error ? <Error message={error} /> : null}
+        <Button title="Login" onPress={() => handleSubmit()} />
       </View>
       <View style={[{ marginTop: 40 }, styles.buttonGroup]}>
         <Text style={styles.middleText}> Don't have an account yet?</Text>
