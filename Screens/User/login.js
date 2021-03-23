@@ -22,7 +22,7 @@ const Login = (props) => {
         text1: "Login Successful",
         text2: "Welcome back!",
       });
-      props.navigation.navigate("Home");
+      props.navigation.navigate("UserProfile");
     }
   }, [context.stateUser.isAuthenticated]);
 
