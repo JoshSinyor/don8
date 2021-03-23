@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, TextInput, Text, StyleSheet, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import FormContainer from "../../Shared/Form/FormContainer";
-import Input from "../../Shared/Form/Input";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
