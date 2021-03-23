@@ -8,8 +8,6 @@ import {
   Image,
 } from "react-native";
 
-const data = require("../../assets/sampleAds.json");
-
 var { width } = Dimensions.get("window");
 
 const AdCard = (props) => {
