@@ -40,7 +40,10 @@ const NewAd = (props) => {
           }
         })
         .catch(error => {
-          if (error.response.status === 401) {
+          if(!error.response){
+            console.log("Server not running")
+          }
+          else if (error.response.status === 401) {
             setError("You aren't authorized to make this advert")
           } else { setError("Unknown error") }
         })
