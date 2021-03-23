@@ -7,9 +7,9 @@ import {
   Dimensions,
   ScrollView,
 } from "react-native";
-import axios from 'axios'
+import axios from "axios";
 import { Container, Header, Icon, Item, Input, Text } from "native-base";
-import baseURL from '../../assets/common/baseUrl'
+import baseURL from "../../assets/common/baseUrl";
 
 import AdList from "./AdList";
 import SearchedAd from "./SearchedAds";
@@ -28,15 +28,15 @@ const AdContainer = (props) => {
         .get(`${baseURL}ads`)
         .then((res) => {
           setAds(res.data);
-          setAdsFiltered(res.data)
+          setAdsFiltered(res.data);
           console.log(res.data);
         })
         .catch((error) => {
           console.log(`Error message: ${error}`);
-        })
-      }
+        });
+    }
 
-    updateList()
+    updateList();
     // setAds(data);
     // setAdsFiltered(data);
     // setFocus(false);

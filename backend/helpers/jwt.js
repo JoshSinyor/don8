@@ -13,8 +13,8 @@ function authJwt() {
 
       { url: /\/api\/v1\/ads(.*)/, methods: ["GET", "OPTIONS"] },
       { url: /\/public\/uploads(.*)/, methods: ["GET", "OPTIONS"] },
-      `${api}/users`, // to remove on deployment
-      // `${api}/ads`,
+      `${api}/users`,
+      `${api}/ads`,
       `${api}/users/login`,
       `${api}/users/register`,
       `${api}/public/uploads`,
