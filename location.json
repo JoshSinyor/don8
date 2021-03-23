@@ -1,0 +1,19 @@
+[ {
+  "address": "34 Daniels Road, SE15 3LR",
+  "lat": 51.5159813,
+  "lng": -0.06626449999999998,
+  "name": "Oxfam"
+},
+{
+  "address": "3 Radford Road, SE13 6SB",
+  "lat": 51.521533,
+  "lng": -0.0828522,
+  "name": "Save the otters"
+},
+{
+  "address": "Jamaica Road, NW2 5LR",
+  "lat": 51.52175130000001,
+  "lng": -0.0860372,
+  "name": "Save the foxies"
+}
+]
