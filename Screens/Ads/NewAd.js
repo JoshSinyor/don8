@@ -29,6 +29,7 @@ const NewAd = (props) => {
       setError("Please fill in all details");
     } else {
       console.log("success");
+      props.navigation.navigate("Home")
     }
   };
 
