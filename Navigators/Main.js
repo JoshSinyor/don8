@@ -28,6 +28,15 @@ const Main = () => {
         }}
       />
       <Tab.Screen
+        name="NewAd"
+        component={HomeNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Icon name="plus" color={color} size={30} />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="User"
         component={HomeNavigator}
         options={{
