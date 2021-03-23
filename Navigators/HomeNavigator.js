@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import AdContainer from "../Screens/Ads/AdContainer";
 import SingleAd from "../Screens/Ads/SingleAd";
+import NewAd from "../Screens/Ads/NewAd";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,13 @@ function MyStack() {
       <Stack.Screen
         name="Ad Detail"
         component={SingleAd}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="New Ad"
+        component={NewAd}
         options={{
           headerShown: false,
         }}
