@@ -16,6 +16,7 @@ export default class App extends React.Component {
     longitude: null,
     locations: locations,
   };
+
   async componentDidMount() {
     console.log("Im looking for props", this.props);
     const { status } = await Permissions.getAsync(Permissions.LOCATION);
@@ -111,6 +112,7 @@ export default class App extends React.Component {
                   justifyContent: "center",
                 }}
                 title="Back"
+                onPress={() => this.props.navigation.navigate("Ad Detail", {})}
               />
             </Header>
           </View>
