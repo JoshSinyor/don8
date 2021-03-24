@@ -105,7 +105,7 @@ const handleSubmit = () => {
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          // defaultValue={userProfile ? userProfile.address : "Location" }
+          // placeholder={userProfile ? userProfile.address : "Location..." }
           placeholder="Location..."
           placeholderTextColor="white"
           onChangeText={(text) => setLocation(text)}
@@ -122,7 +122,7 @@ const handleSubmit = () => {
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          // defaultValue={userProfile ? userProfile.email : "Contact" }
+          // placeholder={userProfile ? userProfile.address : "Contact..." }
           placeholder="Contact..."
           placeholderTextColor="white"
           onChangeText={(text) => setContact(text)}
@@ -131,6 +131,7 @@ const handleSubmit = () => {
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
+          // placeholder={userProfile ? userProfile.website : "Website..." }
           placeholder="Website..."
           placeholderTextColor="white"
           onChangeText={(text) => setWebsite(text)}
