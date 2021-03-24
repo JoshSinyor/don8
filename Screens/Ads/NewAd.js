@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { View, TextInput, Text, StyleSheet, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import axios from 'axios'
 import Toast from "react-native-toast-message"
+import AsyncStorage from "@react-native-community/async-storage";
+import AuthGlobal from "../../Context/store/AuthGlobal";
+
 
 import Error from "../../Shared/Error";
 import baseURL from '../../assets/common/baseUrl'
 
+
 const NewAd = (props) => {
+  const context = useContext(AuthGlobal);
 
   const [title, setTitle] = useState("")
   const [location, setLocation] = useState("")
   const [description, setDescription] = useState("")
   const [contact, setContact] = useState("")
-  const [charity, setCharity] = useState("")
+  const [charity, setCharity] = useState(context.stateUser.user.userId)
   // const [image, setImage] = useState()
   const [website, setWebsite] = useState("")
 
@@ -89,14 +94,6 @@ const NewAd = (props) => {
           placeholder="Contact..."
           placeholderTextColor="white"
           onChangeText={(text) => setContact(text)}
-        />
-      </View>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          placeholder="Charity..."
-          placeholderTextColor="white"
-          onChangeText={(text) => setCharity(text)}
         />
       </View>
       <View style={styles.inputView}>
