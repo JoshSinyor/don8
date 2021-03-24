@@ -67,7 +67,7 @@ export default class App extends React.Component {
   async getDirections(startLoc, destinationLoc) {
     try {
       const resp = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
+        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=`
       );
       const respJson = await resp.json();
       if (respJson.routes.length > 0) {
