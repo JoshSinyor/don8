@@ -53,7 +53,7 @@ export default class App extends React.Component {
   async getLatLongPoints(address) {
     try {
       const res = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=London&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=London&key=`
       );
       const resJson = await res.json();
       const resJsonlat = resJson.geometry.location.lat;
