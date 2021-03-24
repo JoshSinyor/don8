@@ -21,8 +21,33 @@ const NewAd = (props) => {
   const [charity, setCharity] = useState(context.stateUser.user.userId)
   // const [image, setImage] = useState()
   const [website, setWebsite] = useState("")
+  const [userProfile, setUserProfile] = useState();
 
   const [error, setError] = useState();
+
+  useEffect(() => {
+    async function updateUser() {
+      if (
+        context.stateUser.isAuthenticated === false ||
+        context.stateUser.isAuthenticated === null
+      ) {
+        props.navigation.navigate("Login");
+      }
+
+      AsyncStorage.getItem("jwt")
+        .then((res) => {
+          axios
+            .get(`${baseURL}users/${context.stateUser.user.userId}`, {
+              headers: { Authorization: `Bearer ${res}` },
+            })
+            .then((user) => setUserProfile(user.data));
+        })
+        .catch((error) => console.log(error));
+      }
+    updateUser();
+  }, [])
+
+  console.log(userProfile)
 
   const handleSubmit = () => {
     const ad = {
