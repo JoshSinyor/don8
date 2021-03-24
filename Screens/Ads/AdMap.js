@@ -18,7 +18,6 @@ export default class App extends React.Component {
   };
 
   async componentDidMount() {
-    console.log("Im looking for props", this.props);
     const { status } = await Permissions.getAsync(Permissions.LOCATION);
     if (status !== "granted") {
       const response = await Permissions.askAsync(Permissions.LOCATION);
@@ -52,9 +51,13 @@ export default class App extends React.Component {
 
   async getLatLongPoints(address) {
     try {
+      const adLocation = this.props.route.params.item.location;
+      console.log(adLocation);
+
       const res = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=London&key=`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${adLocation}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
       );
+      console.log(res);
       const resJson = await res.json();
       const resJsonlat = resJson.geometry.location.lat;
       const resJsonlng = resJson.geometry.location.lng;
@@ -67,7 +70,7 @@ export default class App extends React.Component {
   async getDirections(startLoc, destinationLoc) {
     try {
       const resp = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=`
+        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
       );
       const respJson = await resp.json();
       if (respJson.routes.length > 0) {
