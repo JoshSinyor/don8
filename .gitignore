@@ -11,6 +11,5 @@ web-build/
 backend/.env
 coverage/
 .env
-
 # macOS
 .DS_Store
