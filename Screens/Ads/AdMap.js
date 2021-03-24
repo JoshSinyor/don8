@@ -52,7 +52,7 @@ export default class App extends React.Component {
   async getLatLongPoints(address) {
     try {
       const adLocation = this.props.route.params.item.location;
-      console.log(adLocation);
+      console.log("location:", adLocation);
 
       const res = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${adLocation}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
