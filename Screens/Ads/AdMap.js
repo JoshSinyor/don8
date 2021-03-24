@@ -14,7 +14,8 @@ export default class App extends React.Component {
   state = {
     latitude: null,
     longitude: null,
-    locations: locations,
+    desLatitude: null,
+    desLongitude: null
   };
 
   async componentDidMount() {
@@ -27,14 +28,16 @@ export default class App extends React.Component {
         this.setState({ latitude, longitude }, this.mergeCoords),
       (error) => console.log("Error:", error)
     );
-    const {
-      locations: [sampleLocation],
-    } = this.state;
-    this.setState(
-      {
-        desLatitude: sampleLocation.lat,
-        desLongitude: sampleLocation.lng,
-      },
+    this.getLatLongPoints(this.props.route.params.item.location)
+    console.log("I'm printing this.state", this.state)
+    // const {
+    //   locations: [sampleLocation],
+    // } = this.state;
+    // this.setState(
+    //   {
+    //     desLatitude: sampleLocation.lat,
+    //     desLongitude: sampleLocation.lng,
+    //   },
       this.mergeCoords
     );
   }
@@ -55,12 +58,18 @@ export default class App extends React.Component {
       console.log("location:", adLocation);
 
       const res = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${adLocation}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
       );
       console.log(res);
       const resJson = await res.json();
       const resJsonlat = resJson.geometry.location.lat;
       const resJsonlng = resJson.geometry.location.lng;
+      this.setState(
+        {
+          desLatitude: resJsonlat,
+          desLongitude: resJsonlng
+        }
+      )
       return;
     } catch (error) {
       alert(error);
