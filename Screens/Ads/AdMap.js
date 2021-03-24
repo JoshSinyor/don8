@@ -15,7 +15,7 @@ export default class App extends React.Component {
     latitude: null,
     longitude: null,
     desLatitude: null,
-    desLongitude: null
+    desLongitude: null,
   };
 
   async componentDidMount() {
@@ -28,8 +28,8 @@ export default class App extends React.Component {
         this.setState({ latitude, longitude }, this.mergeCoords),
       (error) => console.log("Error:", error)
     );
-    this.getLatLongPoints(this.props.route.params.item.location)
-    console.log("I'm printing this.state", this.state)
+    this.getLatLongPoints(this.props.route.params.item.location);
+    console.log("I'm printing this.state", this.state);
     // const {
     //   locations: [sampleLocation],
     // } = this.state;
@@ -38,8 +38,8 @@ export default class App extends React.Component {
     //     desLatitude: sampleLocation.lat,
     //     desLongitude: sampleLocation.lng,
     //   },
-      this.mergeCoords
-    );
+    // this.mergeCoords
+    // )
   }
 
   mergeCoords = () => {
@@ -56,20 +56,27 @@ export default class App extends React.Component {
     try {
       const adLocation = this.props.route.params.item.location;
       console.log("location:", adLocation);
-
+      console.log("Address", address);
       const res = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=London&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
       );
-      console.log(res);
       const resJson = await res.json();
-      const resJsonlat = resJson.geometry.location.lat;
-      const resJsonlng = resJson.geometry.location.lng;
+      console.log("Line 64 resJson", resJson.results[0].geometry.location.lng);
+      console.log("Line 64 resJson", resJson.results[0].geometry.location.lat);
+
+      const resJsonlat = resJson.results[0].geometry.location.lat;
+      const resJsonlng = resJson.results[0].geometry.location.lng;
+
+      console.log("line 69", this.state);
+
       this.setState(
         {
           desLatitude: resJsonlat,
-          desLongitude: resJsonlng
-        }
-      )
+          desLongitude: resJsonlng,
+        },
+        this.mergeCoords
+      );
+      console.log("line 78", this.state);
       return;
     } catch (error) {
       alert(error);
