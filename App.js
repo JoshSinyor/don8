@@ -5,15 +5,15 @@ import MapView from 'react-native-maps'
 import * as Permissions from 'expo-permissions';
 import Polyline from '@mapbox/polyline'
 import Constants from 'expo-constants';
+require("dotenv/config");
 
+const api_key = process.env.REACT_APP_GOOGLE_API;
 const locations = require('./location.json')
-
-// let googleApi = Constants.manifest.extra.googleApi
 
 export default class App extends React.Component {
   state = {
-    latitude: null,
-    longitude: null,
+    latitude: 51.5074,
+    longitude: 0.1278,
     locations: locations
   }
 
@@ -53,30 +53,10 @@ export default class App extends React.Component {
     }
   }
 
-  // async getDirections(startLoc, desLoc) {
-  //   try {
-  //   const resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${desLoc}&key=AIzaSyBCO5_tSm-nS1221XjNP9tHVHc6HDDE4mw`)
-  //   const respJson = await resp.json();
-  //   console.log(respJson)
-  //   const points = Polyline.decode(respJson.routes[0].overview_polyline.points);
-  //   const coords = points.map(point => {
-  //     return {
-  //       latitude: point[0],
-  //       longitude: point[1]
-  //     }
-  //   })
-  //   this.setState({ coords })
-  //   } catch(error) {
-  //   console.log('Error: ', error)
-  //   }
-  // }
-
   async getDirections(startLoc, destinationLoc) {
-    // console.log(startLoc, destinationLoc);
     try {
-         const resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`);
+         const resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=${api_key}`);
          const respJson = await resp.json();
-        //  console.log(respJson);
          if (respJson.routes.length > 0) {
              const points = Polyline.decode(respJson.routes[0].overview_polyline.points);
              const coords = points.map((point, index) => {
