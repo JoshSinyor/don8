@@ -1,106 +1,29 @@
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { LogBox } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import Toast from "react-native-toast-message";
 
-import * as React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
-import MapView from 'react-native-maps'
-import * as Permissions from 'expo-permissions';
-import Polyline from '@mapbox/polyline'
-import Constants from 'expo-constants';
-require("dotenv/config");
+// context API
+import Auth from "./Context/store/Auth";
 
-const api_key = process.env.REACT_APP_GOOGLE_API;
-const locations = require('./location.json')
+// Navigators
+import Main from "./Navigators/Main";
 
-export default class App extends React.Component {
-  state = {
-    latitude: 51.5074,
-    longitude: 0.1278,
-    locations: locations
-  }
+// screens
+import Header from "./Shared/Header";
+import AdContainer from "./Screens/Ads/AdContainer";
 
-  async componentDidMount() {
-    const { status } = await Permissions.getAsync(Permissions.LOCATION)
+LogBox.ignoreAllLogs(true);
 
-    if (status !== 'granted') {
-      const response = await Permissions.askAsync(Permissions.LOCATION)
-    }
-
-    navigator.geolocation.getCurrentPosition(
-      ({ coords: { latitude, longitude } }) => this.setState({ latitude, longitude }, this.mergeCoords),
-      (error) => console.log('Error:', error)
-    )
-
-    const { locations: [ sampleLocation] } = this.state
-
-    this.setState({
-      desLatitude: sampleLocation.lat,
-      desLongitude: sampleLocation.lng
-    }, this.mergeCoords)
-  }
-  
-  mergeCoords = () => {
-    const {
-      latitude,
-      longitude,
-      desLatitude,
-      desLongitude
-    } = this.state
-
-    const hasStartAndEnd = latitude !== null && desLatitude !== null
-      if (hasStartAndEnd) {
-      const concatStart = `${latitude},${longitude}`
-      const concatEnd = `${desLatitude},${desLongitude}`
-      this.getDirections(concatStart, concatEnd)
-    }
-  }
-
-  async getDirections(startLoc, destinationLoc) {
-    try {
-         const resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=${api_key}`);
-         const respJson = await resp.json();
-         if (respJson.routes.length > 0) {
-             const points = Polyline.decode(respJson.routes[0].overview_polyline.points);
-             const coords = points.map((point, index) => {
-                 return {
-                     latitude: point[0],
-                     longitude: point[1],
-                 };
-             });
-             this.setState({ coords });
-            console.log(coords);
-         }
-         return;
-     } catch (error) {
-         alert(error);
-     }
-  }
-
-  render(){
-    const { latitude, longitude, coords } = this.state
-    console.log(latitude, longitude, coords && coords.length);
-    if (latitude) {
-      return (
-    <MapView
-      showsUserLocation
-      style={{ flex: 1 }}
-      initialRegion={{
-        latitude,
-        longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421
-      }}
-      >
-      <MapView.Polyline 
-        strokeWidth={6}
-        strokeColor="#ff0000"
-        coordinates={coords || [] }
-      />
-    </MapView>
-      )
-    }
-    return (
-      <View style={{ flex: 1, justifyContent: 'center'}}>
-        <Text>We need your permission!</Text>
-      </View>
-    )
-  }
+export default function App() {
+  return (
+    <Auth>
+      <NavigationContainer>
+        <Header />
+        <Main />
+        <Toast ref={(ref) => Toast.setRef(ref)} />
+      </NavigationContainer>
+    </Auth>
+  );
 }
