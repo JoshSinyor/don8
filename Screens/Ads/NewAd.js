@@ -51,47 +51,45 @@ const NewAd = (props) => {
 
   }, [])
 
-  useEffect(() => {
     console.log("Loading useEffect Line 54")
 
-    const handleSubmit = () => {
-      const ad = {
-        title,
-        location,
-        description,
-        contact,
-        charity,
-        website
-      };
+const handleSubmit = () => {
+  const ad = {
+    title,
+    location,
+    description,
+    contact,
+    charity,
+    website
+  };
 
-      if (![title, location, description, contact, charity, website].every((field) => {return field !== ""})) {
-        setError("Please fill in all details");
-      } else {
-        axios
-          .post(`${baseURL}ads`, ad)
-          .then((response) => {
-            if (response.status === 201) {
-              props.navigation.navigate("Home")
-              Toast.show({
-                topOffset: 60,
-                type: "success",
-                text1: "Advert created!",
-                text2: "",
-              });
-              console.log("success");
-            }
-          })
-          .catch(error => {
-            if(!error.response){
-              console.log("Server not running")
-            }
-            else if (error.response.status === 401) {
-              setError("You aren't authorized to make this advert")
-            } else { setError("Unknown error") }
-          })
-      }
-    };
-  }, [userProfile])
+  if (![title, location, description, contact, charity, website].every((field) => {return field !== ""})) {
+    setError("Please fill in all details");
+  } else {
+    axios
+      .post(`${baseURL}ads`, ad)
+      .then((response) => {
+        if (response.status === 201) {
+          props.navigation.navigate("Home")
+          Toast.show({
+            topOffset: 60,
+            type: "success",
+            text1: "Advert created!",
+            text2: "",
+          });
+          console.log("success");
+        }
+      })
+      .catch(error => {
+        if(!error.response){
+          console.log("Server not running")
+        }
+        else if (error.response.status === 401) {
+          setError("You aren't authorized to make this advert")
+        } else { setError("Unknown error") }
+      })
+  }
+};
 
   return (
     console.log("Loading the return"),
@@ -107,7 +105,8 @@ const NewAd = (props) => {
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          placeholder={userProfile ? userProfile.address : "Location" }
+          // defaultValue={userProfile ? userProfile.address : "Location" }
+          placeholder="Location"
           placeholderTextColor="white"
           onChangeText={(text) => setLocation(text)}
         />
@@ -123,7 +122,7 @@ const NewAd = (props) => {
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          placeholder={userProfile ? userProfile.email : "Location" }
+          placeholder={userProfile ? userProfile.email : "Contact" }
           placeholderTextColor="white"
           onChangeText={(text) => setContact(text)}
         />
