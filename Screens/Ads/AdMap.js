@@ -1,17 +1,24 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
 import MapView from "react-native-maps";
 import * as Permissions from "expo-permissions";
 import Polyline from "@mapbox/polyline";
 import Constants from "expo-constants";
+import { Button, Container, Header } from "native-base";
+
 const locations = require("../../location.json");
+
+var { width } = Dimensions.get("window");
+
 export default class App extends React.Component {
   state = {
     latitude: null,
     longitude: null,
     locations: locations,
   };
+
   async componentDidMount() {
+    console.log("Im looking for props", this.props);
     const { status } = await Permissions.getAsync(Permissions.LOCATION);
     if (status !== "granted") {
       const response = await Permissions.askAsync(Permissions.LOCATION);
@@ -32,6 +39,7 @@ export default class App extends React.Component {
       this.mergeCoords
     );
   }
+
   mergeCoords = () => {
     const { latitude, longitude, desLatitude, desLongitude } = this.state;
     const hasStartAndEnd = latitude !== null && desLatitude !== null;
@@ -41,10 +49,25 @@ export default class App extends React.Component {
       this.getDirections(concatStart, concatEnd);
     }
   };
+
+  async getLatLongPoints(address) {
+    try {
+      const res = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=London&key=`
+      );
+      const resJson = await res.json();
+      const resJsonlat = resJson.geometry.location.lat;
+      const resJsonlng = resJson.geometry.location.lng;
+      return;
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   async getDirections(startLoc, destinationLoc) {
     try {
       const resp = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
+        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=`
       );
       const respJson = await resp.json();
       if (respJson.routes.length > 0) {
@@ -58,7 +81,7 @@ export default class App extends React.Component {
           };
         });
         this.setState({ coords });
-        console.log(coords);
+        // console.log(coords);
       }
       return;
     } catch (error) {
@@ -67,11 +90,12 @@ export default class App extends React.Component {
   }
   render() {
     const { latitude, longitude, coords } = this.state;
-    console.log(latitude, longitude, coords && coords.length);
+    // console.log(latitude, longitude, coords && coords.length);
     if (latitude) {
       return (
         <MapView
-          showsUserLocation
+          showsMyLocationButton={true}
+          showsUserLocation={true}
           style={{ flex: 1 }}
           initialRegion={{
             latitude,
@@ -80,6 +104,18 @@ export default class App extends React.Component {
             longitudeDelta: 0.0421,
           }}
         >
+          <View>
+            <Header>
+              <Button
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                }}
+                title="Back"
+                onPress={() => this.props.navigation.navigate("Ad Detail", {})}
+              />
+            </Header>
+          </View>
           <MapView.Polyline
             strokeWidth={6}
             strokeColor="#FF0000"
@@ -88,10 +124,6 @@ export default class App extends React.Component {
         </MapView>
       );
     }
-    return (
-      <View style={{ flex: 1, justifyContent: "center" }}>
-        <Text>We need your permission!</Text>
-      </View>
-    );
+    return <View style={{ flex: 1, justifyContent: "center" }}></View>;
   }
 }
