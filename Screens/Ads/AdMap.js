@@ -17,6 +17,7 @@ export default class App extends React.Component {
     locations: locations,
   };
   async componentDidMount() {
+    console.log("Im looking for props", this.props);
     const { status } = await Permissions.getAsync(Permissions.LOCATION);
     if (status !== "granted") {
       const response = await Permissions.askAsync(Permissions.LOCATION);
@@ -37,6 +38,7 @@ export default class App extends React.Component {
       this.mergeCoords
     );
   }
+
   mergeCoords = () => {
     const { latitude, longitude, desLatitude, desLongitude } = this.state;
     const hasStartAndEnd = latitude !== null && desLatitude !== null;
@@ -46,6 +48,21 @@ export default class App extends React.Component {
       this.getDirections(concatStart, concatEnd);
     }
   };
+
+  async getLatLongPoints(address) {
+    try {
+      const res = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=London&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
+      );
+      const resJson = await res.json();
+      const resJsonlat = resJson.geometry.location.lat;
+      const resJsonlng = resJson.geometry.location.lng;
+      return;
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   async getDirections(startLoc, destinationLoc) {
     try {
       const resp = await fetch(
@@ -63,7 +80,7 @@ export default class App extends React.Component {
           };
         });
         this.setState({ coords });
-        console.log(coords);
+        // console.log(coords);
       }
       return;
     } catch (error) {
@@ -72,7 +89,7 @@ export default class App extends React.Component {
   }
   render() {
     const { latitude, longitude, coords } = this.state;
-    console.log(latitude, longitude, coords && coords.length);
+    // console.log(latitude, longitude, coords && coords.length);
     if (latitude) {
       return (
         <MapView
