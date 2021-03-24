@@ -46,54 +46,50 @@ const NewAd = (props) => {
       }
     updateUser();
 
-  console.log("Trying to load userProfile")
-  console.log(userProfile)
-
   }, [])
 
-    console.log("Loading useEffect Line 54")
+  const handleSubmit = () => {
+    const ad = {
+      title,
+      location,
+      description,
+      contact,
+      charity,
+      website
+    };
 
-const handleSubmit = () => {
-  const ad = {
-    title,
-    location,
-    description,
-    contact,
-    charity,
-    website
-  };
-
-  if (![title, location, description, contact, charity, website].every((field) => {return field !== ""})) {
-    setError("Please fill in all details");
-  } else {
-    axios
-      .post(`${baseURL}ads`, ad)
-      .then((response) => {
-        if (response.status === 201) {
-          props.navigation.navigate("Home")
-          Toast.show({
-            topOffset: 60,
-            type: "success",
-            text1: "Advert created!",
-            text2: "",
-          });
-          console.log("success");
-        }
-      })
-      .catch(error => {
-        if(!error.response){
-          console.log("Server not running")
-        }
-        else if (error.response.status === 401) {
-          setError("You aren't authorized to make this advert")
-        } else { setError("Unknown error") }
-      })
-  }
+    if (![title, location, description, contact, charity, website].every((field) => {return field !== ""})) {
+      setError("Please fill in all details");
+    } else {
+      axios
+        .post(`${baseURL}ads`, ad)
+        .then((response) => {
+          if (response.status === 201) {
+            props.navigation.navigate("Home")
+            Toast.show({
+              topOffset: 60,
+              type: "success",
+              text1: "Advert created!",
+              text2: "",
+            });
+            console.log("Successfully created advert.");
+          }
+        })
+        .catch(error => {
+          if(!error.response){
+            console.log("Server not running.")
+          }
+          else if (error.response.status === 401) {
+            setError("You aren't authorized to make this advert")
+          } else { setError("Unknown error") }
+        })
+    }
 };
 
   return (
     console.log("Loading the return"),
     <View style={styles.container}>
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
@@ -102,15 +98,17 @@ const handleSubmit = () => {
           onChangeText={(text) => setTitle(text)}
         />
       </View>
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          // placeholder={userProfile ? userProfile.address : "Location..." }
+          // placeholder={userProfile ? userProfile.address : "Location!"}
           placeholder="Location..."
           placeholderTextColor="white"
           onChangeText={(text) => setLocation(text)}
         />
       </View>
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
@@ -119,24 +117,27 @@ const handleSubmit = () => {
           onChangeText={(text) => setDescription( text)}
         />
       </View>
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          // placeholder={userProfile ? userProfile.address : "Contact..." }
+          // placeholder={userProfile ? userProfile.email : "Email..."}
           placeholder="Contact..."
           placeholderTextColor="white"
-          onChangeText={(text) => setContact(text)}
+          onChangeText={(text) => setContact(text)} // Should be setEmail when that's integrated
         />
       </View>
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          // placeholder={userProfile ? userProfile.website : "Website..." }
+          // placeholder={userProfile ? userProfile.website : "Website..."}
           placeholder="Website..."
           placeholderTextColor="white"
           onChangeText={(text) => setWebsite(text)}
         />
       </View>
+
       <View style={styles.buttonGroup}>
         {error ? <Error message={error} /> : null}
         <Button title="Submit" onPress={() => handleSubmit()} />
@@ -144,7 +145,6 @@ const handleSubmit = () => {
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   buttonGroup: {
