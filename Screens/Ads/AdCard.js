@@ -7,7 +7,7 @@ import {
   Button,
   Image,
 } from "react-native";
-
+//
 var { width } = Dimensions.get("window");
 
 const AdCard = (props) => {
