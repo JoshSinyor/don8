@@ -1,4 +1,5 @@
-[ {
+[
+  {
     "address": "34 Daniels Road, SE15 3LR",
     "lat": 51.52175130000001,
     "lng": -0.0860372,
@@ -17,83 +18,3 @@
     "name": "Save the foxies"
   }
 ]
-
-Object {
-  "results": Array [
-    Object {
-      "address_components": Array [
-        Object {
-          "long_name": "London",
-          "short_name": "London",
-          "types": Array [
-            "locality",
-            "political",
-          ],
-        },
-        Object {
-          "long_name": "London",
-          "short_name": "London",
-          "types": Array [
-            "postal_town",
-          ],
-        },
-        Object {
-          "long_name": "Greater London",
-          "short_name": "Greater London",
-          "types": Array [
-            "administrative_area_level_2",
-            "political",
-          ],
-        },
-        Object {
-          "long_name": "England",
-          "short_name": "England",
-          "types": Array [
-            "administrative_area_level_1",
-            "political",
-          ],
-        },
-        Object {
-          "long_name": "United Kingdom",
-          "short_name": "GB",
-          "types": Array [
-            "country",
-            "political",
-          ],
-        },
-      ],
-      "formatted_address": "London, UK",
-      "geometry": Object {
-        "bounds": Object {
-          "northeast": Object {
-            "lat": 51.6723432,
-            "lng": 0.148271,
-          },
-          "southwest": Object {
-            "lat": 51.38494009999999,
-            "lng": -0.3514683,
-          },
-        },
-        "location": Object {
-          "lat": 51.5073509,
-          "lng": -0.1277583,
-        },
-        "location_type": "APPROXIMATE",
-        "viewport": Object {
-          "northeast": Object {
-            "lat": 51.6723432,
-            "lng": 0.148271,
-          },
-          "southwest": Object {
-            "lat": 51.38494009999999,
-            "lng": -0.3514683,
-          },
-        },
-      },
-      "place_id": "ChIJdd4hrwug2EcRmSrV3Vo6llI",
-      "types": Array [
-        "locality",
-        "political",
-      ],
-    },
-  ],
