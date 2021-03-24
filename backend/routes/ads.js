@@ -28,32 +28,29 @@ const storage = multer.diskStorage({
 
 const uploadOptions = multer({ storage: storage });
 
+router.get("/", async (req, res) => {
+  const adList = await Ad.find().populate("charity");
 
-router.get('/', async (req, res) => {
-    const adList = await Ad.find().
-                   populate('charity');
+  if (!adList) {
+    res.status(500).json({ success: false });
+  }
+  res.send(adList);
+});
 
-    if(!adList) {
-      res.status(500).json({success: false})
-    }
-    res.send(adList);
-  });
+router.get("/:id", async (req, res) => {
+  const ad = await Ad.findById(req.params.id);
 
-  router.get('/:id', async (req, res) => {
-    const ad = await Ad.findById(req.params.id);
-
-    if(!ad) {
-      res.status(500).json({success: false})
-    }
-    res.send(ad);
-  });
+  if (!ad) {
+    res.status(500).json({ success: false });
+  }
+  res.send(ad);
+});
 
 router.post("/", uploadOptions.single("image"), async (req, res) => {
   const file = req.file;
   // if (!file) return res.status(400).send("No image in the request");
-  console.log("File:", file)
+
   const fileName = file ? file.filename : "no-image-icon-23494.png";
-  console.log("File name:", fileName)
   const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
   const ad = new Ad({
     title: req.body.title,
@@ -65,16 +62,18 @@ router.post("/", uploadOptions.single("image"), async (req, res) => {
     website: req.body.website,
   });
 
-    ad.save().then((createdAd) => {
+  ad.save()
+    .then((createdAd) => {
       res.status(201).json(createdAd);
-    }).catch((err) => {
-      console.log(err)
+    })
+    .catch((err) => {
+      console.log(err);
       res.status(500).json({
         error: err,
         success: false,
       });
     });
-  });
+});
 
 router.get("/get/count", async (req, res) => {
   const adCount = await Ad.countDocuments((count) => count);
@@ -86,6 +85,5 @@ router.get("/get/count", async (req, res) => {
     adCount: adCount,
   });
 });
-
 
 module.exports = router;

@@ -40,7 +40,7 @@ export default class App extends React.Component {
   async getLatLongPoints(address) {
     try {
       const res = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
       );
       const resJson = await res.json();
       const resJsonlat = resJson.results[0].geometry.location.lat;
@@ -62,7 +62,7 @@ export default class App extends React.Component {
   async getDirections(startLoc, destinationLoc) {
     try {
       const resp = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=`
+        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
       );
       const respJson = await resp.json();
       if (respJson.routes.length > 0) {
