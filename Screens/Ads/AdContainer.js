@@ -8,6 +8,8 @@ import {
   ScrollView,
 } from "react-native";
 import axios from "axios";
+import { useIsFocused } from '@react-navigation/native'
+
 import { Container, Header, Icon, Item, Input, Text } from "native-base";
 import baseURL from "../../assets/common/baseUrl";
 
@@ -18,6 +20,9 @@ import Banner from "../../Shared/Banner";
 var { height } = Dimensions.get("window");
 
 const AdContainer = (props) => {
+
+  const isFocused = useIsFocused()
+
   const [ads, setAds] = useState([]);
   const [adsFiltered, setAdsFiltered] = useState([]);
   const [focus, setFocus] = useState();
@@ -46,7 +51,7 @@ const AdContainer = (props) => {
       setAdsFiltered([]);
       setFocus();
     };
-  }, []);
+  }, [isFocused]);
 
   const searchAd = (text) => {
     setAdsFiltered(
