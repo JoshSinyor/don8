@@ -1,6 +1,7 @@
 // Connect to database
 const mongoose = require("mongoose");
 require("dotenv").config();
+
 // Connect to port
 const app = require("./server");
 
