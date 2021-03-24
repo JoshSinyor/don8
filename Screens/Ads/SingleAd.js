@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Left, Right, Container, H1 } from "native-base";
+
 const SingleAd = (props) => {
   const [item, setAd] = useState(props.route.params.item);
   return (

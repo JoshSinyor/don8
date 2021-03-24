@@ -1,10 +1,15 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
 import MapView from "react-native-maps";
 import * as Permissions from "expo-permissions";
 import Polyline from "@mapbox/polyline";
 import Constants from "expo-constants";
+import { Button, Container, Header } from "native-base";
+
 const locations = require("../../location.json");
+
+var { width } = Dimensions.get("window");
+
 export default class App extends React.Component {
   state = {
     latitude: null,
@@ -44,7 +49,7 @@ export default class App extends React.Component {
   async getDirections(startLoc, destinationLoc) {
     try {
       const resp = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=${api_key}`
+        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=AIzaSyChRiuf9F4XCTumcyNRtdVlhtf04fJaMTA`
       );
       const respJson = await resp.json();
       if (respJson.routes.length > 0) {
@@ -71,7 +76,8 @@ export default class App extends React.Component {
     if (latitude) {
       return (
         <MapView
-          showsUserLocation
+          showsMyLocationButton={true}
+          showsUserLocation={true}
           style={{ flex: 1 }}
           initialRegion={{
             latitude,
@@ -80,6 +86,17 @@ export default class App extends React.Component {
             longitudeDelta: 0.0421,
           }}
         >
+          <View>
+            <Header>
+              <Button
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                }}
+                title="Back"
+              />
+            </Header>
+          </View>
           <MapView.Polyline
             strokeWidth={6}
             strokeColor="#FF0000"
@@ -88,10 +105,6 @@ export default class App extends React.Component {
         </MapView>
       );
     }
-    return (
-      <View style={{ flex: 1, justifyContent: "center" }}>
-        <Text>We need your permission!</Text>
-      </View>
-    );
+    return <View style={{ flex: 1, justifyContent: "center" }}></View>;
   }
 }
