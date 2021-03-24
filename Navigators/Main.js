@@ -33,15 +33,17 @@ const Main = () => {
           ),
         }}
       />
-      <Tab.Screen
-        name="NewAd"
-        component={NewAdNavigator}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Icon name="plus" color={color} size={30} />
-          ),
-        }}
-      />
+      {context.stateUser.user.isCharity == true ? (
+        <Tab.Screen
+          name="NewAd"
+          component={NewAdNavigator}
+          options={{
+            tabBarIcon: ({ color }) => (
+              <Icon name="plus" color={color} size={30} />
+            ),
+          }}
+        />
+      ) : null}
       <Tab.Screen
         name="User"
         component={UserNavigator}
