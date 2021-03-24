@@ -7,12 +7,12 @@ import {
   Text,
   ScrollView,
   Button,
+  TouchableOpacity,
 } from "react-native";
 import { Left, Right, Container, H1 } from "native-base";
 
 const SingleAd = (props) => {
   const [item, setAd] = useState(props.route.params.item);
-
   return (
     <Container style={styles.container}>
       <ScrollView style={{ marginBottom: 80, padding: 5 }}>
@@ -28,11 +28,18 @@ const SingleAd = (props) => {
           />
         </View>
         <View style={styles.contentContainer}>
-          <H1 style={styles.contentHeader}> {capitalize(item.charity.charityName)} </H1>
+          <H1 style={styles.contentHeader}>
+            {" "}
+            {capitalize(item.charity.charityName)}{" "}
+          </H1>
           <Text>How can you help:</Text>
           <Text style={styles.contentDescription}>{item.description}</Text>
-          <Text>Find us</Text>
-          <Text style={styles.contentLocation}>{item.location}</Text>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate("Ad Map", { item: item })}
+          >
+            <Text>Find us</Text>
+            <Text style={styles.contentLocation}>{item.location}</Text>
+          </TouchableOpacity>
           <Text>Contact us</Text>
           <Text style={styles.contentContact}>{item.contact}</Text>
           <Text
@@ -46,7 +53,6 @@ const SingleAd = (props) => {
     </Container>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     position: "relative",
@@ -89,7 +95,6 @@ const styles = StyleSheet.create({
     color: "blue",
   },
 });
-
 function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
