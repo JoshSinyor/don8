@@ -27,7 +27,7 @@ const AdContainer = (props) => {
       axios
         .get(`${baseURL}ads`)
         .then((res) => {
-          setAds(res.data);
+          setAds(res.data.reverse());
           setAdsFiltered(res.data);
           console.log(res.data);
         })
