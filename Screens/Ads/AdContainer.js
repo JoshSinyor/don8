@@ -54,7 +54,7 @@ const AdContainer = (props) => {
   const searchAd = (text) => {
     setAdsFiltered(
       ads.filter((i) =>
-        i.charityName.toLowerCase().includes(text.toLowerCase())
+        i.charity.charityName.toLowerCase().includes(text.toLowerCase())
       )
     );
   };
