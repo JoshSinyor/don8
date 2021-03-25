@@ -6,6 +6,8 @@ import Polyline from "@mapbox/polyline";
 import Constants from "expo-constants";
 import { Button, Container, Header } from "native-base";
 
+let googleApi = Constants.manifest.extra.googleApi
+
 export default class App extends React.Component {
   state = {
     latitude: null,
@@ -40,7 +42,7 @@ export default class App extends React.Component {
   async getLatLongPoints(address) {
     try {
       const res = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${googleApi}`
       );
       const resJson = await res.json();
       const resJsonlat = resJson.results[0].geometry.location.lat;
@@ -62,7 +64,7 @@ export default class App extends React.Component {
   async getDirections(startLoc, destinationLoc) {
     try {
       const resp = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=`
+        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=${googleApi}`
       );
       const respJson = await resp.json();
       if (respJson.routes.length > 0) {
