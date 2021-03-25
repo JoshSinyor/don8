@@ -31,7 +31,6 @@ const AdCard = (props) => {
       <Text styles={styles.description}>
         {`${description.substring(0, 42)}...`}
       </Text>
-      <Text styles={styles.contact}> {contact} </Text>
     </View>
   );
 };
