@@ -28,8 +28,9 @@ const AdCard = (props) => {
       <Text style={styles.charityName}> {charityName} </Text>
       <Text style={styles.title}> {title} </Text>
       <Text styles={styles.location}> {location} </Text>
-      <Text styles={styles.description}> {description} </Text>
-      <Text styles={styles.contact}> {contact} </Text>
+      <Text styles={styles.description}>
+        {`${description.substring(0, 42)}...`}
+      </Text>
     </View>
   );
 };

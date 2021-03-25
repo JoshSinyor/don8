@@ -4,12 +4,12 @@ import { StyleSheet, Image, Text, SafeAreaView, View } from "react-native";
 const Header = () => {
   return (
     <SafeAreaView style={styles.header}>
-      {/* <Text style={styles.title}>Don8</Text> */}
-      <Image
+      <Text style={styles.title}>Don8</Text>
+      {/* <Image
         source={require("../assets/icon.png")}
         resizeMode="contain"
         style={{ height: 50 }}
-      />
+      /> */}
     </SafeAreaView>
   );
 };
