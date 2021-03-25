@@ -29,18 +29,16 @@ const SingleAd = (props) => {
         </View>
         <View style={styles.contentContainer}>
           <H1 style={styles.contentHeader}>
-            {" "}
-            {capitalize(item.charity.charityName)}{" "}
+            {capitalize(item.charity.charityName)}
           </H1>
           <Text>How can you help:</Text>
           <Text style={styles.contentDescription}>{item.description}</Text>
           <TouchableOpacity
+            style={{ color: "#e91e63" }}
             onPress={() => props.navigation.navigate("Ad Map", { item: item })}
           >
-            <Text>Find us</Text>
             <Text style={styles.contentLocation}>{item.location}</Text>
           </TouchableOpacity>
-          <Text>Contact us</Text>
           <Text style={styles.contentContact}>{item.contact}</Text>
           <Text
             style={styles.contentContact}
