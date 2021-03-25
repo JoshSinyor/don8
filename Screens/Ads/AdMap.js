@@ -5,8 +5,9 @@ import * as Permissions from "expo-permissions";
 import Polyline from "@mapbox/polyline";
 import { Header, Footer } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Constants from "expo-constants";
 
-let googleApi = Constants.manifest.extra.googleApi
+let googleApi = Constants.manifest.extra.googleApi;
 
 export default class App extends React.Component {
   state = {
