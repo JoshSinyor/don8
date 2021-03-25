@@ -58,6 +58,12 @@ const UserProfile = (props) => {
           <Text style={{ margin: 10 }}>
             Phone: {userProfile ? userProfile.phone : ""}
           </Text>
+          <Text style={{ margin: 10 }}>
+            Address: {userProfile ? userProfile.address : ""}
+          </Text>
+          <Text style={{ margin: 10 }}>
+            Charity ID: {userProfile ? userProfile.charityIdNumber : ""}
+          </Text>
         </View>
         <View style={{ marginTop: 80 }}>
           <Button
@@ -77,6 +83,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+  },
+  subContainer: {
+    alignItems: "center",
+    marginTop: 60,
   },
 });
 
