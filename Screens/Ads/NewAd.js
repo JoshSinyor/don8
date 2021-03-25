@@ -1,26 +1,24 @@
 import React, { useEffect, useState, useContext } from "react";
 import { View, TextInput, Text, StyleSheet, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import axios from 'axios'
-import Toast from "react-native-toast-message"
+import axios from "axios";
+import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-community/async-storage";
 import AuthGlobal from "../../Context/store/AuthGlobal";
 
-
 import Error from "../../Shared/Error";
-import baseURL from '../../assets/common/baseUrl'
-
+import baseURL from "../../assets/common/baseUrl";
 
 const NewAd = (props) => {
   const context = useContext(AuthGlobal);
 
-  const [title, setTitle] = useState("")
-  const [location, setLocation] = useState("")
-  const [description, setDescription] = useState("")
-  const [contact, setContact] = useState("")
-  const [charity, setCharity] = useState(context.stateUser.user.userId)
+  const [title, setTitle] = useState("");
+  const [location, setLocation] = useState("");
+  const [description, setDescription] = useState("");
+  const [contact, setContact] = useState("");
+  const [charity, setCharity] = useState(context.stateUser.user.userId);
   // const [image, setImage] = useState()
-  const [website, setWebsite] = useState("")
+  const [website, setWebsite] = useState("");
   const [userProfile, setUserProfile] = useState();
 
   const [error, setError] = useState();
@@ -43,10 +41,9 @@ const NewAd = (props) => {
             .then((user) => setUserProfile(user.data));
         })
         .catch((error) => console.log(error));
-      }
+    }
     updateUser();
-
-  }, [])
+  }, []);
 
   const handleSubmit = () => {
     const ad = {
@@ -55,17 +52,23 @@ const NewAd = (props) => {
       description,
       contact,
       charity,
-      website
+      website,
     };
 
-    if (![title, location, description, contact, charity, website].every((field) => {return field !== ""})) {
+    if (
+      ![title, location, description, contact, charity, website].every(
+        (field) => {
+          return field !== "";
+        }
+      )
+    ) {
       setError("Please fill in all details");
     } else {
       axios
         .post(`${baseURL}ads`, ad)
         .then((response) => {
           if (response.status === 201) {
-            props.navigation.navigate("Home")
+            props.navigation.navigate("Home");
             Toast.show({
               topOffset: 60,
               type: "success",
@@ -75,21 +78,21 @@ const NewAd = (props) => {
             console.log("Successfully created advert.");
           }
         })
-        .catch(error => {
-          if(!error.response){
-            console.log("Server not running.")
+        .catch((error) => {
+          if (!error.response) {
+            console.log("Server not running.");
+          } else if (error.response.status === 401) {
+            setError("You aren't authorized to make this advert");
+          } else {
+            setError("Unknown error");
           }
-          else if (error.response.status === 401) {
-            setError("You aren't authorized to make this advert")
-          } else { setError("Unknown error") }
-        })
+        });
     }
-};
+  };
 
   return (
-    console.log("Loading the return"),
     <View style={styles.container}>
-
+      <Text style={styles.title}>Create a new advert</Text>
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
@@ -102,7 +105,6 @@ const NewAd = (props) => {
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          // placeholder={userProfile ? userProfile.address : "Location!"}
           placeholder="Location..."
           placeholderTextColor="white"
           onChangeText={(text) => setLocation(text)}
@@ -114,7 +116,7 @@ const NewAd = (props) => {
           style={styles.inputText}
           placeholder="Description..."
           placeholderTextColor="white"
-          onChangeText={(text) => setDescription( text)}
+          onChangeText={(text) => setDescription(text)}
         />
       </View>
 
@@ -147,6 +149,11 @@ const NewAd = (props) => {
 };
 
 const styles = StyleSheet.create({
+  title: {
+    height: 50,
+    paddingBottom: 100,
+    fontSize: 40,
+  },
   buttonGroup: {
     width: "80%",
     alignItems: "center",
