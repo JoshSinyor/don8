@@ -190,8 +190,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   inputText: {
-    fontSize: 15,
-
+    fontSize: 18.35,
+    fontFamily: "Didot",
     height: 50,
     color: "white",
   },
