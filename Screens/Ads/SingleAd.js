@@ -34,7 +34,6 @@ const SingleAd = (props) => {
           <Text>How can you help:</Text>
           <Text style={styles.contentDescription}>{item.description}</Text>
           <TouchableOpacity
-            style={{ color: "#e91e63" }}
             onPress={() => props.navigation.navigate("Ad Map", { item: item })}
           >
             <Text style={styles.contentLocation}>{item.location}</Text>
@@ -85,13 +84,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
-    color: "blue",
+    color: "#e91e63",
   },
   contentContact: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
-    color: "blue",
+    color: "#e91e63",
   },
 });
 function capitalize(string) {
