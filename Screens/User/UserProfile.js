@@ -45,23 +45,23 @@ const UserProfile = (props) => {
   return (
     <Container style={styles.container}>
       <ScrollView contentContainerStyle={styles.subContainer}>
-        <Text style={{ fontSize: 30 }}>
+        <Text style={{ fontSize: 30, fontWeight: "bold" }}>
           {userProfile ? userProfile.charityName : ""}
         </Text>
-        <View style={{ marginTop: 20 }}>
-          <Text style={{ margin: 10 }}>
+        <View style={{ marginTop: 30 }}>
+          <Text style={{ margin: 30, fontSize: 20 }}>
             Email: {userProfile ? userProfile.email : ""}
           </Text>
-          <Text style={{ margin: 10 }}>
+          <Text style={{ margin: 30, fontSize: 20 }}>
             Username: {userProfile ? userProfile.username : ""}
           </Text>
-          <Text style={{ margin: 10 }}>
+          <Text style={{ margin: 30, fontSize: 20 }}>
             Phone: {userProfile ? userProfile.phone : ""}
           </Text>
-          <Text style={{ margin: 10 }}>
+          <Text style={{ margin: 30, fontSize: 20 }}>
             Address: {userProfile ? userProfile.address : ""}
           </Text>
-          <Text style={{ margin: 10 }}>
+          <Text style={{ margin: 30, fontSize: 20 }}>
             Charity ID: {userProfile ? userProfile.charityIdNumber : ""}
           </Text>
         </View>
@@ -81,6 +81,7 @@ const UserProfile = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "gainsboro",
     flex: 1,
     alignItems: "center",
   },

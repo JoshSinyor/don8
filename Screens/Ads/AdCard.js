@@ -57,6 +57,8 @@ const styles = StyleSheet.create({
     opacity: 0.3,
   },
   card: {
+    textAlign: "center",
+
     marginBottom: 10,
     height: width / 2 - 20 - 90,
     width: width / 2 - 20 - 10,
