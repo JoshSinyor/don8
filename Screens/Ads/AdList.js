@@ -12,7 +12,7 @@ const AdList = (props) => {
       style={{ width: "50%" }}
       onPress={() => props.navigation.navigate("Ad Detail", { item: item })}
     >
-      <View style={{ width: width / 2, backgroundColor: "gainsboro" }}>
+      <View style={{ width: width / 2, backgroundColor: "#f5f5f5" }}>
         <AdCard {...item} />
       </View>
     </TouchableOpacity>

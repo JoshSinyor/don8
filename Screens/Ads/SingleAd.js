@@ -55,6 +55,7 @@ const SingleAd = (props) => {
 };
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#f5f5f5",
     position: "relative",
     height: "100%",
   },
