@@ -6,19 +6,15 @@ import Polyline from "@mapbox/polyline";
 import Constants from "expo-constants";
 import { Button, Container, Header } from "native-base";
 
-const locations = require("../../location.json");
-
-var { width } = Dimensions.get("window");
-
 export default class App extends React.Component {
   state = {
     latitude: null,
     longitude: null,
-    locations: locations,
+    desLatitude: null,
+    desLongitude: null,
   };
 
   async componentDidMount() {
-    console.log("Im looking for props", this.props);
     const { status } = await Permissions.getAsync(Permissions.LOCATION);
     if (status !== "granted") {
       const response = await Permissions.askAsync(Permissions.LOCATION);
@@ -28,16 +24,7 @@ export default class App extends React.Component {
         this.setState({ latitude, longitude }, this.mergeCoords),
       (error) => console.log("Error:", error)
     );
-    const {
-      locations: [sampleLocation],
-    } = this.state;
-    this.setState(
-      {
-        desLatitude: sampleLocation.lat,
-        desLongitude: sampleLocation.lng,
-      },
-      this.mergeCoords
-    );
+    this.getLatLongPoints(this.props.route.params.item.location);
   }
 
   mergeCoords = () => {
@@ -53,11 +40,19 @@ export default class App extends React.Component {
   async getLatLongPoints(address) {
     try {
       const res = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=London&key=`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=`
       );
       const resJson = await res.json();
-      const resJsonlat = resJson.geometry.location.lat;
-      const resJsonlng = resJson.geometry.location.lng;
+      const resJsonlat = resJson.results[0].geometry.location.lat;
+      const resJsonlng = resJson.results[0].geometry.location.lng;
+
+      this.setState(
+        {
+          desLatitude: resJsonlat,
+          desLongitude: resJsonlng,
+        },
+        this.mergeCoords
+      );
       return;
     } catch (error) {
       alert(error);
@@ -81,7 +76,6 @@ export default class App extends React.Component {
           };
         });
         this.setState({ coords });
-        // console.log(coords);
       }
       return;
     } catch (error) {
@@ -90,7 +84,6 @@ export default class App extends React.Component {
   }
   render() {
     const { latitude, longitude, coords } = this.state;
-    // console.log(latitude, longitude, coords && coords.length);
     if (latitude) {
       return (
         <MapView
