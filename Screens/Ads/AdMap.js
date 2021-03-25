@@ -1,10 +1,10 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Dimensions } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import MapView from "react-native-maps";
 import * as Permissions from "expo-permissions";
 import Polyline from "@mapbox/polyline";
-import Constants from "expo-constants";
-import { Button, Container, Header } from "native-base";
+import { Header, Footer } from "native-base";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 let googleApi = Constants.manifest.extra.googleApi
 
@@ -99,18 +99,20 @@ export default class App extends React.Component {
             longitudeDelta: 0.0421,
           }}
         >
-          <View>
-            <Header>
-              <Button
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                }}
-                title="Back"
-                onPress={() => this.props.navigation.navigate("Ad Detail", {})}
-              />
-            </Header>
-          </View>
+          <Icon.Button
+            style={{ justifyContent: "center" }}
+            backgroundColor="white"
+            color="gainsboro"
+            name="arrow-left"
+            size={40}
+            onPress={() => this.props.navigation.navigate("Ad Detail", {})}
+          >
+            <Text
+              style={{ color: "gainsboro", fontWeight: "bold", fontSize: 20 }}
+            >
+              Back to advert
+            </Text>
+          </Icon.Button>
           <MapView.Polyline
             strokeWidth={6}
             strokeColor="#FF0000"
