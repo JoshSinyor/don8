@@ -89,8 +89,8 @@ const AdContainer = (props) => {
             <View styles={styles.container}>
               <View styles={styles.ListContainer}>
                 <FlatList
-                  key={2}
-                  numColumns={2}
+                  // key={2}
+                  // numColumns={2}
                   data={ads}
                   renderItem={({ item }) => (
                     <AdList
@@ -122,10 +122,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     flexWrap: "wrap",
     backgroundColor: "gainsboro",
-  },
-  center: {
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
 

@@ -12,7 +12,6 @@ var { width } = Dimensions.get("window");
 
 const AdCard = (props) => {
   const { charity, image, title, location, description, contact } = props;
-  console.log("i am the props:", props);
   return (
     <View style={styles.container}>
       <Image
@@ -25,25 +24,26 @@ const AdCard = (props) => {
         }}
       />
       <View style={styles.card} />
-      <Text style={styles.charityName}> {charity.charityName} </Text>
-      <Text style={styles.title}> {title} </Text>
-      <Text styles={styles.location}> {location} </Text>
-      <Text styles={styles.description}>
-        {`${description.substring(0, 42)}...`}
-      </Text>
+      <Text style={styles.charityName}>{charity.charityName}</Text>
+      <Text style={styles.title}>{title}</Text>
+      <Text styles={styles.location}>{location}</Text>
+      <Text styles={styles.description}>{`${description.substring(
+        0,
+        42
+      )}...`}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: width / 2 - 20,
+    width: width - 50,
+    marginLeft: 25,
     height: width / 1.7,
     padding: 10,
     borderRadius: 10,
     marginTop: 55,
     marginBottom: 5,
-    marginLeft: 10,
     alignItems: "center",
     elevation: 8,
     backgroundColor: "white",
@@ -58,7 +58,9 @@ const styles = StyleSheet.create({
   },
   card: {
     textAlign: "center",
-
+    alignContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
     marginBottom: 10,
     height: width / 2 - 20 - 90,
     width: width / 2 - 20 - 10,
