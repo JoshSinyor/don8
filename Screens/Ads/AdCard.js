@@ -11,8 +11,8 @@ import {
 var { width } = Dimensions.get("window");
 
 const AdCard = (props) => {
-  const { charityName, image, title, location, description, contact } = props;
-
+  const { charity, image, title, location, description, contact } = props;
+  console.log("i am the props:", props);
   return (
     <View style={styles.container}>
       <Image
@@ -25,7 +25,7 @@ const AdCard = (props) => {
         }}
       />
       <View style={styles.card} />
-      <Text style={styles.charityName}> {charityName} </Text>
+      <Text style={styles.charityName}> {charity.charityName} </Text>
       <Text style={styles.title}> {title} </Text>
       <Text styles={styles.location}> {location} </Text>
       <Text styles={styles.description}>
