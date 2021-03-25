@@ -53,8 +53,11 @@ const AdContainer = (props) => {
 
   const searchAd = (text) => {
     setAdsFiltered(
-      ads.filter((i) =>
-        i.charity.charityName.toLowerCase().includes(text.toLowerCase())
+      ads.filter(
+        (i) =>
+          i.charity.charityName.toLowerCase().includes(text.toLowerCase()) ||
+          i.description.toLowerCase().includes(text.toLowerCase()) ||
+          i.location.toLowerCase().includes(text.toLowerCase())
       )
     );
   };
@@ -81,7 +84,11 @@ const AdContainer = (props) => {
         </Item>
       </Header>
       {focus === true ? (
-        <SearchedAd navigation={props.navigation} adsFiltered={adsFiltered} />
+        <SearchedAd
+          navigation={props.navigation}
+          adsFiltered={adsFiltered}
+          style={styles.search}
+        />
       ) : (
         <ScrollView>
           <View>
@@ -89,8 +96,6 @@ const AdContainer = (props) => {
             <View styles={styles.container}>
               <View styles={styles.ListContainer}>
                 <FlatList
-                  // key={2}
-                  // numColumns={2}
                   data={ads}
                   renderItem={({ item }) => (
                     <AdList
@@ -122,6 +127,9 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     flexWrap: "wrap",
     backgroundColor: "gainsboro",
+  },
+  search: {
+    fontSize: 38,
   },
 });
 
