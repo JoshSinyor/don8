@@ -1,7 +1,9 @@
 import React, { useContext, useState, useCallback } from "react";
-import { View, Text, ScrollView, Button, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { Container } from "native-base";
 import AsyncStorage from "@react-native-community/async-storage";
+import { Button } from "react-native-elements";
+import Toast from "react-native-toast-message";
 
 import axios from "axios";
 import baseURL from "../../assets/common/baseUrl";
@@ -45,32 +47,45 @@ const UserProfile = (props) => {
   return (
     <Container style={styles.container}>
       <ScrollView contentContainerStyle={styles.subContainer}>
-        <Text style={{ fontSize: 30 }}>
+        <Text style={{ fontSize: 30, fontWeight: "bold" }}>
           {userProfile ? userProfile.charityName : ""}
         </Text>
-        <View style={{ marginTop: 20 }}>
-          <Text style={{ margin: 10 }}>
+        <View style={{ marginTop: 30 }}>
+          <Text style={{ margin: 30, fontSize: 20 }}>
             Email: {userProfile ? userProfile.email : ""}
           </Text>
-          <Text style={{ margin: 10 }}>
+          <Text style={{ margin: 30, fontSize: 20 }}>
             Username: {userProfile ? userProfile.username : ""}
           </Text>
-          <Text style={{ margin: 10 }}>
+          <Text style={{ margin: 30, fontSize: 20 }}>
             Phone: {userProfile ? userProfile.phone : ""}
           </Text>
-          <Text style={{ margin: 10 }}>
+          <Text style={{ margin: 30, fontSize: 20 }}>
             Address: {userProfile ? userProfile.address : ""}
           </Text>
-          <Text style={{ margin: 10 }}>
+          <Text style={{ margin: 30, fontSize: 20 }}>
             Charity ID: {userProfile ? userProfile.charityIdNumber : ""}
           </Text>
         </View>
         <View style={{ marginTop: 80 }}>
           <Button
-            title={"Sign Out"}
+            titleStyle={{
+              color: "#e91e63",
+              fontSize: 22.5,
+            }}
+            buttonStyle={{
+              backgroundColor: "#f5f5f5",
+            }}
+            title={"Log Out"}
             onPress={() => [
               AsyncStorage.removeItem("jwt"),
               logoutUser(context.dispatch),
+              Toast.show({
+                topOffset: 60,
+                type: "success",
+                text1: "Logout Successful",
+                text2: "Come back soon!",
+              }),
             ]}
           />
         </View>
@@ -81,6 +96,8 @@ const UserProfile = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#f5f5f5",
+
     flex: 1,
     alignItems: "center",
   },

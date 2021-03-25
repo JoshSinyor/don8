@@ -1,8 +1,9 @@
 import React, { useEffect, useContext, useState } from "react";
-import { View, TextInput, Text, StyleSheet, Button } from "react-native";
+import { View, TextInput, Text, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Error from "../../Shared/Error";
 import Toast from "react-native-toast-message";
+import { Button } from "react-native-elements";
 
 // Context
 import AuthGlobal from "../../Context/store/AuthGlobal";
@@ -60,12 +61,29 @@ const Login = (props) => {
       </View>
       <View style={styles.buttonGroup}>
         {error ? <Error message={error} /> : null}
-        <Button title="Login" onPress={() => handleSubmit()} />
+        <Button
+          titleStyle={{
+            color: "#e91e63",
+            fontSize: 22.5,
+          }}
+          buttonStyle={{
+            backgroundColor: "#f5f5f5",
+          }}
+          title="Login"
+          onPress={() => handleSubmit()}
+        />
       </View>
       <View style={[{ marginTop: 40 }, styles.buttonGroup]}>
         <Text style={styles.middleText}> Don't have an account yet?</Text>
         <Button
           title="Register"
+          titleStyle={{
+            color: "#e91e63",
+            fontSize: 22.5,
+          }}
+          buttonStyle={{
+            backgroundColor: "#f5f5f5",
+          }}
           onPress={() => props.navigation.navigate("Register")}
         />
       </View>
@@ -75,16 +93,18 @@ const Login = (props) => {
 
 const styles = StyleSheet.create({
   buttonGroup: {
+    marginTop: 30,
     width: "80%",
     alignItems: "center",
   },
   middleText: {
+    fontSize: 18.35,
     marginBottom: 20,
     alignSelf: "center",
   },
   container: {
     flex: 1,
-    backgroundColor: "gainsboro",
+    backgroundColor: "#f5f5f5",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -99,6 +119,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   inputText: {
+    fontSize: 18.35,
+    fontFamily: "Didot",
     height: 50,
     color: "white",
   },

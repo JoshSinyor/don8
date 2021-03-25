@@ -103,19 +103,19 @@ export default class App extends React.Component {
           <Icon.Button
             style={{ justifyContent: "center" }}
             backgroundColor="white"
-            color="gainsboro"
+            color="#e91e63"
             name="arrow-left"
             size={40}
             onPress={() => this.props.navigation.navigate("Ad Detail", {})}
           >
             <Text
-              style={{ color: "gainsboro", fontWeight: "bold", fontSize: 20 }}
+              style={{ color: "#e91e63", fontWeight: "bold", fontSize: 20 }}
             >
               Back to advert
             </Text>
           </Icon.Button>
           <MapView.Polyline
-            strokeWidth={6}
+            strokeWidth={2}
             strokeColor="#FF0000"
             coordinates={coords || []}
           />

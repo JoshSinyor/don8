@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
-import { View, TextInput, Text, StyleSheet, Button } from "react-native";
+import { View, TextInput, Text, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import axios from "axios";
 import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-community/async-storage";
 import AuthGlobal from "../../Context/store/AuthGlobal";
+import { Button } from "react-native-elements";
 
 import Error from "../../Shared/Error";
 import baseURL from "../../assets/common/baseUrl";
@@ -142,7 +143,17 @@ const NewAd = (props) => {
 
       <View style={styles.buttonGroup}>
         {error ? <Error message={error} /> : null}
-        <Button title="Submit" onPress={() => handleSubmit()} />
+        <Button
+          titleStyle={{
+            color: "#e91e63",
+            fontSize: 22.5,
+          }}
+          buttonStyle={{
+            backgroundColor: "#f5f5f5",
+          }}
+          title="Submit"
+          onPress={() => handleSubmit()}
+        />
       </View>
     </View>
   );
@@ -164,7 +175,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "gainsboro",
+    backgroundColor: "#f5f5f5",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -179,6 +190,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   inputText: {
+    fontSize: 18.35,
+    fontFamily: "Didot",
     height: 50,
     color: "white",
   },

@@ -29,19 +29,21 @@ const SingleAd = (props) => {
         </View>
         <View style={styles.contentContainer}>
           <H1 style={styles.contentHeader}>
-            {" "}
-            {capitalize(item.charity.charityName)}{" "}
+            {capitalize(item.charity.charityName)}
           </H1>
-          <Text>How can you help:</Text>
+          <Text style={styles.textSubHeader}>How can you help:</Text>
           <Text style={styles.contentDescription}>{item.description}</Text>
           <TouchableOpacity
             onPress={() => props.navigation.navigate("Ad Map", { item: item })}
           >
-            <Text>Find us</Text>
+            <Text style={styles.textSubHeader}>Where to find us:</Text>
             <Text style={styles.contentLocation}>{item.location}</Text>
           </TouchableOpacity>
-          <Text>Contact us</Text>
+          <Text style={styles.textSubHeader}>How to contact us:</Text>
+
           <Text style={styles.contentContact}>{item.contact}</Text>
+          <Text style={styles.textSubHeader}>Our website:</Text>
+
           <Text
             style={styles.contentContact}
             onPress={() => Linking.openURL(`${item.website}`)}
@@ -55,17 +57,15 @@ const SingleAd = (props) => {
 };
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#f5f5f5",
     position: "relative",
     height: "100%",
   },
-  imageContainer: {
-    backgroundColor: "white",
-    padding: 0,
-    margin: 0,
-  },
   image: {
+    marginTop: 20,
     width: "100%",
     height: 200,
+    marginBottom: 20,
   },
   contentContainer: {
     marginTop: 20,
@@ -74,25 +74,31 @@ const styles = StyleSheet.create({
   },
   contentHeader: {
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 25,
     fontSize: 32,
   },
   contentDescription: {
+    textAlign: "center",
     fontSize: 22,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 25,
   },
   contentLocation: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 20,
-    color: "blue",
+    marginBottom: 25,
+    color: "#e91e63",
   },
   contentContact: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 20,
-    color: "blue",
+    marginBottom: 25,
+    color: "#e91e63",
+  },
+  textSubHeader: {
+    fontSize: 18.35,
+    marginBottom: 5,
+    textAlign: "center",
   },
 });
 function capitalize(string) {
