@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Button } from "react-native";
+import { View, Text, TextInput, StyleSheet } from "react-native";
 import Error from "../../Shared/Error";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import axios from "axios";
 import Toast from "react-native-toast-message";
 import baseURL from "../../assets/common/baseUrl";
+import { Button } from "react-native-elements";
 
 const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -136,11 +137,28 @@ const Register = (props) => {
 
         <View style={styles.buttonGroup}>
           {error ? <Error message={error} /> : null}
-          <Button title="Register" onPress={() => register()} />
-        </View>
-        <View style={[{ marginTop: 40 }, styles.buttonGroup]}>
-          <Text style={styles.middleText}> Don't have an account yet?</Text>
           <Button
+            titleStyle={{
+              color: "#e91e63",
+              fontSize: 22.5,
+            }}
+            buttonStyle={{
+              backgroundColor: "#f5f5f5",
+            }}
+            title="Register"
+            onPress={() => register()}
+          />
+        </View>
+        <View style={[{ marginTop: 20 }, styles.buttonGroup]}>
+          <Text style={styles.middleText}>Already have an account?</Text>
+          <Button
+            titleStyle={{
+              color: "#e91e63",
+              fontSize: 22.5,
+            }}
+            buttonStyle={{
+              backgroundColor: "#f5f5f5",
+            }}
             title="Back to login page"
             onPress={() => props.navigation.navigate("Login")}
           />
@@ -156,10 +174,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   middleText: {
-    marginBottom: 20,
+    fontSize: 18.35,
+    marginBottom: 10,
     alignSelf: "center",
   },
   container: {
+    marginTop: 50,
     flex: 1,
     backgroundColor: "#f5f5f5",
     alignItems: "center",
