@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios'
 import { Button, StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
+import baseURL from '../assets/common/baseUrl'
 
 const Form = () => {
 
@@ -19,7 +20,7 @@ const Form = () => {
       contact
     }
     axios
-      .post('http://localhost:3000/api/v1/ads', ad)
+      .post(`${baseURL}ads`, ad)
       .then((response) => {
         if (response.status === 201) {
           console.log(response.data)
