@@ -28,11 +28,9 @@ const AdContainer = (props) => {
 
   useEffect(() => {
     async function updateList() {
-      console.log('running update list')
       axios
         .get(`${baseURL}ads`)
         .then((res) => {
-          console.log(res.data)
           setAds(res.data.reverse());
           setAdsFiltered(res.data);
         })
@@ -42,9 +40,6 @@ const AdContainer = (props) => {
     }
 
     updateList();
-    // setAds(data);
-    // setAdsFiltered(data);
-    // setFocus(false);
 
     return () => {
       setAds([]);

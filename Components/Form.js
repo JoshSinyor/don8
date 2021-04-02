@@ -12,7 +12,6 @@ const Form = () => {
   const [contact, setContact] = useState("")
 
   const handleSubmit = () => {
-    console.log("Submitting")
     const ad = {
       title,
       location,

@@ -76,7 +76,6 @@ const NewAd = (props) => {
               text1: "Advert created!",
               text2: "",
             });
-            console.log("Successfully created advert.");
           }
         })
         .catch((error) => {
