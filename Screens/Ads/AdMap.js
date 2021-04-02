@@ -89,17 +89,7 @@ export default class App extends React.Component {
     const { latitude, longitude, coords } = this.state;
     if (latitude) {
       return (
-        <MapView
-          showsMyLocationButton={true}
-          showsUserLocation={true}
-          style={{ flex: 1 }}
-          initialRegion={{
-            latitude,
-            longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        >
+        <View style={{width: "100%", height: "100%"}}>
           <Icon.Button
             style={{ justifyContent: "center" }}
             backgroundColor="white"
@@ -114,12 +104,25 @@ export default class App extends React.Component {
               Back to advert
             </Text>
           </Icon.Button>
-          <MapView.Polyline
-            strokeWidth={2}
-            strokeColor="#FF0000"
-            coordinates={coords || []}
-          />
-        </MapView>
+          <MapView
+            showsMyLocationButton={true}
+            showsUserLocation={true}
+            style={{ flex: 1 }}
+            initialRegion={{
+              latitude,
+              longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+          >
+            <MapView.Polyline
+              strokeWidth={2}
+              strokeColor="#FF0000"
+              coordinates={coords || []}
+            />
+          </MapView>
+        </View>
+
       );
     }
     return <View style={{ flex: 1, justifyContent: "center" }}></View>;
