@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
   },
   inputText: {
     fontSize: 18.35,
-    fontFamily: "Didot",
+    // fontFamily: "Didot",
     height: 50,
     color: "white",
   },

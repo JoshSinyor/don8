@@ -17,7 +17,7 @@ import AdContainer from "./Screens/Ads/AdContainer";
 LogBox.ignoreAllLogs(true);
 
 export default function App() {
-  setCustomText(customTextProps);
+  // setCustomText(customTextProps);
   return (
     <Auth>
       <NavigationContainer>
@@ -29,8 +29,8 @@ export default function App() {
   );
 }
 
-const customTextProps = {
-  style: {
-    fontFamily: "Didot",
-  },
-};
+// const customTextProps = {
+//   style: {
+//     fontFamily: "Didot",
+//   },
+// };
