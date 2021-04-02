@@ -86,7 +86,7 @@ export default class App extends React.Component {
     }
   }
   render() {
-    const { latitude, longitude, coords } = this.state;
+    const { latitude, longitude, coords, desLatitude, desLongitude } = this.state;
     if (latitude) {
       return (
         <View style={{width: "100%", height: "100%"}}>
@@ -109,10 +109,10 @@ export default class App extends React.Component {
             showsUserLocation={true}
             style={{ flex: 1 }}
             initialRegion={{
-              latitude,
-              longitude,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              latitude: (0.5 * latitude + 0.5 * desLatitude),
+              longitude: (0.5 * longitude + 0.5 * desLongitude),
+              latitudeDelta: Math.abs(desLatitude - latitude) * 1.5,
+              longitudeDelta: Math.abs(desLongitude - longitude) * 1.5,
             }}
           >
             <MapView.Polyline
