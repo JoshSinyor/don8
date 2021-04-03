@@ -40,9 +40,6 @@ const AdContainer = (props) => {
     }
 
     updateList();
-    // setAds(data);
-    // setAdsFiltered(data);
-    // setFocus(false);
 
     return () => {
       setAds([]);

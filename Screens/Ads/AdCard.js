@@ -7,6 +7,7 @@ import {
   Button,
   Image,
 } from "react-native";
+import Constants from 'expo-constants'
 //
 var { width } = Dimensions.get("window");
 
@@ -19,7 +20,7 @@ const AdCard = (props) => {
         resizeMode="contain"
         source={{
           uri: image
-            ? image
+            ? image.replace("localhost", Constants.manifest.debuggerHost.split(':').shift())
             : "https://images.unsplash.com/photo-1514030849962-49ac486d3d20?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1450&q=80 ",
         }}
       />

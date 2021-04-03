@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Left, Right, Container, H1 } from "native-base";
+import Constants from 'expo-constants'
 
 const SingleAd = (props) => {
   const [item, setAd] = useState(props.route.params.item);
@@ -20,7 +21,7 @@ const SingleAd = (props) => {
           <Image
             source={{
               uri: item.image
-                ? item.image
+                ? item.image.replace("localhost", Constants.manifest.debuggerHost.split(':').shift())
                 : "https://images.unsplash.com/photo-1514030849962-49ac486d3d20?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1450&q=80 ",
             }}
             resizeMode="contain"

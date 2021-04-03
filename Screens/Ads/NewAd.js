@@ -76,7 +76,6 @@ const NewAd = (props) => {
               text1: "Advert created!",
               text2: "",
             });
-            console.log("Successfully created advert.");
           }
         })
         .catch((error) => {
@@ -191,7 +190,7 @@ const styles = StyleSheet.create({
   },
   inputText: {
     fontSize: 18.35,
-    fontFamily: "Didot",
+    fontFamily: Platform.OS === 'ios' ? 'Didot' : 'normal',
     height: 50,
     color: "white",
   },
