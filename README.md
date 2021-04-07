@@ -1,6 +1,6 @@
 # don8
 
-This repository reflects Makers Academy Final Project **don8**. The general overview of this project is to connect people who wish to donate their time or goods to a charitable endeavour, and charitable endeavours that might be in a position to use those resources.
+_don8_ is an app designed to connect charities with people who can help them. Post adverts with what your charity needs, and volunteers can see what you need, and where! We created _don8_ for our final project on the [Makers Academy](https://makers.tech/) course.
 
 ---
 
