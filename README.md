@@ -78,37 +78,40 @@ The requirements can be parsed in several simple user stories.
 
 Actions are *italic*. Nouns are **bold**. Attributes of nouns are **_bold italics_**.
 
-##### User Story 01
+User stories marked :white_check_mark: are complete and those with :heavy_exclamation_mark: are incomplete
+
+##### :white_check_mark: User Story 01
 
 &nbsp;&nbsp;&nbsp;As a charity,<br>
 &nbsp;&nbsp;&nbsp;So that I can advertise for donations of time or goods,<br>
 &nbsp;&nbsp;&nbsp;I'd like to be able to post adverts.
 
-##### User Story 02
+##### :white_check_mark: User Story 02
 
 &nbsp;&nbsp;&nbsp;As a donor,<br>
 &nbsp;&nbsp;&nbsp;So that I can donate,<br>
 &nbsp;&nbsp;&nbsp;I'd like to be able to see charities' adverts.
 
-##### User Story 03
+##### :white_check_mark: User Story 03
 
 &nbsp;&nbsp;&nbsp;As a charity,<br>
 &nbsp;&nbsp;&nbsp;So that I can manage my adverts,<br>
 &nbsp;&nbsp;&nbsp;I'd like to be able to sign up as a charity.
 
-##### User Story 04
+##### :white_check_mark: User Story 04
 
 &nbsp;&nbsp;&nbsp;As a charity,<br>
 &nbsp;&nbsp;&nbsp;So that I can manage my adverts,<br>
 &nbsp;&nbsp;&nbsp;I'd like to be able to log in and out.
 
-##### User Story 05
+
+##### :heavy_exclamation_mark: User Story 05
 
 &nbsp;&nbsp;&nbsp;As a charity,<br>
 &nbsp;&nbsp;&nbsp;So that I can manage my adverts,<br>
 &nbsp;&nbsp;&nbsp;I'd like to be able to edit adverts.
 
-##### User Story 06
+##### :heavy_exclamation_mark: User Story 06
 
 &nbsp;&nbsp;&nbsp;As a charity,<br>
 &nbsp;&nbsp;&nbsp;So that I can manage my adverts,<br>
