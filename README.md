@@ -1,6 +1,6 @@
 # don8
 
-_don8_ is an app designed to connect charities with people who can help them. Post adverts with what your charity needs, and volunteers can see what you need, and where! We created _don8_ for our final project on the [Makers Academy](https://makers.tech/) course.
+_don8_ is a multi platform mobile app designed to connect charities with people who can help them. Post adverts with what your charity needs, and volunteers can see what you need, and where! We created _don8_ for our final project on the [Makers Academy](https://makers.tech/) course.
 
 ---
 
@@ -56,6 +56,8 @@ This app is not currently hosted online, and can only be run locally. The instru
 
 This project uses npm to manage packages, which is installed with Node.js. If you have Node.js installed, you should have npm installed. You can check if you have Node.js and npm installed by running `node -v` and `npm -v` in the command line respectively. If you don't have either installed, you can follow [these instructions](https://www.npmjs.com/get-npm).  
 
+In order to run the app on your mobile phone, you will need to download the Expo Go app from the [Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_GB&gl=US) or [App Store](https://apps.apple.com/gb/app/expo-go/id982107779).
+
 
 ### Installation
 
@@ -63,7 +65,7 @@ This project uses npm to manage packages, which is installed with Node.js. If yo
 2. `cd` into the repo and run command `npm install` in the command line to install necessary packages.
 3. Call `cd backend` and then another `npm install` in the command line to install necessary packages for the backend.
 4. Create a `.env` file in the `backend` folder. This file should have three lines, `API_URL = /api/v1`, a `DATABASE_CONNECTION` line with our DB connection string, and a `secret` line, which you can set yourself.
-5. Back in the root folder, create an `app.config.js` file with an API key for google maps which looks like: 
+5. Back in the root folder, create an `app.config.js` file with an [API key for google maps](https://developers.google.com/maps/documentation/javascript/get-api-key) which looks like:
 ```js
 export default ({ config }) => {
   config['extra'] = {
@@ -73,14 +75,16 @@ export default ({ config }) => {
     ...config,
   };
 };
-
 ```
 
 ---
 
 ## Running the Program
 
-1. Run command `npm start` to start the server.
+1. First start the backend. `cd backend` and then run `npm start`. This will allow API calls to the database to work.
+2. In a separate terminal window, run `npm start` from the root folder. This will open an Expo window in your browser.
+3. Scan the QR Code in the Expo web page from the Expo Go app (on Android) or the camera (on iOS).
+4. Alternatively, if you have [Android Studio](https://developer.android.com/studio) or [XCode](https://developer.apple.com/xcode/) installed, you can run the app in an emulated phone by clicking the option from the Expo web page.
 
 ---
 
