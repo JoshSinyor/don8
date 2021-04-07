@@ -114,12 +114,6 @@ Actions are *italic*. Nouns are **bold**. Attributes of nouns are **_bold italic
 &nbsp;&nbsp;&nbsp;So that I can manage my adverts,<br>
 &nbsp;&nbsp;&nbsp;I'd like to be able to delete adverts.
 
-##### User Story 07
-
-&nbsp;&nbsp;&nbsp;As a user,<br>
-&nbsp;&nbsp;&nbsp;So that I can ,<br>
-&nbsp;&nbsp;&nbsp;I'd like to be able to .
-
 #### Domain Modelling
 
 As per [Class Responsibility Collaborator](http://agilemodeling.com/artifacts/crcModel.htm) modelling, there are _n_ obvious areas of responsibility, and therefore _n_.
