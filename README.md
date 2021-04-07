@@ -50,7 +50,7 @@ _don8_ is an app designed to connect charities with people who can help them. Po
 ---
 
 ## Getting Started
-This app is not currently hosted online, and can only be run locally. The instructions for how to do that are given below, but please note that you will need some API keys in order for the app to function properly.
+This app is not currently hosted online, and can only be run locally. The instructions for how to do that on a Mac are given below, but please note that you will need some API keys in order for the app to function properly.
 
 ### Prerequisite(s)
 
@@ -59,7 +59,22 @@ This project uses npm to manage packages, which is installed with Node.js. If yo
 
 ### Installation
 
-1. Run command `npm install`
+1. Download this repo to your local computer.
+2. `cd` into the repo and run command `npm install` in the command line to install necessary packages.
+3. Call `cd backend` and then another `npm install` in the command line to install necessary packages for the backend.
+4. Create a `.env` file in the `backend` folder. This file should have three lines, `API_URL = /api/v1`, a `DATABASE_CONNECTION` line with our DB connection string, and a `secret` line, which you can set yourself.
+5. Back in the root folder, create an `app.config.js` file with an API key for google maps which looks like: 
+```js
+export default ({ config }) => {
+  config['extra'] = {
+    googleApi: 'your1api2for3google4maps5xyz'
+  }
+  return {
+    ...config,
+  };
+};
+
+```
 
 ---
 
