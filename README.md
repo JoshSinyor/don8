@@ -1,4 +1,4 @@
-# don8
+![don8 hourglass logo](assets/logo_hourglass_rounded.svg)  
 
 This repository reflects Makers Academy Final Project **don8**. The general overview of this project is to connect people who wish to donate their time or goods to a charitable endeavour, and charitable endeavours that might be in a position to use those resources.
 
