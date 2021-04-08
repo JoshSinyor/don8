@@ -172,13 +172,26 @@ The appearance of an MVP version of our program was projected to look something 
 ## Project Conclusions
 
 
-### Additional Development
+### Unfinished Features
 
-With more time, we would have liked to add some additional features:
+With more time, we would have liked to complete other features:
 
 1. We ran out of time on the second Wednesday to complete a couple of features on the form for creating new adverts, which we wanted to include:
   - Picture upload - we have implemented the backend code but not the frontend yet
-  - Auto-filling the location & contact details for the adverts from the charity details
+  - Auto-filling the location & contact details for the adverts from the logged-in charity details
+2. Similarly, we have the backend routes to delete and edit adverts, but didn't consider it a priority to implement the frontend for these
+
+### Further Features
+
+As well as these unfinished features, there were other features we thought could be useful:
+1. Contact charities directly through the app
+2. Calendar showing when volunteers are needed
+  * We debated this early on, but decided adding locations was more useful (and interesting for us to code!)
+  * Would be able to search adverts by date
+  * Volunteers would also be able to see a personalised calendar for adverts they had responded to
+  * Similarly, charities would have public calendar of all volunteering opportunities available with them
+3. Sign up as a volunteer
+  * This would enable some of the other features - such as contacting charities
 
 ---
 
