@@ -1,6 +1,7 @@
 # don8
 
-_don8_ is a multi platform mobile app designed to connect charities with people who can help them. Post adverts with what your charity needs, and volunteers can see what you need, and where! We created _don8_ for our final project on the [Makers Academy](https://makers.tech/) course. In creating the app, we used the mobile MERN stack (MongoDB, Express, React Native & Node.js), which was entirely new to all of us.
+_don8_ is a multi platform mobile app designed to connect charities with people who can help them. Post adverts with what your charity needs, and volunteers can see what you need, and where!   
+We created _don8_ for our final project on the [Makers Academy](https://makers.tech/) course. In creating the app, we used the mobile MERN stack (MongoDB, Express, React Native & Node.js), which was entirely new to all of us. We had two weeks to complete the project, with a feature freeze on the second Wednesday, from which point we did not add any new functionality.
 
 ---
 
@@ -168,31 +169,16 @@ The appearance of an MVP version of our program was projected to look something 
 
 ---
 
-## Additional Features
-
-### Feature 01
-
-The appearance of an expanded version of our program was projected to look something like as follows:
-
-### Wireframes
-
----
-
 ## Project Conclusions
 
-### Final Appearance
-
-### Specific Characteristics of Note
-
-The presented development state shows some aspects of note:
-
-1.
 
 ### Additional Development
 
 With more time, we would have liked to add some additional features:
 
-1.
+1. We ran out of time on the second Wednesday to complete a couple of features on the form for creating new adverts, which we wanted to include:
+  - Picture upload - we have implemented the backend code but not the frontend yet
+  - Auto-filling the location & contact details for the adverts from the charity details
 
 ---
 
