@@ -29,8 +29,8 @@ We created _don8_ for our final project on the [Makers Academy](https://makers.t
   * [Unfinished Features](#unfinished-features)
   * [Further Features](#further-features)
 - [Built With](#built-with)
-- [Author(s)](#authors)
-- [License(s)](#license)
+- [Authors](#authors)
+- [License](#license)
 - [Acknowledgements](#acknowledgements)
 
 ---
