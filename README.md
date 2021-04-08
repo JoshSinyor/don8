@@ -41,6 +41,13 @@ _don8_ is a multi platform mobile app designed to connect charities with people 
 
 ---
 
+## Demo
+
+![demo of don8 app](docs/don8-demo.gif)  
+[Full demo available here](https://www.youtube.com/watch?v=epjusmKqPDY)
+
+---
+
 ## Specification
 
 ### Requirements
