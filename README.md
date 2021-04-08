@@ -1,6 +1,6 @@
 # don8
 
-_don8_ is a multi platform mobile app designed to connect charities with people who can help them. Post adverts with what your charity needs, and volunteers can see what you need, and where! We created _don8_ for our final project on the [Makers Academy](https://makers.tech/) course.
+_don8_ is a multi platform mobile app designed to connect charities with people who can help them. Post adverts with what your charity needs, and volunteers can see what you need, and where! We created _don8_ for our final project on the [Makers Academy](https://makers.tech/) course. In creating the app, we used the mobile MERN stack (MongoDB, Express, React Native & Node.js), which was entirely new to all of us.
 
 ---
 
@@ -95,10 +95,11 @@ export default ({ config }) => {
 
 ### Modelling
 
+In order to aid us in our process, we did some modelling to guide us. This included some diagramming and user stories.
 
 #### User Stories
 
-The requirements can be parsed in several simple user stories.
+We thought about the most important elements of how we wanted our app to work, and wrote these out as User Stories, as shown below. We used these to guide our development.
 
 Actions are *italic*. Nouns are **bold**. Attributes of nouns are **_bold italics_**.
 
@@ -141,35 +142,16 @@ User stories marked :white_check_mark: are complete and those with :heavy_exclam
 &nbsp;&nbsp;&nbsp;So that I can manage my adverts,<br>
 &nbsp;&nbsp;&nbsp;I'd like to be able to delete adverts.
 
-#### Domain Modelling
+#### Diagramming
 
-As per [Class Responsibility Collaborator](http://agilemodeling.com/artifacts/crcModel.htm) modelling, there are _n_ obvious areas of responsibility, and therefore _n_.
+The following diagram shows the flow of information as we first envisioned it for the Minimum Viable Product
 
-Class: **Name**
-
-Responsibility | Collaborators
---- | ---
- |
-
-The relationship between these classes can be summarised in this Domain Model Diagram:
-
-![domain_model_diagram](https://www.google.co.uk/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
+![request_return_diagram](/docs/request_return_diagram.svg)
 
 ### Test-Driven Design
 
-TDD was used to structure Unit Tests. These were employed to test individual classes and their methods to ensure that they interacted as expected.
-
-### Behaviour-Driven Design
-
-BDD was used to structure Feature Tests. After unit tests were created to test methods and classes in isolation, feature tests were employed to test the entire program.
-
-### Continuous Development
-
-The code was continuously tested throughout development to ensure development was proceeding as expected, and that changes during development did not impact previously tested units and features.
-
-### Refactoring
-
-Refactoring was performed after the completion of any individual unit, and periodically throughout development, in order to simplify the code. The aim was to keep the code simple and readable, rather than as compact as possible. To check that the resulting code conformed to the Ruby style guide, it was parsed before each commit through _software_, a linter.
+We intended to use TDD to drive our development process. However, having decided to use React Native, it proved difficult for us to run end-to-end testing, and we decided to focus more on picking up the syntax and skills needed for the new framework.
+We tested our API routes and data models on the backend using Jest.
 
 ---
 
@@ -183,9 +165,6 @@ The appearance of an MVP version of our program was projected to look something 
 
 ![wireframe_homepage](/docs/wireframe_homepage.svg) ![wireframe_new_request_page](/docs/wireframe_new_request_page.svg)
 
-The most basic model of this is described as follows:
-
-![request_return_diagram](/docs/request_return_diagram.svg)
 
 ---
 
