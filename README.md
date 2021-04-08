@@ -4,6 +4,8 @@ _don8_ is a multi platform mobile app designed to connect charities with people 
 
 ---
 
+## Index
+
 - [Specification](#specification)
   * [Requirements](#requirements)
 - [Getting Started](#getting-started)
@@ -49,18 +51,11 @@ _don8_ is a multi platform mobile app designed to connect charities with people 
 
 ---
 
-## Specification
-
-### Requirements
-
-1. []
-
----
 
 ## Getting Started
 This app is not currently hosted online, and can only be run locally. The instructions for how to do that on a Mac are given below, but please note that you will need some API keys in order for the app to function properly.
 
-### Prerequisite(s)
+### Prerequisites
 
 This project uses npm to manage packages, which is installed with Node.js. If you have Node.js installed, you should have npm installed. You can check if you have Node.js and npm installed by running `node -v` and `npm -v` in the command line respectively. If you don't have either installed, you can follow [these instructions](https://www.npmjs.com/get-npm).  
 
