@@ -37,7 +37,7 @@ We created _don8_ for our final project on the [Makers Academy](https://makers.t
 
 ## Demo
 
-<div align="center"><img src="https://github.com/JoshSinyor/don8/blob/readme/docs/don8-demo.gif" width=300/><br>
+<div align="center"><img src="https://github.com/JoshSinyor/don8/blob/main/docs/don8-demo.gif" width=300/><br>
 <a href=https://www.youtube.com/watch?v=epjusmKqPDY>Full demo available here</a></div>
 
 
