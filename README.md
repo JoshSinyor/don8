@@ -43,7 +43,9 @@ _don8_ is a multi platform mobile app designed to connect charities with people 
 
 ## Demo
 
-![demo of don8 app smaller](docs/don8-demo.gif)  
+<div align="center"><img src="https://github.com/JoshSinyor/don8/blob/readme/docs/don8-demo.gif" onerror="this.onerror=null; this.src='https://github.com/JoshSinyor/don8/blob/readme/docs/don8-demo.gif'" width=200/></div>
+
+<!-- ![demo of don8 app smaller](docs/don8-demo.gif)   -->
 [Full demo available here](https://www.youtube.com/watch?v=epjusmKqPDY)
 
 ---
