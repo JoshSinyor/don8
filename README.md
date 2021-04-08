@@ -7,39 +7,30 @@ We created _don8_ for our final project on the [Makers Academy](https://makers.t
 
 ## Index
 
-- [Specification](#specification)
-  * [Requirements](#requirements)
+- [Demo](#demo)
 - [Getting Started](#getting-started)
-  * [Prerequisite(s)](#prerequisite-s-)
+  * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 - [Running the Program](#running-the-program)
 - [Development Process](#development-process)
   * [Modelling](#modelling)
     + [User Stories](#user-stories)
-      - [User Story 01](#user-story-01)
-      - [User Story 02](#user-story-02)
-      - [User Story 03](#user-story-03)
-      - [User Story 04](#user-story-04)
-      - [User Story 05](#user-story-05)
-      - [User Story 06](#user-story-06)
-      - [User Story 07](#user-story-07)
-    + [Domain Modelling](#domain-modelling)
+      - [:white_check_mark: User Story 01](#white_check_mark-user-story-01)
+      - [:white_check_mark: User Story 02](#white_check_mark-user-story-02)
+      - [:white_check_mark: User Story 03](#white_check_mark-user-story-03)
+      - [:white_check_mark: User Story 04](#white_check_mark-user-story-04)
+      - [:heavy_exclamation_mark: User Story 05](#heavy_exclamation_mark-user-story-05)
+      - [:heavy_exclamation_mark: User Story 06](#heavy_exclamation_mark-user-story-06)
+    + [Diagramming](#diagramming)
   * [Test-Driven Design](#test-driven-design)
-  * [Behaviour-Driven Design](#behaviour-driven-design)
-  * [Continuous Development](#continuous-development)
-  * [Refactoring](#refactoring)
 - [Minimum Viable Product](#minimum-viable-product)
   * [Wireframes](#wireframes)
-- [Additional Features](#additional-features)
-  * [Feature 01](#feature-01)
-  * [Wireframes](#wireframes-1)
 - [Project Conclusions](#project-conclusions)
-  * [Final Appearance](#final-appearance)
-  * [Specific Characteristics of Note](#specific-characteristics-of-note)
-  * [Additional Development](#additional-development)
+  * [Unfinished Features](#unfinished-features)
+  * [Further Features](#further-features)
 - [Built With](#built-with)
-- [Author(s)](#author-s-)
-- [License(s)](#license-s-)
+- [Author(s)](#authors)
+- [License(s)](#license)
 - [Acknowledgements](#acknowledgements)
 
 ---
@@ -211,13 +202,13 @@ This program's development and test frameworks depend upon:
 
 ---
 
-## Author(s)
+## Authors
 
 Proudly authored by [Oscar Bertrand](https://github.com/OscarB89), [Hugh Cavanagh](https://github.com/hacaravan), [Sean Edwards](https://github.com/bear99a9), [Joshua Sinyor](https://gist.github.com/JoshSinyor) and [Louis Wickremeratne](https://github.com/louiswicks).
 
 ---
 
-## License(s)
+## License
 
 This project is licensed under the [MIT License](LICENSE).
 
