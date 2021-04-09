@@ -47,6 +47,8 @@ const Login = (props) => {
           style={styles.inputText}
           placeholder="Email..."
           placeholderTextColor="white"
+          keyboardType={"email-address"}
+          autoCompleteType='email'
           onChangeText={(text) => setEmail(text.toLowerCase())}
         />
       </View>
