@@ -9,6 +9,7 @@ import { Button } from "react-native-elements";
 
 import Error from "../../Shared/Error";
 import baseURL from "../../assets/common/baseUrl";
+import checkLogin from '../../assets/common/checkLogin'
 
 const NewAd = (props) => {
   const context = useContext(AuthGlobal);
@@ -26,12 +27,7 @@ const NewAd = (props) => {
 
   useEffect(() => {
     async function updateUser() {
-      if (
-        context.stateUser.isAuthenticated === false ||
-        context.stateUser.isAuthenticated === null
-      ) {
-        props.navigation.navigate("Login");
-      }
+      checkLogin()
 
       AsyncStorage.getItem("jwt")
         .then((res) => {
