@@ -9,7 +9,6 @@ import { Button } from "react-native-elements";
 
 import Error from "../../Shared/Error";
 import baseURL from "../../assets/common/baseUrl";
-import checkLogin from '../../assets/common/checkLogin'
 
 const NewAd = (props) => {
   const context = useContext(AuthGlobal);
@@ -27,7 +26,12 @@ const NewAd = (props) => {
 
   useEffect(() => {
     async function updateUser() {
-      checkLogin()
+      if (
+        context.stateUser.isAuthenticated === false ||
+        context.stateUser.isAuthenticated === null
+      ) {
+        props.navigation.navigate("Login");
+      }
 
       AsyncStorage.getItem("jwt")
         .then((res) => {
@@ -35,7 +39,9 @@ const NewAd = (props) => {
             .get(`${baseURL}users/${context.stateUser.user.userId}`, {
               headers: { Authorization: `Bearer ${res}` },
             })
-            .then((user) => setUserProfile(user.data));
+            .then((user) => {setUserProfile(user.data)
+              console.log(userProfile)
+            });
         })
         .catch((error) => console.log(error));
     }
