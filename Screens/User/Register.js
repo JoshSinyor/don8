@@ -79,6 +79,7 @@ const Register = (props) => {
             style={styles.inputText}
             placeholder="Username..."
             placeholderTextColor="white"
+            autoCompleteType='username'
             onChangeText={(text) => setUsername(text)}
           />
         </View>
@@ -87,6 +88,8 @@ const Register = (props) => {
           <TextInput
             style={styles.inputText}
             placeholder="Email..."
+            keyboardType={"email-address"}
+            autoCompleteType='email'
             placeholderTextColor="white"
             onChangeText={(text) => setEmail(text.toLowerCase())}
           />
@@ -121,8 +124,9 @@ const Register = (props) => {
           <TextInput
             style={styles.inputText}
             placeholder="Phone number..."
-            keyboardType={"numeric"}
+            keyboardType={"phone-pad"}
             placeholderTextColor="white"
+            autoCompleteType='tel'
             onChangeText={(text) => setPhone(text)}
           />
         </View>
@@ -132,6 +136,7 @@ const Register = (props) => {
             placeholder="Address..."
             placeholderTextColor="white"
             onChangeText={(text) => setAddress(text)}
+            autoCompleteType='street-address'
           />
         </View>
 
