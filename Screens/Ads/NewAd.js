@@ -41,7 +41,10 @@ const NewAd = (props) => {
             .get(`${baseURL}users/${context.stateUser.user.userId}`, {
               headers: { Authorization: `Bearer ${res}` },
             })
-            .then((user) => {setUserProfile(user.data)
+            .then((user) => {
+              setUserProfile(user.data)
+              setLocation(user.data.address)
+              setContact(user.data.phone)
             });
         })
         .catch((error) => console.log(error));
@@ -115,6 +118,7 @@ const NewAd = (props) => {
             style={styles.inputText}
             placeholder="Location..."
             placeholderTextColor="white"
+            value={location}
             onChangeText={(text) => setLocation(text)}
           />
         </View>
@@ -132,6 +136,7 @@ const NewAd = (props) => {
           <TextInput
             style={styles.inputText}
             // placeholder={userProfile ? userProfile.email : "Email..."}
+            value={contact}
             placeholder="Contact..."
             placeholderTextColor="white"
             onChangeText={(text) => setContact(text)} // Should be setEmail when that's integrated
