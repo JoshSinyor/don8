@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { View, TextInput, Text, StyleSheet } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { ScrollView } from "react-native-gesture-handler";
 import axios from "axios";
 import Toast from "react-native-toast-message";
@@ -25,6 +26,7 @@ const NewAd = (props) => {
   const [error, setError] = useState();
 
   useEffect(() => {
+
     async function updateUser() {
       if (
         context.stateUser.isAuthenticated === false ||
@@ -40,7 +42,6 @@ const NewAd = (props) => {
               headers: { Authorization: `Bearer ${res}` },
             })
             .then((user) => {setUserProfile(user.data)
-              console.log(userProfile)
             });
         })
         .catch((error) => console.log(error));
@@ -93,82 +94,89 @@ const NewAd = (props) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Create a new advert</Text>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          placeholder="Title..."
-          placeholderTextColor="white"
-          onChangeText={(text) => setTitle(text)}
-        />
-      </View>
+    <KeyboardAwareScrollView
+      viewIsInsideTabBar={true}
+      enableOnAndroid={true}
+    >
+      <View style={styles.container}>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          placeholder="Location..."
-          placeholderTextColor="white"
-          onChangeText={(text) => setLocation(text)}
-        />
-      </View>
+        <Text style={styles.contentHeader}>New advert</Text>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.inputText}
+            placeholder="Title..."
+            placeholderTextColor="white"
+            onChangeText={(text) => setTitle(text)}
+          />
+        </View>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          placeholder="Description..."
-          placeholderTextColor="white"
-          onChangeText={(text) => setDescription(text)}
-        />
-      </View>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.inputText}
+            placeholder="Location..."
+            placeholderTextColor="white"
+            onChangeText={(text) => setLocation(text)}
+          />
+        </View>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          // placeholder={userProfile ? userProfile.email : "Email..."}
-          placeholder="Contact..."
-          placeholderTextColor="white"
-          onChangeText={(text) => setContact(text)} // Should be setEmail when that's integrated
-        />
-      </View>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.inputText}
+            placeholder="Description..."
+            placeholderTextColor="white"
+            onChangeText={(text) => setDescription(text)}
+          />
+        </View>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          // placeholder={userProfile ? userProfile.website : "Website..."}
-          placeholder="Website..."
-          placeholderTextColor="white"
-          onChangeText={(text) => setWebsite(text)}
-        />
-      </View>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.inputText}
+            // placeholder={userProfile ? userProfile.email : "Email..."}
+            placeholder="Contact..."
+            placeholderTextColor="white"
+            onChangeText={(text) => setContact(text)} // Should be setEmail when that's integrated
+          />
+        </View>
 
-      <View style={styles.buttonGroup}>
-        {error ? <Error message={error} /> : null}
-        <Button
-          titleStyle={{
-            color: "#e91e63",
-            fontSize: 22.5,
-          }}
-          buttonStyle={{
-            backgroundColor: "#f5f5f5",
-          }}
-          title="Submit"
-          onPress={() => handleSubmit()}
-        />
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.inputText}
+            // placeholder={userProfile ? userProfile.website : "Website..."}
+            placeholder="Website..."
+            placeholderTextColor="white"
+            onChangeText={(text) => setWebsite(text)}
+          />
+        </View>
+
+        <View style={styles.buttonGroup}>
+          {error ? <Error message={error} /> : null}
+          <Button
+            titleStyle={{
+              color: "#e91e63",
+              fontSize: 22.5,
+            }}
+            buttonStyle={{
+              backgroundColor: "#f5f5f5",
+            }}
+            title="Submit"
+            onPress={() => handleSubmit()}
+          />
+        </View>
       </View>
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  title: {
-    height: 50,
-    paddingBottom: 100,
-    fontSize: 40,
-  },
   buttonGroup: {
     width: "80%",
     alignItems: "center",
+  },
+  contentHeader: {
+    fontWeight: "bold",
+    marginBottom: 25,
+    fontSize: 32,
+    textTransform: 'capitalize'
   },
   middleText: {
     marginBottom: 20,
@@ -179,6 +187,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
     alignItems: "center",
     justifyContent: "center",
+    paddingTop: 25,
   },
   inputView: {
     width: "80%",

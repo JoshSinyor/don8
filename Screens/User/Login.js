@@ -44,7 +44,7 @@ const Login = (props) => {
   return (
     <KeyboardAwareScrollView
       viewIsInsideTabBar={true}
-      // extraHeight={200}
+      extraHeight={200}
       enableOnAndroid={true}
     >
       <View style={styles.container}>
