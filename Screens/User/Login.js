@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { View, TextInput, Text, StyleSheet } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { ScrollView } from "react-native-gesture-handler";
 import Error from "../../Shared/Error";
 import Toast from "react-native-toast-message";
@@ -41,55 +42,61 @@ const Login = (props) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          placeholder="Email..."
-          placeholderTextColor="white"
-          keyboardType={"email-address"}
-          autoCompleteType='email'
-          onChangeText={(text) => setEmail(text.toLowerCase())}
-        />
+    <KeyboardAwareScrollView
+      viewIsInsideTabBar={true}
+      // extraHeight={200}
+      enableOnAndroid={true}
+    >
+      <View style={styles.container}>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.inputText}
+            placeholder="Email..."
+            placeholderTextColor="white"
+            keyboardType={"email-address"}
+            autoCompleteType='email'
+            onChangeText={(text) => setEmail(text.toLowerCase())}
+          />
+        </View>
+        <View style={styles.inputView}>
+          <TextInput
+            secureTextEntry
+            style={styles.inputText}
+            placeholder="Password..."
+            placeholderTextColor="white"
+            onChangeText={(text) => setPassword(text)}
+          />
+        </View>
+        <View style={styles.buttonGroup}>
+          {error ? <Error message={error} /> : null}
+          <Button
+            titleStyle={{
+              color: "#e91e63",
+              fontSize: 22.5,
+            }}
+            buttonStyle={{
+              backgroundColor: "#f5f5f5",
+            }}
+            title="Login"
+            onPress={() => handleSubmit()}
+          />
+        </View>
+        <View style={[{ marginTop: 40 }, styles.buttonGroup]}>
+          <Text style={styles.middleText}> Don't have an account yet?</Text>
+          <Button
+            title="Register"
+            titleStyle={{
+              color: "#e91e63",
+              fontSize: 22.5,
+            }}
+            buttonStyle={{
+              backgroundColor: "#f5f5f5",
+            }}
+            onPress={() => props.navigation.navigate("Register")}
+          />
+        </View>
       </View>
-      <View style={styles.inputView}>
-        <TextInput
-          secureTextEntry
-          style={styles.inputText}
-          placeholder="Password..."
-          placeholderTextColor="white"
-          onChangeText={(text) => setPassword(text)}
-        />
-      </View>
-      <View style={styles.buttonGroup}>
-        {error ? <Error message={error} /> : null}
-        <Button
-          titleStyle={{
-            color: "#e91e63",
-            fontSize: 22.5,
-          }}
-          buttonStyle={{
-            backgroundColor: "#f5f5f5",
-          }}
-          title="Login"
-          onPress={() => handleSubmit()}
-        />
-      </View>
-      <View style={[{ marginTop: 40 }, styles.buttonGroup]}>
-        <Text style={styles.middleText}> Don't have an account yet?</Text>
-        <Button
-          title="Register"
-          titleStyle={{
-            color: "#e91e63",
-            fontSize: 22.5,
-          }}
-          buttonStyle={{
-            backgroundColor: "#f5f5f5",
-          }}
-          onPress={() => props.navigation.navigate("Register")}
-        />
-      </View>
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 
@@ -109,6 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 60,
   },
   inputView: {
     width: "80%",
