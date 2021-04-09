@@ -46,7 +46,7 @@ const UserProfile = (props) => {
   return (
     <Container style={styles.container}>
       <ScrollView contentContainerStyle={styles.subContainer}>
-        <Text style={{ fontSize: 30, fontWeight: "bold" }}>
+        <Text style={{ fontSize: 30, fontWeight: "bold", marginTop: 60 }}>
           {userProfile ? userProfile.charityName : ""}
         </Text>
         <View style={{ marginTop: 30 }}>
@@ -66,7 +66,7 @@ const UserProfile = (props) => {
             Charity ID: {userProfile ? userProfile.charityIdNumber : ""}
           </Text>
         </View>
-        <View style={{ marginTop: 80 }}>
+        <View style={{ margin: 30}}>
           <Button
             titleStyle={{
               color: "#e91e63",
@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     alignItems: "center",
-    marginTop: 60,
   },
 });
 
